@@ -1,0 +1,226 @@
+#     _ _____
+#    (_)__  /      ______ ___
+#   / / /_ < | /| / / __ `__ \
+#  / /___/ / |/ |/ / / / / / /
+# /_//____/|__/|__/_/ /_/ /_/
+
+# Modifieur = Mod4 = Super_L
+set $mod Mod4
+floating_modifier $mod
+
+# Thème onedark
+set $od_fg      #abb2bf
+set $od_split   #181a1f
+set $od_black   #282c34
+set $od_cursor  #2c323c
+set $od_visual  #3e4452
+set $od_comment #5c6370
+set $od_blue    #61afef
+set $od_pink    #ec06c7
+set $od_red     #e06c75
+set $od_green   #98c379
+set $od_yellow  #e5c07b
+set $od_cyan    #56b6c2
+set $od_magenta #c678dd
+
+# --- Applis lancées au démarrage de i3 ---
+
+# Il est peut être préférable de lancer ces programmes à partir de .xsessionrc
+# ou de .xinitrc, plutôt qu'à partir du fichier de config du WM utilisé, pour ne
+# pas que ces paramètres dépendent du MW utilisé.
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id compton
+exec --no-startup-id redshift
+exec --no-startup-id xset r rate 230 30
+exec --no-startup-id xmodmap ~/.xmodmaprc
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# Applet de NetworkManager, apparaissant dans le tray icon
+exec_always --no-startup-id nm-applet
+
+# ----- Window manipulations -----
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# kill focused window
+bindsym $mod+q kill
+
+# -- Resize mode --
+mode "resize" {
+        bindsym h resize shrink width  2 px or 2 ppt
+        bindsym j resize grow   height 2 px or 2 ppt
+        bindsym k resize shrink height 2 px or 2 ppt
+        bindsym l resize grow   width  2 px or 2 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return     mode "default"
+        bindsym Escape     mode "default"
+        bindsym $mod+equal mode "default"
+}
+
+bindsym $mod+equal mode "resize"
+
+# ----- Reload, restart, quit and lock -----
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Vraiment quitter i3?' -b ' OK ' 'i3-msg exit'"
+bindsym $mod+Escape exec i3lock --color "$od_black"
+
+# ----- Layouts behaviour -----
+
+# split container
+bindsym $mod+semicolon split h
+bindsym $mod+comma     split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+colon fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+u layout toggle split
+bindsym $mod+i layout stacking
+bindsym $mod+o layout tabbed
+
+# toggle tiling / floating
+bindsym $mod+Shift+p floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+p focus mode_toggle
+
+# focus the parent container
+bindsym $mod+ugrave focus parent
+# focus the child container
+bindsym $mod+percent focus child
+
+# ----- Workspaces -----
+
+# Nom des workspaces
+set $ws1  "1  "
+set $ws2  "2  "
+set $ws3  "3  "
+set $ws4  "4  "
+set $ws5  "5  "
+set $ws6  "6  "
+set $ws7  "7  "
+set $ws8  "8  "
+set $ws9  "9  "
+set $ws10 "10  "
+
+# switch to workspace
+bindsym $mod+ampersand  workspace number $ws1
+bindsym $mod+eacute     workspace number $ws2
+bindsym $mod+quotedbl   workspace number $ws3
+bindsym $mod+apostrophe workspace number $ws4
+bindsym $mod+parenleft  workspace number $ws5
+bindsym $mod+section    workspace number $ws6
+bindsym $mod+egrave     workspace number $ws7
+bindsym $mod+exclam     workspace number $ws8
+bindsym $mod+ccedilla   workspace number $ws9
+bindsym $mod+agrave     workspace number $ws10
+bindsym $mod+n          workspace prev
+bindsym $mod+m          workspace next
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+n move container to workspace prev
+bindsym $mod+Shift+m move container to workspace next
+
+# ----- Window appearance -----
+
+# Window titles font.
+font pango:Hack 9
+
+# Custom borders
+default_border pixel 1
+hide_edge_borders smart
+
+# window colors
+# Object                border      background  text        indicator  child border
+client.focused          $od_split $od_magenta $od_black   $od_pink   $od_magenta
+client.unfocused        $od_split $od_visual  $od_fg      $od_visual $od_visual
+client.focused_inactive $od_split $od_visual  $od_magenta $od_visual $od_visual
+client.urgent           $od_split $od_red     $od_black   $od_pink
+client.background       $od_cursor
+
+# ----- Status bar configuration -----
+
+# -- Appearance --
+bar {
+	# position top
+	# i3bar_command i3bar --transparency
+	status_command i3blocks
+	font pango:Hack Nerd Font 10
+	separator_symbol " "
+	tray_padding 3
+	colors {
+		background $od_cursor
+		statusline $od_fg
+		separator $od_fg
+		focused_workspace  $od_blue   $od_blue   $od_black
+		inactive_workspace $od_visual $od_visual $od_fg
+		urgent_workspace   $od_red    $od_red    $od_black
+	}
+}
+
+#-- Refresh elements --
+bindsym --release XF86AudioRaiseVolume exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release XF86AudioLowerVolume exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release XF86AudioMute exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release XF86AudioMicMute exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+10 i3blocks
+
+
+# ----- Application-specific instructions -----
+
+# -- Mappings perso --
+bindsym $mod+Shift+Return exec brave-browser
+bindsym $mod+e exec nautilus
+bindsym Mod1+Return exec gnome-terminal
+bindsym $mod+Return exec gnome-terminal --hide-menubar
+bindsym $mod+space exec dmenu_run -fn 'Hack:pixelsize=14' -nb \$od_cursor -nf \$od_fg -sb \$od_blue -sf \$od_black
+
+# -- Spawns --
+# For apps that need to spawn in floating mode, and/or in a specific workspace.
+#for_window [class="Gnome-terminal"] move container to workspace $ws1
+#for_window [class="Brave-browser"] move container to workspace $ws2
+#for_window [class="Spotify"] move container to workspace $ws10
+
+# Use pactl to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Contrôle média avec playerctl
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# -- Alternate mappings --
+# Shortcuts for these apps already exists, but it is sometimes more convenient
+# to have multiples ways to do one action. Particularily, some of the mappings
+# above are not "one-handed" friendly and are redefined below.
+bindsym $mod+b            exec      brave-browser
+bindsym Mod1+Escape       workspace next
+bindsym Mod1+Shift+Escape workspace prev
+bindsym Mod1+F4           kill

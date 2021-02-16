@@ -1,0 +1,49 @@
+- defaults:
+    link:
+      relink: true
+      force: true
+      create: true
+#    shell:
+#      stdin: true
+#      stdout: true
+#      stderr: true
+#      quiet: true
+    clean:
+      force: true
+
+- clean:
+    ~/:
+    ~/.config:
+      recursive: true
+    ~/.local:
+      recursive: true
+
+- link:
+    ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
+    ~/.bashrc: bash/bashrc
+    ~/.dir_colors: dircolors/dir_colors
+    ~/.config/gedit/themes/gruvbox.xml: gedit/gruvbox.xml
+    ~/.gitconfig: git/gitconfig
+    ~/.config/i3/config: i3wm/i3/config
+    ~/.config/i3blocks/config: i3wm/i3blocks/config
+    ~/.config/neofetch/config.conf: neofetch/config.conf
+    ~/.config/neomutt/neomuttrc: neomutt/neomuttrc
+    ~/.config/nvim/init.vim: neovim/init.vim
+    ~/.local/share/nvim/site/pack: neovim/pack
+    ~/.local/share/nvim/site/spell: neovim/spell
+    ~/.config/styles.css: styles/styles.css
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux/plugins/tpm: tmux/plugins/tpm
+    ~/.config/xfce4/terminal/terminalrc: xfce4-terminal/terminalrc
+    ~/.local/share/xfce4/terminal/colorschemes: xfce4-terminal/themes
+    ~/.config/zathura/zathurarc: zathura/zathurarc
+    ~/.zshrc: zsh/zshrc
+    ~/.config/zsh: zsh/plugins
+
+- shell:
+    -
+      command: git submodule update --init --recursive
+      description: Installing submodules
+   #-
+   #  command: chsh -s $(which zsh); sudo chsh -s $(which zsh)
+   #  description: Making zsh the default shell

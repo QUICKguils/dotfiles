@@ -1,0 +1,10 @@
+[user]
+	email = guilainsjc@gmail.com
+	name = Guilain Ernotte
+[alias]
+	l = log --all --graph --decorate --oneline -20
+	ll = log --all --graph --decorate --oneline -n
+	la = log --all --graph --decorate -n
+	s = status
+	c = commit
+	a = add

@@ -1,0 +1,126 @@
+#                __
+#    ____  _____/ /_  __________
+#   /_  / / ___/ __ \/ ___/ ___/
+#  _ / /_(__  ) / / / /  / /__
+# (_)___/____/_/ /_/_/   \___/
+#
+# Configuration personnelle de zsh
+# --------------------------------
+
+# Référence: http://zsh.sourceforge.net/Doc/Release/zsh_toc.html
+
+# ========== Setup de l'historique ==========
+setopt histignorealldups sharehistory
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+# # ========== Coloration ==========
+# Les outils ls, grep, tree et fd utilisent la variable d'environnement
+# LS_COLORS pour coloriser leurs sorties. Le fichier .dir_colors (que j'ai copié
+# de arcticicestudio) sert à définir LS_COLORS. Et la commande ci-dessous ne
+# fait que changer LS_COLORS (grâce à la commande `dircolors`) selon les
+# directives énoncées dans .dir_colors.
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+# Couleurs pour GCC (tiré de bashrc)
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# ========== Autocomplétion ==========
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+
+autoload -Uz compinit && compinit
+
+# ========== Personnalisation de l'invite de commande ==========
+# Ajout d'informations sur git dans l'invite de commande
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+zstyle ':vcs_info:git:*' formats '%U%b'
+zstyle ':vcs_info:*' enable git
+
+# Apparence de l'invite de commande
+PROMPT='%(!.%F{magenta}#. )%(?.%F{green}.%F{red})%B―▶%f%b '
+# PROMPT_SU='%(?.%F{blue}#%F{magenta}#%F{green}#.%F{red}###)%f'
+# PROMPT_US='%(?.%F{blue}❯%F{magenta}❯%F{green}❯.%F{red}❯❯❯)%f'
+# PROMPT='%(!.$PROMPT_SU.$PROMPT_US) '
+RPROMPT='%F{#5c6370}$vcs_info_msg_0_%u [%~]'
+
+# ========== Keybindings/aliases ==========
+# Choisir neovim comme éditeur par défaut
+export EDITOR='nvim'
+export VISUAL='nvim'
+# Utiliser le mode vi dans le shell
+bindkey -v
+
+# Aliases
+alias v='nvim'
+alias lf='ranger'
+alias la='ls -A'
+alias lah='ls -lAh'
+alias z='zathura'
+alias g='git'
+alias m='neomutt'
+alias x='exit'
+alias t='tmux'
+alias fd='fdfind'
+alias o='xdg-open'
+alias fl='figlet -f slant'
+
+# Raccourcis de chemins
+ing="$HOME/Documents/Ecole/Bloc_3"
+
+# ========== Ajouts au PATH ==========
+# Enregistrement de julia dans le PATH
+export PATH="$PATH:/usr/local/julia/bin"
+# Enregistrement de matlab dans ls PATH
+export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
+# Vers le compilateur Rust et d'autres trucs liés à Rust.
+source "$HOME/.cargo/env"
+
+# ========== pager/manual ==========
+# Choix du pager par défaut (choix entre more, less et most)
+#export PAGER="less"
+
+# Coloration syntaxique dans le pager less
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;34m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;36m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;35m'
+
+# ========== Initialisation de l'environnement conda pour le python ==========
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/guil/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/guil/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/guil/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/guil/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+# ========== Ajouts de plugins ==========
+# Complétions supplémentaires
+fpath=($HOME/.config/zsh/zsh-completions/src $fpath)
+# Coloration syntaxique des commandes introduites
+source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Recherche dans l'hstorique des commandes
+source $HOME/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down

@@ -1,0 +1,40 @@
+#                                      __  __
+#    ____  ___  ____  ____ ___  __  __/ /_/ /___________
+#   / __ \/ _ \/ __ \/ __ `__ \/ / / / __/ __/ ___/ ___/
+#  / / / /  __/ /_/ / / / / / / /_/ / /_/ /_/ /  / /__
+# /_/ /_/\___/\____/_/ /_/ /_/\__,_/\__/\__/_/   \___/
+
+# IMAP settings
+set realname  = "Guilain Ernotte"
+set from      = guilainsjc@gmail.com
+set imap_user = guilainsjc@gmail.com
+set folder    = imaps://imap.gmail.com:993
+
+# SMTP settings
+set smtp_url = smtps://guilainsjc@gmail.com@smtp.gmail.com:587
+
+# Mailboxes
+set spoolfile = +INBOX
+
+# Mail Editor
+set editor = nvim
+
+# Display Sidebar
+set sidebar_width = 20
+set sidebar_visible = yes
+
+# If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more
+set header_cache = ~/.cache/mutt
+
+# Store messages locally to speed things up, like searching message bodies.
+set message_cachedir = ~/.cache/mutt
+
+# Sidebar navigation
+bind index,pager \CP sidebar-prev                 # Ctrl-n Next Folder
+bind index,pager \CN sidebar-next                 # Ctrl-p Previous Folder
+bind index,pager \CI sidebar-open                 # Ctrl-i Open Folder
+bind index,pager \CB sidebar-toggle-visible       # Ctrl-b Toggle Sidebar
+
+# Theming
+# source /home/guil/.config/neomutt/gruvbox.muttrc
+# source /home/guil/.config/neomutt/gruvbox-extended.muttrc
