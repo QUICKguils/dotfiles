@@ -11,3 +11,36 @@
 [submodule "zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "neovim/pack/plugin/start/goyo.vim"]
+	path = neovim/pack/plugin/start/goyo.vim
+	url = https://github.com/junegunn/goyo.vim.git
+[submodule "neovim/pack/plugin/start/lightline.vim"]
+	path = neovim/pack/plugin/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim.git
+[submodule "neovim/pack/plugin/start/vim-commentary"]
+	path = neovim/pack/plugin/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "neovim/pack/plugin/start/vim-css-color"]
+	path = neovim/pack/plugin/start/vim-css-color
+	url = https://github.com/ap/vim-css-color.git
+[submodule "neovim/pack/plugin/start/vim-easy-align"]
+	path = neovim/pack/plugin/start/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "neovim/pack/plugin/start/vim-fugitive"]
+	path = neovim/pack/plugin/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "neovim/pack/plugin/start/vim-surround"]
+	path = neovim/pack/plugin/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "neovim/pack/plugin/start/vim-vinegar"]
+	path = neovim/pack/plugin/start/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
+[submodule "neovim/pack/plugin/start/haskell-vim"]
+	path = neovim/pack/ftplugin/start/haskell-vim
+	url = https://github.com/neovimhaskell/haskell-vim.git
+[submodule "neovim/pack/plugin/start/julia-vim"]
+	path = neovim/pack/ftplugin/start/julia-vim
+	url = https://github.com/JuliaEditorSupport/julia-vim
+[submodule "neovim/pack/colorscheme/opt/onedark.vim"]
+	path = neovim/pack/colorscheme/opt/onedark.vim
+	url = https://github.com/joshdick/onedark.vim
