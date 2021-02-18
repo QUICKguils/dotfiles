@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Guilain Ernotte <guilainsjc@gmail.com>
+# Adapté de: Copyright (C) 2014 Alexander Keller <github@nycroth.com>
+
+INTERFACE="${BLOCK_INSTANCE:-wlan0}"
+
+# Vérifier que la machine possède une carte wifi (et que celle-ci soit détectée)
+[[ ! -d /sys/class/net/${INTERFACE}/wireless ]] && exit
+
+# Aller rechercher la valeur de la qualité de la connection
+QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
+
+# Cas où le wifi est désactivé
+if [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]]; then
+echo "睊 OFF"
+fi
+
+# Cas ou le wifi est activé
+echo " $QUALITY%"

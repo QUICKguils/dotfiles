@@ -26,6 +26,7 @@
     ~/.gitconfig: git/gitconfig
     ~/.config/i3/config: i3wm/i3/config
     ~/.config/i3blocks/config: i3wm/i3blocks/config
+    ~/.config/i3blocks/scripts: i3wm/i3blocks/scripts
     ~/.config/neofetch/config.conf: neofetch/config.conf
     ~/.config/neomutt/neomuttrc: neomutt/neomuttrc
     ~/.config/nvim/init.vim: neovim/init.vim

@@ -21,84 +21,64 @@
 # signal
 # urgent
 
-# Global properties
-#
-# The top properties below are applied to every block, but can be overridden.
-# Each block command defaults to the script name to avoid boilerplate.
-command=/usr/share/i3blocks/$BLOCK_NAME
+# Propriétés générales (peuvent être overwritten pour chaque bloc)
+command=$HOME/.config/i3blocks/scripts/$BLOCK_NAME
 separator_block_width=25
 markup=none
 
-[wifi]
-color=#56b6c2 #cyan
-label=
-instance=wlp2s0
-interval=10
 
+# Information sur le lecteur multimédia actif
+# This displays "ARTIST - SONG" if a music is playing.
+# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
+#[mediaplayer]
+#instance=spotify
+#interval=5
+#signal=10
+
+# Bande passante
 [bandwidth]
 color=#c678dd #magenta
 interval=5
 
-# Memory usage
-#
-# The type defaults to "mem" if the instance is not specified.
+# État de la connexion sans fil
+[wifi]
+color=#56b6c2 #cyan
+instance=wlp2s0
+interval=10
+
+# Utilisation de la RAM
 [memory]
 color=#98c379 #green
 label=
 interval=30
-separator=false
 
 # CPU usage
-#
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
 [cpu_usage]
 color=#61afef #blue
 label=
 interval=10
-separator=false
 
 # Disk usage
-#
-# The directory defaults to $HOME if the instance is not specified.
-# The script may be called with a optional argument to set the alert
-# (defaults to 10 for 10%).
 [disk]
 color=#e5c07b #yellow
 label=
 #instance=/mnt/data
-interval=60
+interval=3600
 
-#[load_average]
-#interval=10
+# État de charge - niveau de la batterie
+[battery]
+color=#c678dd #magenta
+interval=10
 
-# Volume indicator
-#
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
+# Volume
 [volume]
 color=#56b6c2 #cyan
 label=
 instance=Master
-#instance=PCM
 interval=once
 signal=11
 
-## Battery indicator
-## Rem: `acpi-b` liste les batteries détectées. Il s'agit de la batterie du pc,
-## ainsi que les abtteries des autres périphériques (clavier, souris,...).
-##[battery]
-#color=#c678dd #magenta
-#instance=1
-#interval=30
-
-#[btry_perso]
-#color=#c678dd #magenta
-#interval=60
-
-# Date Time
-#
+# Date et heure
 [time]
 color=#98c379 #green
 label=
@@ -107,29 +87,11 @@ interval=60
 [time]
 label=
 color=#61afef #blue
-command=date '+%H:%M '
+command=date '+%H:%M'
 interval=60
 
-# Generic media player support
-#
-# This displays "ARTIST - SONG" if a music is playing.
-# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
-#[mediaplayer]
-#instance=spotify
-#interval=5
-#signal=10
-
-# Key indicators
-#
-# Add the following bindings to i3 config file:
-#
-# bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
-# bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
-#[keyindicator]
-#instance=CAPS
-#interval=once
-#signal=11
-#[keyindicator]
-#instance=NUM
-#interval=once
-#signal=11
+# Météo
+[weather]
+color=#e5c07b #yellow
+interval=3600
+separator=false
