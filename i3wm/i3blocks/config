@@ -4,94 +4,68 @@
 #  / /___/ / /_/ / / /_/ / /__/ ,< (__  )
 # /_//____/_.___/_/\____/\___/_/|_/____/
 
-# List of valid properties:
-#
-# align
-# color
-# command
-# full_text
-# instance
-# interval
-# label
-# min_width
-# name
-# separator
-# separator_block_width
-# short_text
-# signal
-# urgent
+# Documentation: https://vivien.github.io/i3blocks/
 
 # Propriétés générales (peuvent être overwritten pour chaque bloc)
 command=$HOME/.config/i3blocks/scripts/$BLOCK_NAME
 separator_block_width=25
 markup=none
 
-
-# Information sur le lecteur multimédia actif
-# This displays "ARTIST - SONG" if a music is playing.
 # Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
 #[mediaplayer]
+#color=#e5c07b #yellow
 #instance=spotify
-#interval=5
+#interval=10
 #signal=10
 
-# Bande passante
 [bandwidth]
-color=#c678dd #magenta
+color=#e5c07b #yellow
 interval=5
 
-# État de la connexion sans fil
-[wifi]
-color=#56b6c2 #cyan
-instance=wlp2s0
-interval=10
-
-# Utilisation de la RAM
 [memory]
-color=#98c379 #green
+color=#56b6c2 #cyan
 label=
 interval=30
 
-# CPU usage
 [cpu_usage]
-color=#61afef #blue
+color=#c678dd #magenta
 label=
 interval=10
 
-# Disk usage
 [disk]
-color=#e5c07b #yellow
+color=#98c379 #green
 label=
-#instance=/mnt/data
 interval=3600
 
-# État de charge - niveau de la batterie
-[battery]
-color=#c678dd #magenta
+[wifi]
+color=#61afef #blue
+instance=wlp2s0
 interval=10
 
-# Volume
 [volume]
-color=#56b6c2 #cyan
+color=#e5c07b #yellow
 label=
 instance=Master
 interval=once
 signal=11
 
-# Date et heure
-[time]
+[battery]
+color=#56b6c2 #cyan
+interval=10
+
+[weather]
+color=#c678dd #magenta
+command=curl -s 'wttr.in/?format=1'
+interval=3600
+
+[date]
 color=#98c379 #green
 label=
 command=date '+%d-%m-%Y'
 interval=60
+
 [time]
 label=
 color=#61afef #blue
-command=date '+%H:%M'
+command=date '+%H:%M '
 interval=60
-
-# Météo
-[weather]
-color=#e5c07b #yellow
-interval=3600
-separator=false

@@ -148,7 +148,7 @@ bindsym $mod+Shift+m move container to workspace next
 # ----- Window appearance -----
 
 # Window titles font.
-font pango:Hack 9
+font pango:JetBrains Mono Regular 9
 
 # Custom borders
 default_border pixel 1
@@ -169,7 +169,7 @@ bar {
 	# position top
 	# i3bar_command i3bar --transparency
 	status_command i3blocks
-	font pango:Hack Nerd Font 10
+	font pango:JetBrainsMono Nerd Font 10.5
 	separator_symbol " "
 	tray_padding 3
 	colors {
@@ -197,7 +197,7 @@ bindsym $mod+Shift+Return exec brave-browser
 bindsym $mod+e exec nautilus
 bindsym Mod1+Return exec gnome-terminal
 bindsym $mod+Return exec gnome-terminal --hide-menubar
-bindsym $mod+space exec dmenu_run -fn 'Hack:pixelsize=14' -nb \$od_cursor -nf \$od_fg -sb \$od_blue -sf \$od_black
+bindsym $mod+space exec dmenu_run -fn 'JetBrains\ Mono:pixelsize=15' -nb \$od_cursor -nf \$od_fg -sb \$od_blue -sf \$od_black
 
 # -- Spawns --
 # For apps that need to spawn in floating mode, and/or in a specific workspace.
