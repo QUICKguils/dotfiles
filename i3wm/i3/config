@@ -67,10 +67,10 @@ mode "resize" {
         # back to normal: Enter or Escape or $mod+r
         bindsym Return     mode "default"
         bindsym Escape     mode "default"
-        bindsym $mod+equal mode "default"
+        bindsym $mod+colon mode "default"
 }
 
-bindsym $mod+equal mode "resize"
+bindsym $mod+colon mode "resize"
 
 # ----- Reload, restart, quit and lock -----
 
@@ -86,7 +86,7 @@ bindsym $mod+semicolon split h
 bindsym $mod+comma     split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+colon fullscreen toggle
+bindsym $mod+equal fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+u layout toggle split
@@ -166,8 +166,11 @@ client.background       $od_cursor
 
 # -- Appearance --
 bar {
-	# position top
+    # mode hide
+    # hidden_state hide
+    # modifier $mod
 	# i3bar_command i3bar --transparency
+	# position top
 	status_command i3blocks
 	font pango:JetBrainsMono Nerd Font 10.5
 	separator_symbol " "
@@ -223,4 +226,4 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+b            exec      brave-browser
 bindsym Mod1+Escape       workspace next
 bindsym Mod1+Shift+Escape workspace prev
-bindsym Mod1+F4           kill
+bindsym $mod+f            fullscreen

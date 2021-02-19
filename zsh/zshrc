@@ -50,10 +50,8 @@ zstyle ':vcs_info:git:*' formats '%U%b'
 zstyle ':vcs_info:*' enable git
 
 # Apparence de l'invite de commande
-PROMPT='%(!.%F{magenta}#. )%(?.%F{green}.%F{red})%B―▶%f%b '
-# PROMPT_SU='%(?.%F{blue}#%F{magenta}#%F{green}#.%F{red}###)%f'
-# PROMPT_US='%(?.%F{blue}❯%F{magenta}❯%F{green}❯.%F{red}❯❯❯)%f'
-# PROMPT='%(!.$PROMPT_SU.$PROMPT_US) '
+symbol="─̶▶"  #"❯❯❯"
+PROMPT='%(!.%F{magenta}#. )%(?.%F{green}.%F{red})$symbol%f '
 RPROMPT='%F{#5c6370}$vcs_info_msg_0_%u [%~]'
 
 # ========== Keybindings/aliases ==========
