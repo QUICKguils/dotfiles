@@ -57,21 +57,6 @@ bindsym $mod+Shift+l move right
 # kill focused window
 bindsym $mod+q kill
 
-# -- Resize mode --
-mode "resize" {
-        bindsym h resize shrink width  2 px or 2 ppt
-        bindsym j resize grow   height 2 px or 2 ppt
-        bindsym k resize shrink height 2 px or 2 ppt
-        bindsym l resize grow   width  2 px or 2 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return     mode "default"
-        bindsym Escape     mode "default"
-        bindsym $mod+colon mode "default"
-}
-
-bindsym $mod+colon mode "resize"
-
 # ----- Reload, restart, quit and lock -----
 
 bindsym $mod+Shift+c reload
@@ -145,6 +130,40 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+n move container to workspace prev
 bindsym $mod+Shift+m move container to workspace next
 
+# ----- Modes -----
+
+# Resize mode
+bindsym $mod+colon mode "Resize"
+mode "Resize" {
+        bindsym h resize shrink width  2 px or 2 ppt
+        bindsym j resize grow   height 2 px or 2 ppt
+        bindsym k resize shrink height 2 px or 2 ppt
+        bindsym l resize grow   width  2 px or 2 ppt
+        # back to Normal mode
+        bindsym Return     mode "default"
+        bindsym Escape     mode "default"
+        bindsym $mod+colon mode "default"
+}
+
+# Launcher mode
+bindsym $mod+b mode "Launcher"
+mode "Launcher" {
+	bindsym ampersand  exec thunderbird     ; mode "default"
+	bindsym eacute     exec brave-browser   ; mode "default"
+	bindsym quotedbl   exec matlab -desktop ; mode "default"
+	bindsym apostrophe exec zathura         ; mode "default"
+	bindsym parenleft  exec spyder          ; mode "default"
+	bindsym section    exec freecad         ; mode "default"
+	bindsym egrave     exec firefox         ; mode "default"
+	bindsym exclam     exec mathematica     ; mode "default"
+	bindsym ccedilla   exec virtualbox      ; mode "default"
+	bindsym agrave     exec spotify         ; mode "default"
+	# back to Normal mode
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+b mode "default"
+}
+
 # ----- Window appearance -----
 
 # Window titles font.
@@ -178,7 +197,7 @@ bar {
 	colors {
 		background $od_cursor
 		statusline $od_fg
-		separator $od_fg
+		separator  $od_fg
 		focused_workspace  $od_blue   $od_blue   $od_black
 		inactive_workspace $od_visual $od_visual $od_fg
 		urgent_workspace   $od_red    $od_red    $od_black
@@ -223,7 +242,6 @@ bindsym XF86AudioPrev exec playerctl previous
 # Shortcuts for these apps already exists, but it is sometimes more convenient
 # to have multiples ways to do one action. Particularily, some of the mappings
 # above are not "one-handed" friendly and are redefined below.
-bindsym $mod+b            exec      brave-browser
 bindsym Mod1+Escape       workspace next
 bindsym Mod1+Shift+Escape workspace prev
 bindsym $mod+f            fullscreen
