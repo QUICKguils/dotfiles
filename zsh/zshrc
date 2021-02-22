@@ -81,14 +81,15 @@ ing="$HOME/Documents/Ecole/Bloc_3"
 # ========== Ajouts au PATH ==========
 # Enregistrement de julia dans le PATH
 export PATH="$PATH:/usr/local/julia/bin"
-# Enregistrement de matlab dans ls PATH
+# Enregistrement de matlab dans le PATH
 export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
 # Vers le compilateur Rust et d'autres trucs liés à Rust.
 source "$HOME/.cargo/env"
 
 # ========== pager/manual ==========
-# Choix du pager par défaut (choix entre more, less et most)
-#export PAGER="less"
+# Choix du pager par défaut. Choix entre un lecteur "classique" (less, more et
+# most) ou un éditeur de texte (vim, nvim, nano, emacs,...)
+export PAGER="nvim -c 'se ft=man'"
 
 # Coloration syntaxique dans le pager less
 export LESS_TERMCAP_mb=$'\e[1;32m'
