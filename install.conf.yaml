@@ -43,7 +43,7 @@
 
 - shell:
     -
-      command: git submodule update --init --recursive
+      command: git submodule update --init --depth 1 --recursive
       description: Installing submodules
    #-
    #  command: chsh -s $(which zsh); sudo chsh -s $(which zsh)
