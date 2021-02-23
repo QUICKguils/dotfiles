@@ -25,21 +25,6 @@ font:
   normal:
     family: JetBrains Mono
     style: Regular
-  #bold:
-    # If the bold family is not specified, it will fall back to the
-    # value specified for the normal font.
-    #family: Hack
-    #style: Bold
-  #italic:
-    # If the italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    #family: Hack
-    #style: Italic
-  #bold_italic:
-    # If the bold italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    #family: Hack
-    #style: Bold Italic
   size: 8.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
@@ -120,7 +105,7 @@ shell:
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
 
-#mouse:
+mouse:
   # Click settings
   #
   # The `double_click` and `triple_click` settings control the time
@@ -130,29 +115,12 @@ shell:
   #triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
-  #hide_when_typing: false
+  hide_when_typing: true
 
   #url:
-    # URL launcher
-    #
-    # This program is executed when clicking on a text which is recognized as a
-    # URL. The URL is always added to the command as the last parameter.
-    #
-    # When set to `launcher: None`, URL launching will be disabled completely.
-    #
-    # Default:
-    #   - (macOS) open
-    #   - (Linux/BSD) xdg-open
-    #   - (Windows) explorer
     #launcher:
     #  program: xdg-open
     #  args: []
-
-    # URL modifiers
-    #
-    # These are the modifiers that need to be held down for opening URLs when
-    # clicking on them. The available modifiers are documented in the key
-    # binding section.
     #modifiers: None
 
 # Mouse bindings

@@ -91,9 +91,9 @@ packadd! onedark.vim
 let g:onedark_terminal_italics=1
 colo onedark
 " Transparence dans le terminal
-"if has("ttyout")
-"	hi Normal guibg=NONE
-"endif
+if has("ttyout")
+	hi Normal guibg=NONE
+endif
 
 " Personnalisation de l'explorateur de fichier Netrw
 let g:netrw_banner=0

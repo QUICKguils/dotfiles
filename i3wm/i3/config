@@ -4,6 +4,8 @@
 #  / /___/ / |/ |/ / / / / / /
 # /_//____/|__/|__/_/ /_/ /_/
 
+# ----- Set variables -----
+
 # Modifier = Mod4 = Super_L
 set $mod Mod4
 floating_modifier $mod
@@ -23,21 +25,38 @@ set $od_yellow  #e5c07b
 set $od_cyan    #56b6c2
 set $od_magenta #c678dd
 
+# Default apps
+set $term     gnome-terminal
+set $browser  brave-browser
+set $browser2 firefox
+set $filemgr  nautilus
+
+# Workspace names
+set $ws1  "1  "
+set $ws2  "2  "
+set $ws3  "3  "
+set $ws4  "4  "
+set $ws5  "5  "
+set $ws6  "6  "
+set $ws7  "7  "
+set $ws8  "8  "
+set $ws9  "9  "
+set $ws10 "10  "
+
 # ----- Applications launched during i3 startup -----
 
-# It may be preferable to launch these programs from .xsession or .xprofile
-# and not from the specific config file of a particular window manager. But if
-# you don't plan to switch to another WM it's fine too.
+# It may be preferable to launch these programs from .xsession or .xprofile and
+# not from the config file of a specific window manager. But if you don't plan
+# to switch to another WM it's a fine approach.
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton
 exec --no-startup-id redshift
 exec --no-startup-id xset r rate 230 30
 exec --no-startup-id xmodmap ~/.xmodmaprc
 
-# Hide/show scratchpad
-exec_always --no-startup-id alacritty -t notepad -o window.dimensions.lines=40
+# Create scratchpad
+exec_always --no-startup-id alacritty -t notepad -o window.dimensions.lines=50 background_opacity=0.85
 for_window [title="notepad"] floating enable , sticky enable , move scratchpad
-bindsym Mod1+Return scratchpad show
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -45,6 +64,13 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Applet from NetworkManager, appearing in the tray icon.
 exec_always --no-startup-id nm-applet
+
+# ----- Reload, restart, quit and lock -----
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Vraiment quitter i3?' -b ' OK ' 'i3-msg exit'"
+bindsym $mod+Escape  exec i3lock --color "$od_black"
 
 # ----- Window manipulations -----
 
@@ -61,7 +87,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+y kill
 
 # ----- Layouts behaviour -----
 
@@ -87,26 +113,7 @@ bindsym $mod+ugrave focus parent
 # focus the child container
 bindsym $mod+mu focus child
 
-# ----- Reload, restart, quit and lock -----
-
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Vraiment quitter i3?' -b ' OK ' 'i3-msg exit'"
-bindsym $mod+Escape  exec i3lock --color "$od_black"
-
-# ----- Workspaces -----
-
-# Workspace names
-set $ws1  "1  "
-set $ws2  "2  "
-set $ws3  "3  "
-set $ws4  "4  "
-set $ws5  "5  "
-set $ws6  "6  "
-set $ws7  "7  "
-set $ws8  "8  "
-set $ws9  "9  "
-set $ws10 "10  "
+# ----- Workspace manipulation -----
 
 # switch to workspace
 bindsym $mod+ampersand  workspace number $ws1
@@ -222,10 +229,10 @@ bindsym --release XF86AudioMicMute     exec pkill -SIGRTMIN+11 i3blocks
 
 # -- Mappings perso --
 # Special mappings dedicated to the most used apps
-bindsym $mod+Return       exec gnome-terminal
-bindsym $mod+Shift+Return exec brave-browser
+bindsym $mod+Return       exec $term
+bindsym $mod+Shift+Return exec $browser
 bindsym $mod+space        exec dmenu_run -fn 'JetBrains\ Mono:pixelsize=15' -nb \$od_cursor -nf \$od_fg -sb \$od_blue -sf \$od_black
-bindsym $mod+e            exec nautilus
+bindsym $mod+e            exec $filemgr
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
@@ -235,6 +242,8 @@ bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+# Show/hide scratchpad
+bindsym $mod+BackSpace scratchpad show
 
 # -- Alternate mappings --
 # Shortcuts for these apps already exists, but it is sometimes more convenient
@@ -243,4 +252,4 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym Mod1+Escape       workspace next
 bindsym Mod1+Shift+Escape workspace prev
 bindsym $mod+f            fullscreen
-bindsym Mod1+F4           kill
+bindsym $mod+q            kill

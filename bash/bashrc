@@ -168,9 +168,9 @@ export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
 source "$HOME/.cargo/env"
 
 # ========== pager/manual ==========
-# Choix du pager par défaut. Choix entre un lecteur "classique" (less, more et
-# most) ou un éditeur de texte (vim, nvim, nano, emacs,...)
-export PAGER="nvim -c 'se ft=man'"
+# Choix du pager par défaut et du pager pour les pages de manuel
+export PAGER="less"
+export MANPAGER="nvim -c 'se ft=man'"
 
 # Coloration syntaxique dans le pager less
 export LESS_TERMCAP_mb=$'\e[1;32m'
