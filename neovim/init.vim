@@ -33,6 +33,7 @@ au FileType vhdl setl commentstring=--\ %s
 au FileType help setl nu rnu
 au FileType haskell setl et
 hi link jsonCommentError Comment
+au FileType gitcommit setl tw=72 cc=73
 
 " Mappings : compilation par type de fichier
 au FileType markdown nmap <buffer> <F5> :w<CR>:! pandoc -o <C-R>%<Del><Del>html <C-R>% --mathjax<CR>
