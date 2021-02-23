@@ -1,0 +1,3 @@
+if [ -x $(which numlockx) ]; then
+	numlockx on
+fi

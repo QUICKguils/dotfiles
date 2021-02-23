@@ -1,0 +1,31 @@
+! Aller lire le man de xmodmap pour comprendre.
+
+! Option-1----------------------------------------------------------------------
+
+! Changement cyclique de:
+! * Caps_Lock en Super_L,
+! * Super_L en Control_L,
+! * Control_L en Caps_Lock.
+
+! ! Enlever les touches (KEYSNAME) associées aux modifieurs (MODIFIERNAME).
+! remove Lock = Caps_Lock
+! remove Control = Control_L
+! clear Mod4
+! ! Switcher le nome des touches
+! keysym Caps_Lock = Super_L
+! keysym Super_L = Control_L
+! keysym Control_L = Caps_Lock
+! ! Réaffecter les modifieurs aux nouvelles définitions des touches.
+! add Lock = Caps_Lock
+! add Control = Control_L
+! add Mod4 = Super_L
+
+! Option-2----------------------------------------------------------------------
+
+! ! Simplement intervertir le Caps_Lock avec le Control_L
+! remove Lock = Caps_Lock
+! remove Control = Control_L
+! keysym Control_L = Caps_Lock
+! keysym Caps_Lock = Control_L
+! add Lock = Caps_Lock
+! add Control = Control_L
