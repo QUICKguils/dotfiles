@@ -26,10 +26,15 @@ set $od_cyan    #56b6c2
 set $od_magenta #c678dd
 
 # Default apps
-set $term     gnome-terminal
+set $term     alacritty
 set $browser  brave-browser
 set $browser2 firefox
 set $filemgr  nautilus
+
+# Default fonts
+set $monofont Hack
+set $nerdfont Hack Nerd Font
+set $sansfont Cantarell
 
 # Workspace names
 set $ws1  "1  "
@@ -48,14 +53,19 @@ set $ws10 "10  "
 # It may be preferable to launch these programs from .xsession or .xprofile and
 # not from the config file of a specific window manager. But if you don't plan
 # to switch to another WM it's a fine approach.
+
+# Configure monitors (disable laptop screen)
+exec xrandr --output eDP-1-1 --off
+
+# Wallpaper, compositor, night light, key rate and numpad lock
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id compton
+exec --no-startup-id picom
 exec --no-startup-id redshift
 exec --no-startup-id xset r rate 230 30
-exec --no-startup-id xmodmap ~/.xmodmaprc
+exec --no-startup-id numlockx
 
 # Create scratchpad
-exec_always --no-startup-id alacritty -t notepad -o window.dimensions.lines=50 background_opacity=0.85
+exec_always --no-startup-id $term -t notepad -o window.dimensions.lines=54 background_opacity=0.85
 for_window [title="notepad"] floating enable , sticky enable , move scratchpad
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
@@ -87,7 +97,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # kill focused window
-bindsym $mod+y kill
+bindsym $mod+q kill
 
 # ----- Layouts behaviour -----
 
@@ -104,7 +114,7 @@ bindsym $mod+i layout stacking
 bindsym $mod+o layout tabbed
 
 # toggle tiling / floating
-bindsym $mod+Shift+p floating toggle
+bindsym $mod+y floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+p focus mode_toggle
 
@@ -165,11 +175,11 @@ mode "Launcher" {
 	bindsym eacute     workspace number $ws2  ; exec brave-browser    ; mode "default"
 	bindsym quotedbl   workspace number $ws3  ; exec matlab -desktop  ; mode "default"
 	bindsym apostrophe workspace number $ws4  ; exec zathura          ; mode "default"
-	bindsym parenleft  workspace number $ws5  ; exec spyder           ; mode "default"
+	bindsym parenleft  workspace number $ws5  ; exec totem            ; mode "default"
 	bindsym section    workspace number $ws6  ; exec thunderbird      ; mode "default"
 	bindsym egrave     workspace number $ws7  ; exec telegram-desktop ; mode "default"
 	bindsym exclam     workspace number $ws8  ; exec mathematica      ; mode "default"
-	bindsym ccedilla   workspace number $ws9  ; exec virtualbox       ; mode "default"
+	bindsym ccedilla   workspace number $ws9  ; exec VirtualBox       ; mode "default"
 	bindsym agrave     workspace number $ws10 ; exec spotify          ; mode "default"
 	# back to Normal mode
 	bindsym Return mode "default"
@@ -180,7 +190,7 @@ mode "Launcher" {
 # ----- Window appearance -----
 
 # Window title
-font pango:Source Sans Pro 11
+font pango: $sansfont 10
 title_align center
 
 # Custom borders
@@ -204,7 +214,7 @@ bar {
 	bindsym button4 nop
 	bindsym button5 nop
 	# Appearance
-	font pango:JetBrainsMono Nerd Font 10.5
+	font pango:$nerdfont 10
 	separator_symbol " "
 	tray_padding 3
 	# Colors
@@ -212,6 +222,7 @@ bar {
 		background $od_cursor
 		statusline $od_fg
 		separator  $od_fg
+        # Object           border     background text
 		focused_workspace  $od_blue   $od_blue   $od_black
 		inactive_workspace $od_visual $od_visual $od_fg
 		urgent_workspace   $od_cyan   $od_cyan   $od_black
@@ -231,7 +242,7 @@ bindsym --release XF86AudioMicMute     exec pkill -SIGRTMIN+11 i3blocks
 # Special mappings dedicated to the most used apps
 bindsym $mod+Return       exec $term
 bindsym $mod+Shift+Return exec $browser
-bindsym $mod+space        exec dmenu_run -fn 'JetBrains\ Mono:pixelsize=15' -nb \$od_cursor -nf \$od_fg -sb \$od_blue -sf \$od_black
+bindsym $mod+space        exec dmenu_run -i -fn '$monofont:pixelsize=14' -nb \$od_cursor -nf \$od_fg -sb \$od_blue -sf \$od_black
 bindsym $mod+e            exec $filemgr
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
@@ -252,4 +263,3 @@ bindsym $mod+BackSpace scratchpad show
 bindsym Mod1+Escape       workspace next
 bindsym Mod1+Shift+Escape workspace prev
 bindsym $mod+f            fullscreen
-bindsym $mod+q            kill

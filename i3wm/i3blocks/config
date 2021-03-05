@@ -24,17 +24,17 @@ interval=5
 
 [memory]
 color=#56b6c2 #cyan
-label=
+label= 
 interval=30
 
 [cpu_usage]
 color=#c678dd #magenta
-label=
+label= 
 interval=10
 
 [disk]
 color=#98c379 #green
-label=
+label= 
 interval=3600
 
 [wifi]
@@ -44,7 +44,7 @@ interval=10
 
 [volume]
 color=#e5c07b #yellow
-label=
+label= 
 instance=Master
 interval=once
 signal=11
@@ -60,12 +60,12 @@ interval=3600
 
 [date]
 color=#98c379 #green
-label=
+label= 
 command=date '+%d-%m-%Y'
 interval=60
 
 [time]
-label=
+label= 
 color=#61afef #blue
 command=date '+%H:%M '
 interval=60
