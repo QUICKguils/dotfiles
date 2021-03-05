@@ -1,6 +1,9 @@
 [user]
 	email = guilainsjc@gmail.com
 	name = Guilain Ernotte
+	signingkey = D20F268F43AB605647CF6695FAB405EFF453F02A
+[commit]
+	gpgsign=true
 [alias]
 	l = log --all --graph --decorate --oneline -20
 	ll = log --all --graph --decorate --oneline -n
