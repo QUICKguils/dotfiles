@@ -41,7 +41,7 @@ au FileType markdown nmap <buffer> <F6> :! xdg-open <C-R>%<Del><Del>html<CR>
 au FileType c nmap <buffer> <F5> :w<CR>:! gcc -Wall -o <C-R>%<Del><Del> <C-R>%<CR>
 au FileType c nmap <buffer> <F6> :sp<CR>:te <C-R>%<Del><Del><CR>
 au FileType julia nmap <buffer> <F5> :sp<CR>:te julia<CR>
-let g:python3_host_prog = '/home/guil/anaconda3/bin/python'
+let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
 let g:loaded_python_provider = 0
 au FileType python map <buffer> <F5> :w<CR>:py3file <C-R>%<CR>
 

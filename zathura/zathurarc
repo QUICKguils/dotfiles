@@ -51,7 +51,7 @@ set recolor-darkcolor           "#abb2bf"
 set recolor                     "true"
 
 # Options utiles de recoloration
-set recolor-keephue "false"
+set recolor-keephue "true"
 set recolor-reverse-video "false"
 
 set notification-error-bg       "#3e4452"

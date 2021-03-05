@@ -50,7 +50,7 @@ zstyle ':vcs_info:git:*' formats '%U%b'
 zstyle ':vcs_info:*' enable git
 
 # Apparence de l'invite de commande
-symbol="─̶▶"  #"❯❯❯"
+symbol="▶"
 PROMPT='%(!.%F{magenta}#. )%(?.%F{green}.%F{red})$symbol%f '
 RPROMPT='%F{#5c6370}$vcs_info_msg_0_%u [%~]'
 
@@ -63,7 +63,6 @@ bindkey -v
 
 # Aliases
 alias v='nvim'
-alias lf='ranger'
 alias la='ls -A'
 alias lah='ls -lAh'
 alias z='zathura'
@@ -73,15 +72,15 @@ alias x='exit'
 alias t='tmux'
 alias fd='fdfind'
 alias o='xdg-open'
-alias fl='figlet -f slant'
-alias j='julia --banner=no'
+alias fl='figlet -t -f slant'
+alias j='julia -E'
 
 # Raccourcis de chemins
 ing="$HOME/Documents/Ecole/Bloc_3"
 
 # ========== pager/manual ==========
 # Choix du pager par défaut et du pager pour les pages de manuel
-export PAGER="less"
+export PAGER="cat"
 export MANPAGER="nvim -c 'se ft=man'"
 
 # Coloration syntaxique dans le pager less
@@ -98,19 +97,16 @@ export LESS_TERMCAP_us=$'\e[1;4;35m'
 export PATH="$PATH:/usr/local/julia/bin"
 # Enregistrement de matlab dans le PATH
 export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
-# Vers le compilateur Rust et d'autres trucs liés à Rust.
-source "$HOME/.cargo/env"
-
-# ========== Initialisation de l'environnement conda pour le python ==========
+# Gestionnaire de paquets miniconda
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/guil/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/guil/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/guil/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/guil/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/guil/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/guil/anaconda3/bin:$PATH"
+        export PATH="/home/guil/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -122,5 +118,6 @@ fpath=($HOME/.config/zsh/zsh-completions/src $fpath)
 source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Recherche dans l'hstorique des commandes
 source $HOME/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
+

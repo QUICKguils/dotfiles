@@ -37,6 +37,9 @@
     ~/.tmux/plugins/tpm: tmux/plugins/tpm
     ~/.config/xfce4/terminal/terminalrc: xfce4-terminal/terminalrc
     ~/.local/share/xfce4/terminal/colorschemes: xfce4-terminal/themes
+    ~/.Xresources: Xorg/Xresources
+    ~/.Xmodmap: Xorg/Xmodmap
+    ~/.Xkbmap: Xorg/Xkbmap
     ~/.config/zathura/zathurarc: zathura/zathurarc
     ~/.zshrc: zsh/zshrc
     ~/.config/zsh: zsh/plugins

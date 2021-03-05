@@ -123,29 +123,12 @@ fi
 # A partir d'ici, trucs que j'ai rajouté moi-même
 # ==============================================================================
 
-# Anaconda qui initialise l'environnement python
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/guil/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/guil/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/guil/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/guil/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 # ========== Keybindings/aliases ==========
 # Choisir neovim comme éditeur par défaut (au lieu de nano)
 export EDITOR="nvim"
 
 # Aliases
 alias v='nvim'
-alias lf='ranger'
 alias la='ls -A'
 alias lah='ls -lAh'
 alias z='zathura'
@@ -155,6 +138,8 @@ alias x='exit'
 alias t='tmux'
 alias fd='fdfind'
 alias o='xdg-open'
+alias fl='figlet -t -f slant'
+alias j='julia --banner=no'
 
 # Raccourcis de chemins
 ing="$HOME/Documents/Ecole/Bloc_3"
@@ -164,12 +149,13 @@ ing="$HOME/Documents/Ecole/Bloc_3"
 export PATH="$PATH:/usr/local/julia/bin"
 # Enrefistrement de matlab dans ls PATH
 export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
-# Vers le compilateur Rust et d'autres trucs liés à Rust.
-source "$HOME/.cargo/env"
+
+# Gestionnaire de paquets miniconda
+# !! Contents within this bloc
 
 # ========== pager/manual ==========
 # Choix du pager par défaut et du pager pour les pages de manuel
-export PAGER="less"
+export PAGER="cat"
 export MANPAGER="nvim -c 'se ft=man'"
 
 # Coloration syntaxique dans le pager less
@@ -180,3 +166,4 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[01;36m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;35m'
+
