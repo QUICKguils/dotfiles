@@ -21,7 +21,7 @@ se nu rnu
 se nowrap textwidth=80 cc=81 formatoptions=cqj
 se scrolloff=5
 se nohls ignorecase smartcase
-se list lcs=trail:•,tab:\ \  ",eol:¬
+se list lcs=trail:•,tab:│\ ,extends:▶,precedes:◀
 se spelllang=en_us,fr
 se spellfile=/home/guil/.local/share/nvim/site/spell/LexiquePerso.utf-8.add
 
@@ -30,9 +30,7 @@ au FileType markdown setl fo=tcqjn spell commentstring=<!--\ %s\ -->
 au FileType tex setl fo=tcqj tw=100 cc=101 spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
 au FileType matlab setl commentstring=\%\ %s
 au FileType vhdl setl commentstring=--\ %s
-au FileType help setl nu rnu
 au FileType haskell setl et
-hi link jsonCommentError Comment
 au FileType gitcommit setl tw=72 cc=73
 
 " Mappings : compilation par type de fichier
@@ -133,7 +131,7 @@ let g:lightline = {
 
 " Barre de statut : afficher le verrou  si fichier 'read only'
 function! LightlineReadonly()
-    return &readonly ? "\ue0a2" : ''
+	return &readonly ? "\ue0a2" : ''
 endfunction
 
 " Barre de statut : afficher la branche  si git est activé pour le dossier
@@ -147,7 +145,7 @@ endfunction
 
 " Barre de statut : afficher '+' seulement si le fichier est modifié
 function! LightlineModified()
-    return &modifiable && &modified ? '+': ''
+	return &modifiable && &modified ? '+': ''
 endfunction
 
 " Permet de sélectionner les blocs de code indentés
