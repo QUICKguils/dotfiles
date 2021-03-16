@@ -61,11 +61,11 @@ exec xrandr --output eDP-1-1 --off
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id picom
 exec --no-startup-id redshift
-exec --no-startup-id xset r rate 230 30
+exec --no-startup-id xset r rate 230 35
 exec --no-startup-id numlockx
 
 # Create scratchpad
-exec_always --no-startup-id $term -t notepad -o window.dimensions.lines=54 background_opacity=0.85
+exec_always --no-startup-id $term -t notepad -o window.dimensions.lines=45 window.dimensions.columns=90 background_opacity=0.85
 for_window [title="notepad"] floating enable , sticky enable , move scratchpad
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
@@ -114,9 +114,9 @@ bindsym $mod+i layout stacking
 bindsym $mod+o layout tabbed
 
 # toggle tiling / floating
-bindsym $mod+y floating toggle
+bindsym $mod+p floating toggle
 # change focus between tiling / floating windows
-bindsym $mod+p focus mode_toggle
+bindsym $mod+y focus mode_toggle
 
 # focus the parent container
 bindsym $mod+ugrave focus parent
@@ -157,15 +157,15 @@ bindsym $mod+Shift+m move container to workspace next
 
 # Resize mode
 bindsym $mod+colon mode "Resize"
-mode "Resize" {
-        bindsym h resize shrink width  2 px or 2 ppt
-        bindsym j resize grow   height 2 px or 2 ppt
-        bindsym k resize shrink height 2 px or 2 ppt
-        bindsym l resize grow   width  2 px or 2 ppt
-        # back to Normal mode
-        bindsym Return     mode "default"
-        bindsym Escape     mode "default"
-        bindsym $mod+colon mode "default"
+mode "Resize"{
+		bindsym h resize shrink width  2 px or 2 ppt
+		bindsym j resize grow   height 2 px or 2 ppt
+		bindsym k resize shrink height 2 px or 2 ppt
+		bindsym l resize grow   width  2 px or 2 ppt
+		# back to Normal mode
+		bindsym Return     mode "default"
+		bindsym Escape     mode "default"
+		bindsym $mod+colon mode "default"
 }
 
 # Launcher mode
@@ -215,6 +215,7 @@ bar {
 	bindsym button5 nop
 	# Appearance
 	font pango:$nerdfont 10
+	workspace_min_width 50
 	separator_symbol " "
 	tray_padding 3
 	# Colors
@@ -222,7 +223,7 @@ bar {
 		background $od_cursor
 		statusline $od_fg
 		separator  $od_fg
-        # Object           border     background text
+		# Object           border     background text
 		focused_workspace  $od_blue   $od_blue   $od_black
 		inactive_workspace $od_visual $od_visual $od_fg
 		urgent_workspace   $od_cyan   $od_cyan   $od_black
