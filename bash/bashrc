@@ -156,7 +156,7 @@ export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
 # ========== pager/manual ==========
 # Choix du pager par défaut et du pager pour les pages de manuel
 export PAGER="cat"
-export MANPAGER="nvim -c 'se ft=man'"
+export MANPAGER="nvim +Man!"
 
 # Coloration syntaxique dans le pager less
 export LESS_TERMCAP_mb=$'\e[1;32m'
