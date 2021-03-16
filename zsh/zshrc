@@ -95,7 +95,7 @@ export LESS_TERMCAP_us=$'\e[1;4;35m'
 
 # ========== Ajouts au PATH ==========
 # Enregistrement de julia dans le PATH
-export PATH="$PATH:/usr/local/julia/bin"
+export PATH="$PATH:/home/guil/bin/julia/bin"
 # Enregistrement de matlab dans le PATH
 export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
 # Gestionnaire de paquets miniconda
@@ -105,9 +105,9 @@ if [ $? -eq 0 ]; then
 	eval "$__conda_setup"
 else
 	if [ -f "/home/guil/miniconda3/etc/profile.d/conda.sh" ]; then
-		. "/home/guil/miniconda3/etc/profile.d/conda.sh"
+# . "/home/guil/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
 	else
-		export PATH="/home/guil/miniconda3/bin:$PATH"
+# export PATH="/home/guil/miniconda3/bin:$PATH"  # commented out by conda initialize
 	fi
 fi
 unset __conda_setup
@@ -121,4 +121,20 @@ source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/guil/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/guil/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/guil/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
