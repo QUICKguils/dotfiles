@@ -67,13 +67,14 @@ alias la='ls -A'
 alias lah='ls -lAh'
 alias z='zathura'
 alias g='git'
-alias m='neomutt'
 alias x='exit'
 alias t='tmux'
-alias fd='fdfind'
 alias o='xdg-open'
 alias fl='figlet -t -f slant'
-alias j='julia -E'
+alias jl='julia --banner=no'
+alias mlj='matlab -nodesktop -nosplash'
+alias ml='matlab -nojvm'
+alias py='python'
 
 # Raccourcis de chemins
 ing="$HOME/Documents/Ecole/Bloc_3"
@@ -95,35 +96,10 @@ export LESS_TERMCAP_us=$'\e[1;4;35m'
 
 # ========== Ajouts au PATH ==========
 # Enregistrement de julia dans le PATH
-export PATH="$PATH:/home/guil/bin/julia/bin"
+export PATH="$PATH:/usr/local/julia/bin"
 # Enregistrement de matlab dans le PATH
 export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
 # Gestionnaire de paquets miniconda
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-	eval "$__conda_setup"
-else
-	if [ -f "/home/guil/miniconda3/etc/profile.d/conda.sh" ]; then
-# . "/home/guil/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
-	else
-# export PATH="/home/guil/miniconda3/bin:$PATH"  # commented out by conda initialize
-	fi
-fi
-unset __conda_setup
-
-# ========== Ajouts de plugins ==========
-# Complétions supplémentaires
-fpath=($HOME/.config/zsh/zsh-completions/src $fpath)
-# Coloration syntaxique des commandes introduites
-source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# Recherche dans l'hstorique des commandes
-source $HOME/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey "^[[A" history-substring-search-up
-bindkey "^[[B" history-substring-search-down
-
-
-# >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -136,5 +112,15 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
+# Enlèvement de l'indication «(base)» dans l'invite de commande:
+# aller voir le fichier ~/miniconda3/etc/conda/activate.d/remove-base-prompt.sh
 
+# ========== Ajouts de plugins ==========
+# Complétions supplémentaires
+fpath=($HOME/.config/zsh/zsh-completions/src $fpath)
+# Coloration syntaxique des commandes introduites
+source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Recherche dans l'hstorique des commandes
+source $HOME/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down

@@ -8,4 +8,5 @@
 	s = status
 	c = commit
 	a = add
+	d = diff
 	ck = checkout

@@ -245,6 +245,7 @@ bindsym $mod+Return       exec $term
 bindsym $mod+Shift+Return exec $browser
 bindsym $mod+space        exec dmenu_run -i -fn '$monofont:pixelsize=14' -nb \$od_cursor -nf \$od_fg -sb \$od_blue -sf \$od_black
 bindsym $mod+e            exec $filemgr
+bindsym $mod+s            exec $HOME/Documents/Bitwarden.AppImage
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
