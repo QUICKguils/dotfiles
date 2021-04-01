@@ -33,6 +33,8 @@
     ~/.local/share/nvim/site/pack: neovim/pack
     ~/.local/share/nvim/site/spell: neovim/spell
     ~/.config/styles.css: styles/styles.css
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.config/tmux/tmux-onedark-theme.tmux: tmux/tmux-onedark-theme.tmux
     ~/.Xresources: Xorg/Xresources
     ~/.Xmodmap: Xorg/Xmodmap
     ~/.Xkbmap: Xorg/Xkbmap
