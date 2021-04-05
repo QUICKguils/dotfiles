@@ -1,29 +1,3 @@
-#!/usr/bin/env bash
-
-# Tiré de: https://github.com/odedlaz/tmux-onedark-theme
-
-od_black="#282c34"
-od_blue="#61afef"
-od_yellow="#e5c07b"
-od_red="#e06c75"
-od_white="#aab2bf"
-od_green="#98c379"
-od_visual_grey="#3e4452"
-od_comment_grey="#5c6370"
-od_cursor_grey="#2c323c"
-
-get() {
-   local option=$1
-   local default_value=$2
-   local option_value="$(tmux show-option -gqv "$option")"
-
-   if [ -z "$option_value" ]; then
-      echo "$default_value"
-   else
-      echo "$option_value"
-   fi
-}
-
 set() {
    local option=$1
    local value=$2
@@ -35,9 +9,6 @@ setw() {
    local value=$2
    tmux set-window-option -gq "$option" "$value"
 }
-
-set "status" "on"
-set "status-justify" "left"
 
 set "status-left-length" "100"
 set "status-right-length" "100"
