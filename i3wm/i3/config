@@ -50,22 +50,30 @@ set $ws10 "10  "
 
 # ----- Applications launched during i3 startup -----
 
-# It may be preferable to launch these programs from .xsession or .xprofile and
-# not from the config file of a specific window manager. But if you don't plan
-# to switch to another WM it's a fine approach.
+# It may be preferable to launch some of these programs from .xsession or
+# .xprofile and not from the config file of a specific window manager. But if
+# you don't plan to switch to another WM it's a fine approach.
 
 # Configure monitors (disable laptop screen)
 exec xrandr --output eDP-1-1 --off
 
-# Wallpaper, compositor, night light, key rate and numpad lock
+# Wallpaper, compositor, night light, key rate, numpad lock and 
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id picom
 exec --no-startup-id redshift
 exec --no-startup-id xset r rate 230 35
 exec --no-startup-id numlockx
+exec --no-startup-id xmodmap ~/.Xmodmap
 
 # Create scratchpad
-exec_always --no-startup-id $term -t notepad -o window.dimensions.lines=45 window.dimensions.columns=90 background_opacity=0.85
+exec_always --no-startup-id $term \
+	-t notepad \
+	-o window.dimensions.lines=45 \
+	   window.dimensions.columns=90 \
+	   window.padding.x=4 \
+	   window.padding.y=4 \
+	   background_opacity=0.85
+
 for_window [title="notepad"] floating enable , sticky enable , move scratchpad
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the

@@ -1,13 +1,19 @@
+#               __  __
+#  ____  ____ _/ /_/ /_  __  ___________ ___________
+# /_  / / __ `/ __/ __ \/ / / / ___/ __ `/ ___/ ___/
+#  / /_/ /_/ / /_/ / / / /_/ / /  / /_/ / /  / /__
+# /___/\__,_/\__/_/ /_/\__,_/_/   \__,_/_/   \___/
+
 # ===== Configuration générale =====
 
 # Police de zathura
-set font "Hack Regular 10"
+set font "Hack 9"
 
 # Disposition par défaut
 set window-height 1080
-set window-width 1000
-set adjust-open "width"
-set page-padding 2
+set window-width  1000
+set adjust-open   "width"
+set page-padding  2
 
 # Mode double page
 set pages-per-row 1
@@ -16,15 +22,15 @@ set first-page-column "1:1"
 # Éléments indicatifs
 set guioptions ""
 set statusbar-v-padding 4
-set statusbar-home-tilde "true"
+set statusbar-home-tilde    "true"
 set window-title-home-tilde "true"
-set window-title-page "true"
+set window-title-page       "true"
 
 # Zoom
-set zoom-max 2000
-set zoom-min 10
+set zoom-max  2000
+set zoom-min  10
 set zoom-step 5
-set zoom-center "true"
+set zoom-center     "true"
 set vertical-center "true"
 
 # ===== Remaps =====
@@ -41,94 +47,91 @@ set vertical-center "true"
 
 # ===== Couleurs =====
 
+# Transparence du surlignage des termes recherchés
 set highlight-transparency 0.7
+
+# Options utiles de recoloration
+set recolor-keephue       "true"
+set recolor-reverse-video "false"
 
 # ----- OneDark -----
 
 # Recoloration
-set recolor-lightcolor          "#282c34"
-set recolor-darkcolor           "#abb2bf"
-set recolor                     "true"
+set recolor-lightcolor "#282c34"
+set recolor-darkcolor  "#abb2bf"
+set recolor            "true"
 
-# Options utiles de recoloration
-set recolor-keephue "true"
-set recolor-reverse-video "false"
+set notification-error-bg   "#3e4452"
+set notification-error-fg   "#bf616a"
+set notification-warning-bg "#3e4452"
+set notification-warning-fg "#ebcb8b"
+set notification-bg         "#3e4452"
+set notification-fg         "#a3be8c"
 
-set notification-error-bg       "#3e4452"
-set notification-error-fg       "#bf616a"
-set notification-warning-bg     "#3e4452"
-set notification-warning-fg     "#ebcb8b"
-set notification-bg             "#3e4452"
-set notification-fg             "#a3be8c"
+set completion-bg           "#2c323c"
+set completion-fg           "#abb2bf"
+set completion-group-bg     "#3e4452"
+set completion-group-fg     "#eceff4"
+set completion-highlight-bg "#61afef"
+set completion-highlight-fg "#2c323c"
 
-set completion-bg               "#2c323c"
-set completion-fg               "#abb2bf"
-set completion-group-bg         "#3e4452"
-set completion-group-fg         "#eceff4"
-set completion-highlight-bg     "#61afef"
-set completion-highlight-fg     "#2c323c"
+set index-bg                "#2c323c"
+set index-fg                "#abb2bf"
+set index-active-bg         "#61afef"
+set index-active-fg         "#2c323c"
 
-set index-bg                    "#2c323c"
-set index-fg                    "#abb2bf"
-set index-active-bg             "#61afef"
-set index-active-fg             "#2c323c"
+set inputbar-bg             "#3e4452"
+set inputbar-fg             "#abb2bf"
 
-set inputbar-bg                 "#3e4452"
-set inputbar-fg                 "#abb2bf"
+set statusbar-bg            "#3e4452"
+set statusbar-fg            "#abb2bf"
 
-set statusbar-bg                "#3e4452"
-set statusbar-fg                "#abb2bf"
+set highlight-color         "#61afef"
+set highlight-active-color  "#56b6c2"
 
-set highlight-color             "#61afef"
-set highlight-active-color      "#56b6c2"
-
-set default-bg                  "#2c323c"
-set default-fg                  "#abb2bf"
-set render-loading              "true"
-set render-loading-bg           "#282c34"
-set render-loading-fg           "#abb2bf"
+set default-bg              "#2c323c"
+set default-fg              "#abb2bf"
+set render-loading          "true"
+set render-loading-bg       "#282c34"
+set render-loading-fg       "#abb2bf"
 
 # ----- Gruvbox -----
 
 # # Recoloration
-# set recolor-lightcolor          "#282828" # bg
-# set recolor-darkcolor           "#ebdbb2" # fg
-# set recolor                     "true"
+# set recolor-lightcolor "#282828" # bg
+# set recolor-darkcolor  "#ebdbb2" # fg
+# set recolor            "true"
 
-# # Options utiles de recoloration
-# set recolor-keephue "false"
-# set recolor-reverse-video "false"
+# set notification-error-bg   "#504945" # bg2
+# set notification-error-fg   "#fb4934" # bright:red
+# set notification-warning-bg "#504945" # bg2
+# set notification-warning-fg "#fabd2f" # bright:yellow
+# set notification-bg         "#504945" # bg2
+# set notification-fg         "#b8bb26" # bright:green
 
-# set notification-error-bg       "#504945" # bg2
-# set notification-error-fg       "#fb4934" # bright:red
-# set notification-warning-bg     "#504945" # bg2
-# set notification-warning-fg     "#fabd2f" # bright:yellow
-# set notification-bg             "#504945" # bg2
-# set notification-fg             "#b8bb26" # bright:green
+# set completion-bg           "#3c3836" # bg1
+# set completion-fg           "#ebdbb2" # fg
+# set completion-group-bg     "#504945" # bg2
+# set completion-group-fg     "#fbf1c7" # fg0
+# set completion-highlight-bg "#98971a" # dark:green
+# set completion-highlight-fg "#3c3836" # bg1
 
-# set completion-bg               "#3c3836" # bg1
-# set completion-fg               "#ebdbb2" # fg
-# set completion-group-bg         "#504945" # bg2
-# set completion-group-fg         "#fbf1c7" # fg0
-# set completion-highlight-bg     "#98971a" # dark:green
-# set completion-highlight-fg     "#3c3836" # bg1
+# set index-bg                "#3c3836" # bg1
+# set index-fg                "#ebdbb2" # fg
+# set index-active-bg         "#98971a" # dark:green
+# set index-active-fg         "#3c3836" # bg1
 
-# set index-bg                    "#3c3836" # bg1
-# set index-fg                    "#ebdbb2" # fg
-# set index-active-bg             "#98971a" # dark:green
-# set index-active-fg             "#3c3836" # bg1
+# set inputbar-bg             "#504945" # bg2
+# set inputbar-fg             "#ebdbb2" # fg
 
-# set inputbar-bg                 "#504945" # bg2
-# set inputbar-fg                 "#ebdbb2" # fg
+# set statusbar-bg            "#504945" # bg2
+# set statusbar-fg            "#ebdbb2" # fg
 
-# set statusbar-bg                "#504945" # bg2
-# set statusbar-fg                "#ebdbb2" # fg
+# set highlight-color         "#fabd2f" # bright:yellow
+# set highlight-active-color  "#fe8019" # bright:orange
 
-# set highlight-color             "#fabd2f" # bright:yellow
-# set highlight-active-color      "#fe8019" # bright:orange
-
-# set default-bg                  "#3c3836" # bg1
-# set default-fg                  "#ebdbb2" # fg
-# set render-loading              "true"
-# set render-loading-bg           "#282828" # bg
-# set render-loading-fg           "#ebdbb2" # fg
+# set default-bg              "#3c3836" # bg1
+# set default-fg              "#ebdbb2" # fg
+# set render-loading          "true"
+# set render-loading-bg       "#282828" # bg
+# set render-loading-fg       "#ebdbb2" # fg
