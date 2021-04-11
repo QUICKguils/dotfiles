@@ -82,7 +82,7 @@ inoremap <M-n> <C-n>
 inoremap <M-p> <C-p>
 
 " Extensions: utilisation du gestionnaire vim-plug
-call plug#begin(~/.local/share/nvim/plugged)
+call plug#begin('~/.local/share/nvim/plugged')
 	" ftplugins
 	Plug 'JuliaEditorSupport/julia-vim'
 	Plug 'neovimhaskell/haskell-vim'
@@ -104,7 +104,6 @@ if (has("termguicolors"))
 se termguicolors
 endif
 " Onedark (https://github.com/joshdick/onedark.vim)
-packadd! onedark.vim
 let g:onedark_terminal_italics=1
 colo onedark
 " Transparence dans le terminal
