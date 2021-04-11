@@ -30,11 +30,11 @@
     ~/.config/neofetch/config.conf: neofetch/config.conf
     ~/.config/neomutt/neomuttrc: neomutt/neomuttrc
     ~/.config/nvim/init.vim: neovim/init.vim
-    ~/.local/share/nvim/site/pack: neovim/pack
+    ~/.local/share/nvim/site/autoload/plug.vim: neovim/vim-plug/plug.vim
+    ~/.local/share/nvim/plugged: neovim/plugged
     ~/.local/share/nvim/site/spell: neovim/spell
     ~/.config/styles.css: styles/styles.css
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.config/tmux/tmux-onedark-theme.tmux: tmux/tmux-onedark-theme.tmux
     ~/.Xresources: Xorg/Xresources
     ~/.Xmodmap: Xorg/Xmodmap
     ~/.Xkbmap: Xorg/Xkbmap

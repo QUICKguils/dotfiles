@@ -81,6 +81,24 @@ nnoremap <leader><leader> :se hls!<CR>
 inoremap <M-n> <C-n>
 inoremap <M-p> <C-p>
 
+" Extensions: utilisation du gestionnaire vim-plug
+call plug#begin(~/.local/share/nvim/plugged)
+	" ftplugins
+	Plug 'JuliaEditorSupport/julia-vim'
+	Plug 'neovimhaskell/haskell-vim'
+	" plugins
+	Plug 'junegunn/goyo.vim'
+	Plug 'junegunn/vim-easy-align'
+	Plug 'tpope/vim-commentary'
+	Plug 'tpope/fugitive'
+	Plug 'tpope/surround'
+	Plug 'tpope/vinegar'
+	Plug 'ap/vim-css-color'
+	Plug 'itchyny/lightline.vim'
+	" colorscheme
+	Plug 'joshdick/onedark.vim'
+call plug#end()
+
 " Couleurs exactes
 if (has("termguicolors"))
 se termguicolors
