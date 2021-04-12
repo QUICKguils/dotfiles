@@ -44,3 +44,9 @@
 [submodule "neovim/plugin/vim-easy-align"]
 	path = neovim/plugin/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "neovim/plugin/fzf.vim"]
+	path = neovim/plugin/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
+[submodule "neovim/plugin/fzf"]
+	path = neovim/plugin/fzf
+	url = https://github.com/junegunn/fzf

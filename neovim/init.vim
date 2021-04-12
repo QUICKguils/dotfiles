@@ -73,6 +73,7 @@ nnoremap <F3> :Ex /home/guil/Documents/Ecole/Bloc_3<CR>
 nnoremap <F4> :Sex /home/guil/Documents/Ecole/Bloc_3<CR>
 
 " Mappings : miscellaneous
+nnoremap <leader>f :Files<CR>
 nnoremap - :call SelectIndent()<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)

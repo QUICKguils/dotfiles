@@ -11,9 +11,9 @@
 
 # ========== Setup de l'historique ==========
 setopt histignorealldups sharehistory
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
+# Sauvegarder les 5000 dernières commandes zsh dans ~/.zsh_history
+HISTSIZE=5000
+SAVEHIST=5000
 HISTFILE=~/.zsh_history
 
 # # ========== Coloration ==========
@@ -79,20 +79,45 @@ alias py='python'
 # Raccourcis de chemins
 ing="$HOME/Documents/Ecole/Bloc_3"
 
-# ========== pager/manual ==========
+# ========== reading tools ==========
 # Choix du pager par défaut et du pager pour les pages de manuel
 export PAGER="cat"
 export MANPAGER="nvim +Man!"
-# export MANPAGER="nvim -c 'se ft=man'"
 
-# Coloration syntaxique dans le pager less
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;34m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;36m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;35m'
+# Configuration de bat, un cat amélioré.
+# Cf. https://github.com/sharkdp/bat
+export BAT_THEME="OneHalfDark"
+export BAT_STYLE="auto"
+
+# ========== searching tools ==========
+# Chargement de fzf. Repo situé à ~/.dotfiles/neovim/plugin/fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# non-piped fzf: use fd to feed fzf instead of find.
+# Cf. https://github.com/sharkdp/fd
+export FZF_DEFAULT_COMMAND="fd -H"
+# fzf customization (see man page)
+export FZF_DEFAULT_OPTS="-m --height=60% --reverse --bind=ctrl-p:toggle-preview \
+--color=bg:#282c34,bg+:#2c323c,fg:#5c6370,fg+:#abb2bf:bold,hl:#98c379,hl+:#98c379:bold,\
+border:#c678dd,pointer:#e06c75:bold,marker:#be5046,prompt:#61afef,\
+spinner:#e5c07b,info:#e5c07b"
+
+# fzf file search, with preview using bat.
+export FZF_CTRL_T_COMMAND="fd -Ht f"
+export FZF_CTRL_T_OPTS="--preview='bat --color=always --style=''changes'' -r :30 {}'\
+                        --preview-window=border-sharp"
+
+# fzf directory search, with preview using tree.
+export FZF_ALT_C_COMMAND="fd -Ht d"
+export FZF_ALT_C_OPTS="--preview='tree -C {} | head -n 30'\
+                       --preview-window=border-sharp"
+
+# Explore command history with fzf
+export FZF_CTRL_R_OPTS="--reverse"
+
+# fzf trigger sequence (default:**)
+#export FZF_COMPLETION_TRIGGER="**"
+#export FZF_COMPLETION_OPTS=""
 
 # ========== Ajouts au PATH ==========
 # Enregistrement de julia dans le PATH
@@ -100,7 +125,6 @@ export PATH="$PATH:/usr/local/julia/bin"
 # Enregistrement de matlab dans le PATH
 export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
 # Gestionnaire de paquets miniconda
-# !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
