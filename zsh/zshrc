@@ -91,7 +91,14 @@ export BAT_STYLE="auto"
 
 # ========== searching tools ==========
 # Chargement de fzf. Repo situé à ~/.dotfiles/neovim/plugin/fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Setup fzf
+if [[ ! "$PATH" == */home/guil/.dotfiles/neovim/plugin/fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}/home/guil/.dotfiles/neovim/plugin/fzf/bin"
+fi
+# Auto-completion
+[[ $- == *i* ]] && source "/home/guil/.dotfiles/neovim/plugin/fzf/shell/completion.zsh" 2> /dev/null
+# Key bindings
+source "/home/guil/.dotfiles/neovim/plugin/fzf/shell/key-bindings.zsh"
 
 # non-piped fzf: use fd to feed fzf instead of find.
 # Cf. https://github.com/sharkdp/fd
@@ -124,6 +131,10 @@ export FZF_CTRL_R_OPTS="--reverse"
 export PATH="$PATH:/usr/local/julia/bin"
 # Enregistrement de matlab dans le PATH
 export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
+# Distribution latex (TexLive 2021)
+export PATH="$PATH:/run/media/guil/Data/texlive/2021/bin/x86_64-linux"
+export MANPATH="$MANPATH:/run/media/guil/Data/texlive/2021/texmf-dist/doc/man"
+export INFOPATH="$INFOPATH:/run/media/guil/Data/texlive/2021/texmf-dist/doc/info"
 # Gestionnaire de paquets miniconda
 __conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then

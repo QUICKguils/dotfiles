@@ -27,11 +27,19 @@ se spellfile=/home/guil/.local/share/nvim/site/spell/LexiquePerso.utf-8.add
 
 " Formatage par type de fichier
 au FileType markdown setl fo=tcqjn spell commentstring=<!--\ %s\ -->
-au FileType tex setl fo=tcqj tw=100 cc=101 spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
 au FileType matlab setl commentstring=\%\ %s
 au FileType vhdl setl commentstring=--\ %s
 au FileType haskell setl et
 au FileType gitcommit setl tw=72 cc=73
+
+" Configuration latex: utilisation du plugin lervag/vimtex
+au FileType tex setl fo=tcqj tw=100 cc=101
+au FileType tex setl spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
+" Démarrer un server client (:h vimtex-clientserver)
+if empty(v:servername) && exists('*remote_startserver')
+  call remote_startserver('VIM')
+endif
+let g:vimtex_compiler_latexmk={'continuous': 0}
 
 " Mappings : compilation par type de fichier
 au FileType markdown nmap <buffer> <F5> :w<CR>:! pandoc -o <C-R>%<Del><Del>html <C-R>% --mathjax<CR>
@@ -79,8 +87,6 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 nnoremap <F12> :Goyo 100+10x95%<CR>
 nnoremap <leader><leader> :se hls!<CR>
-inoremap <M-n> <C-n>
-inoremap <M-p> <C-p>
 
 " Couleurs exactes
 if (has("termguicolors"))

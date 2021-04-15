@@ -124,8 +124,9 @@ fi
 # ==============================================================================
 
 # ========== Keybindings/aliases ==========
-# Choisir neovim comme éditeur par défaut (au lieu de nano)
+# Choisir neovim comme éditeur par défaut
 export EDITOR="nvim"
+export VISUAL="nvim"
 
 # Aliases
 alias v='nvim'
@@ -133,39 +134,67 @@ alias la='ls -A'
 alias lah='ls -lAh'
 alias z='zathura'
 alias g='git'
-alias m='neomutt'
 alias x='exit'
 alias t='tmux'
-alias fd='fdfind'
 alias o='xdg-open'
 alias fl='figlet -t -f slant'
-alias j='julia --banner=no'
+alias jl='julia --banner=no'
+alias mlj='matlab -nodesktop -nosplash'
+alias ml='matlab -nojvm'
+alias py='python'
 
 # Raccourcis de chemins
 ing="$HOME/Documents/Ecole/Bloc_3"
+
+# ========== reading tools ==========
+# Choix du pager par défaut et du pager pour les pages de manuel
+export PAGER="cat"
+export MANPAGER="nvim +Man!"
+
+# Configuration de bat, un cat amélioré.
+# Cf. https://github.com/sharkdp/bat
+export BAT_THEME="OneHalfDark"
+export BAT_STYLE="auto"
+
+# ========== searching tools ==========
+# Chargement de fzf. Repo situé à ~/.dotfiles/neovim/plugin/fzf
+# Setup fzf
+if [[ ! "$PATH" == */home/guil/.dotfiles/neovim/plugin/fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}/home/guil/.dotfiles/neovim/plugin/fzf/bin"
+fi
+# Auto-completion
+[[ $- == *i* ]] && source "/home/guil/.dotfiles/neovim/plugin/fzf/shell/completion.bash" 2> /dev/null
+# Key bindings
+source "/home/guil/.dotfiles/neovim/plugin/fzf/shell/key-bindings.bash"
+
+# non-piped fzf: use fd to feed fzf instead of find.
+# Cf. https://github.com/sharkdp/fd
+export FZF_DEFAULT_COMMAND="fd -H"
+# fzf customization (see man page)
+export FZF_DEFAULT_OPTS="-m --height=60% --reverse --bind=ctrl-p:toggle-preview \
+--color=bg:#282c34,bg+:#2c323c,fg:#5c6370,fg+:#abb2bf:bold,hl:#98c379,hl+:#98c379:bold,\
+border:#c678dd,pointer:#e06c75:bold,marker:#be5046,prompt:#61afef,\
+spinner:#e5c07b,info:#e5c07b"
+
+# fzf file search, with preview using bat.
+export FZF_CTRL_T_COMMAND="fd -Ht f"
+export FZF_CTRL_T_OPTS="--preview='bat --color=always --style=''changes'' -r :30 {}'\
+                        --preview-window=border-sharp"
+
+# fzf directory search, with preview using tree.
+export FZF_ALT_C_COMMAND="fd -Ht d"
+export FZF_ALT_C_OPTS="--preview='tree -C {} | head -n 30'\
+                       --preview-window=border-sharp"
+
+# Explore command history with fzf
+export FZF_CTRL_R_OPTS="--reverse"
+
+# fzf trigger sequence (default:**)
+#export FZF_COMPLETION_TRIGGER="**"
+#export FZF_COMPLETION_OPTS=""
 
 # ========== Ajouts au PATH ==========
 # Enregistrement de julia dans le PATH
 export PATH="$PATH:/usr/local/julia/bin"
 # Enrefistrement de matlab dans ls PATH
 export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
-
-# Gestionnaire de paquets miniconda
-# !! Contents within this bloc
-
-# ========== pager/manual ==========
-# Choix du pager par défaut et du pager pour les pages de manuel
-export PAGER="cat"
-export MANPAGER="nvim +Man!"
-
-# Coloration syntaxique dans le pager less
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;34m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;36m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;35m'
-
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

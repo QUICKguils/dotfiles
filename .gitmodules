@@ -50,3 +50,6 @@
 [submodule "neovim/plugin/fzf"]
 	path = neovim/plugin/fzf
 	url = https://github.com/junegunn/fzf
+[submodule "neovim/ftplugin/vimtex"]
+	path = neovim/ftplugin/vimtex
+	url = https://github.com/lervag/vimtex.git
