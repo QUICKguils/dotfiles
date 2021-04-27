@@ -53,3 +53,12 @@
 [submodule "neovim/ftplugin/vimtex"]
 	path = neovim/ftplugin/vimtex
 	url = https://github.com/lervag/vimtex.git
+[submodule "neovim/ftplugin/rust.vim"]
+	path = neovim/ftplugin/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule "neovim/ftplugin/vim-go"]
+	path = neovim/ftplugin/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule "neovim/colorscheme/gruvbox"]
+	path = neovim/colorscheme/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
