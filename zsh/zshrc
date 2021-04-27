@@ -70,6 +70,7 @@ alias g='git'
 alias x='exit'
 alias t='tmux'
 alias o='xdg-open'
+alias b='bat --style=changes,numbers,snip'
 alias fl='figlet -t -f slant'
 alias jl='julia --banner=no'
 alias mlj='matlab -nodesktop -nosplash'
@@ -135,6 +136,13 @@ export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
 export PATH="$PATH:/run/media/guil/Data/texlive/2021/bin/x86_64-linux"
 export MANPATH="$MANPATH:/run/media/guil/Data/texlive/2021/texmf-dist/doc/man"
 export INFOPATH="$INFOPATH:/run/media/guil/Data/texlive/2021/texmf-dist/doc/info"
+# Go environment setup
+export GOROOT="/usr/local/go"
+export PATH="$PATH:$GOROOT/bin"
+export GOPATH="$HOME/.golib"
+export PATH="$PATH:$GOPATH/bin"
+# Cargo (gestionnaire de paquets de Rust)
+source "$HOME/.cargo/env"
 # Gestionnaire de paquets miniconda
 __conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then

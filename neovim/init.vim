@@ -26,11 +26,13 @@ se spelllang=en_us,fr
 se spellfile=/home/guil/.local/share/nvim/site/spell/LexiquePerso.utf-8.add
 
 " Formatage par type de fichier
-au FileType markdown setl fo=tcqjn spell commentstring=<!--\ %s\ -->
-au FileType matlab setl commentstring=\%\ %s
-au FileType vhdl setl commentstring=--\ %s
-au FileType haskell setl et
+au FileType markdown  setl fo=tcqjn spell commentstring=<!--\ %s\ -->
+au FileType matlab    setl commentstring=\%\ %s
+au FileType vhdl      setl commentstring=--\ %s
+au FileType haskell   setl et
 au FileType gitcommit setl tw=72 cc=73
+au FileType rust      setl cc=100 fo=cqj " overwrite g:rust_recommended_style
+au FileType rust      nmap <buffer> <F7> :RustFmt<CR>:w<CR>
 
 " Configuration latex: utilisation du plugin lervag/vimtex
 au FileType tex setl fo=tcqj tw=100 cc=101
@@ -39,17 +41,18 @@ au FileType tex setl spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.
 if empty(v:servername) && exists('*remote_startserver')
   call remote_startserver('VIM')
 endif
+" Désactiver la compilation continue
 let g:vimtex_compiler_latexmk={'continuous': 0}
 
 " Mappings : compilation par type de fichier
-au FileType markdown nmap <buffer> <F5> :w<CR>:! pandoc -o <C-R>%<Del><Del>html <C-R>% --mathjax<CR>
-au FileType markdown nmap <buffer> <F6> :! xdg-open <C-R>%<Del><Del>html<CR>
-au FileType c nmap <buffer> <F5> :w<CR>:! gcc -Wall -o <C-R>%<Del><Del> <C-R>%<CR>
-au FileType c nmap <buffer> <F6> :sp<CR>:te <C-R>%<Del><Del><CR>
-au FileType julia nmap <buffer> <F5> :sp<CR>:te julia<CR>
+au FileType markdown nmap <buffer><F5> :w<CR>:!pandoc -o <C-R>%<Del><Del>html<C-R>% --mathjax<CR>
+au FileType markdown nmap <buffer><F6> :!xdg-open <C-R>%<Del><Del>html<CR>
+au FileType c        nmap <buffer><F5> :w<CR>:!gcc -Wall -o <C-R>%<Del><Del><C-R>%<CR>
+au FileType c        nmap <buffer><F6> :sp<CR>:te <C-R>%<Del><Del><CR>
+au FileType go       nmap <buffer><F5> :w<CR>:GoRun %<CR>
+au FileType python   nmap <buffer><F5> :w<CR>:py3file <C-R>%<CR>
 let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
 let g:loaded_python_provider = 0
-au FileType python map <buffer> <F5> :w<CR>:py3file <C-R>%<CR>
 
 " Mappings : navigation entre les fenêtres
 let mapleader=" "
@@ -96,10 +99,10 @@ endif
 packadd! onedark.vim
 let g:onedark_terminal_italics=1
 colo onedark
-" Transparence dans le terminal
-if has("ttyout")
-	hi Normal guibg=NONE
-endif
+" Gruvbox (https://github.com/morhetz/gruvbox/wiki)
+"packadd! gruvbox
+"let g:gruvbox_italic=1
+"colo gruvbox
 
 " Personnalisation de l'explorateur de fichier Netrw
 let g:netrw_banner=0
