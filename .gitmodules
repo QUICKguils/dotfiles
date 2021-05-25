@@ -62,3 +62,6 @@
 [submodule "neovim/colorscheme/gruvbox"]
 	path = neovim/colorscheme/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
+[submodule "neovim/colorscheme/nord-vim"]
+	path = neovim/colorscheme/nord-vim
+	url = https://github.com/arcticicestudio/nord-vim.git

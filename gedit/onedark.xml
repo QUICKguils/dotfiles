@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<style-scheme id="onedark" _name="onedark" version="1.0">
+
+  <author>Guilain Ernotte</author>
+  <_description>Dark color scheme using the Onedark color palette</_description>
+
+  <!-- Onedark Palette -->
+
+  <color name = "red"            value = "#E06C75"/>
+  <color name = "dark_red"       value = "#BE5046"/>
+  <color name = "green"          value = "#98C379"/>
+  <color name = "yellow"         value = "#E5C07B"/>
+  <color name = "dark_yellow"    value = "#D19A66"/>
+  <color name = "blue"           value = "#61AFEF"/>
+  <color name = "purple"         value = "#C678DD"/>
+  <color name = "cyan"           value = "#56B6C2"/>
+  <color name = "white"          value = "#ABB2BF"/>
+  <color name = "black"          value = "#282C34"/>
+  <color name = "comment_grey"   value = "#5C6370"/>
+  <color name = "gutter_fg_grey" value = "#4B5263"/>
+  <color name = "cursor_grey"    value = "#2C323C"/>
+  <color name = "visual_grey"    value = "#3E4452"/>
+  <color name = "menu_grey"      value = "#3E4452"/>
+  <color name = "special_grey"   value = "#3B4048"/>
+  <color name = "vertsplit"      value = "#181A1F"/>
+
+  <!-- Global Settings -->
+  <style name = "text"               foreground = "white"          background = "black"       />
+  <style name = "selection"          foreground = "yellow"         background = "visual_grey" />
+  <style name = "cursor"             foreground = "white"                                     />
+  <style name = "secondary-cursor"   foreground = "white"                                     />
+  <style name = "current-line"       background = "cursor_grey"                               />
+  <style name = "line-numbers"       foreground = "gutter_fg_grey" background = "black"       />
+  <style name = "draw-spaces"        foreground = "gutter_fg_grey"                            />
+  <style name = "background-pattern" background = "#black"                                    />
+
+  <!-- Bracket Matching -->
+  <style name="bracket-match"    foreground="blue"/>
+  <style name="bracket-mismatch" foreground="black" background="dark_red"/>
+
+  <!-- Right Margin -->
+  <style name="right-margin" foreground="light0" background="white"/>
+
+  <!-- Search Matching -->
+<style name="search-match" foreground="dark0" background="bright_orange"/>
+
+  <!-- Code -->
+  <style name = "def:base-n-integer"      foreground = "dark_yellow"/>
+  <style name = "def:boolean"             foreground = "dark_yellow"/>
+  <style name = "def:builtin"             foreground = "purple"/>
+  <style name = "def:character"           foreground = "cyan"/>
+  <style name = "def:comment"             foreground = "comment_grey"/>
+  <style name = "def:complex"             foreground = "dark_yellow"/>
+  <style name = "def:decimal"             foreground = "dark_yellow"/>
+  <style name = "def:doc-comment"         foreground = "comment_grey"/>
+  <style name = "def:doc-comment-element" italic     = "true"/>
+  <style name = "def:error"               foreground = "dark0" background = "red" bold = "true"/>
+  <style name = "def:floating-point"      foreground = "dark_yellow"/>
+  <style name = "def:function"            foreground = "white"/>
+  <style name = "def:identifier"          foreground = "yellow"/>
+  <style name = "def:keyword"             foreground = "purple"/>
+  <style name = "def:note"                foreground = "comment_grey"/>
+  <style name = "def:number"              foreground = "dark_yellow"/>
+  <style name = "def:operator"            foreground = "dark_yellow"/>
+  <style name = "def:preprocessor"        foreground = "blue"/>
+  <style name = "def:reserved"            foreground = "purple"/>
+  <style name = "def:shebang"             foreground = "comment_grey"/>
+  <style name = "def:special-char"        foreground = "blue"/>
+  <style name = "def:special-constant"    foreground = "dark_yellow"/>
+  <style name = "def:statement"           foreground = "white"/>
+  <style name = "def:string"              foreground = "green"/>
+  <style name = "def:type"                foreground = "yellow"/>
+  <style name = "def:underlined"          italic     = "true" underline   = "single"/>
+  <style name = "def:warning"             foreground = "black" background = "red"/>
+
+</style-scheme>
