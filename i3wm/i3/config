@@ -34,7 +34,7 @@ set $filemgr  nautilus
 # Default fonts
 set $monofont Hack
 set $nerdfont Hack Nerd Font
-set $sansfont Cantarell
+set $sansfont Noto Sans
 
 # Workspace names
 set $ws1  "1  "
@@ -54,10 +54,11 @@ set $ws10 "10  "
 # .xprofile and not from the config file of a specific window manager. But if
 # you don't plan to switch to another WM it's a fine approach.
 
-# Configure monitors (disable laptop screen)
+# Configure monitors (disable laptop screen when using desktop monitor)
 exec xrandr --output eDP-1-1 --off
+exec xrandr --output eDP-1 --off
 
-# Wallpaper, compositor, night light, key rate, numpad lock and 
+# Wallpaper, compositor, night light, key rate, numpad lock and remaps
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id picom
 exec --no-startup-id redshift
@@ -74,20 +75,20 @@ exec_always --no-startup-id $term \
 	   window.padding.y=4 \
 	   background_opacity=0.85
 
-for_window [title="notepad"] floating enable , sticky enable , move scratchpad
+for_window [title="notepad"] floating enable, sticky enable, move scratchpad
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Applet from NetworkManager, appearing in the tray icon.
-exec_always --no-startup-id nm-applet
+exec --no-startup-id nm-tray
 
 # ----- Reload, restart, quit and lock -----
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Vraiment quitter i3?' -b ' OK ' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Really quit i3?' -b ' OK ' 'i3-msg exit'"
 bindsym $mod+Escape  exec i3lock --color "$od_black"
 
 # ----- Window manipulations -----
@@ -183,7 +184,7 @@ mode "Launcher" {
 	bindsym eacute     workspace number $ws2  ; exec brave-browser    ; mode "default"
 	bindsym quotedbl   workspace number $ws3  ; exec matlab -desktop  ; mode "default"
 	bindsym apostrophe workspace number $ws4  ; exec zathura          ; mode "default"
-	bindsym parenleft  workspace number $ws5  ; exec totem            ; mode "default"
+	bindsym parenleft  workspace number $ws5  ; exec mpv --player-operation-mode=pseudo-gui ; mode "default"
 	bindsym section    workspace number $ws6  ; exec thunderbird      ; mode "default"
 	bindsym egrave     workspace number $ws7  ; exec telegram-desktop ; mode "default"
 	bindsym exclam     workspace number $ws8  ; exec mathematica      ; mode "default"
@@ -206,11 +207,11 @@ default_border pixel 1
 hide_edge_borders smart
 
 # window colors
-# Object                border      background  text        indicator  child border
-client.focused          $od_magenta $od_magenta $od_black   $od_pink   $od_magenta
-client.unfocused        $od_split   $od_visual  $od_fg      $od_visual $od_visual
-client.focused_inactive $od_split   $od_visual  $od_magenta $od_visual $od_visual
-client.urgent           $od_red     $od_red     $od_black   $od_pink
+# Object                border    background text      indicator   child border
+client.focused          $od_blue  $od_blue   $od_black $od_cyan    $od_blue
+client.unfocused        $od_split $od_visual $od_fg    $od_visual  $od_visual
+client.focused_inactive $od_split $od_visual $od_blue  $od_visual  $od_visual
+client.urgent           $od_red   $od_red    $od_black $od_magenta
 client.background       $od_cursor
 
 # ----- Status bar configuration -----
@@ -222,10 +223,11 @@ bar {
 	bindsym button4 nop
 	bindsym button5 nop
 	# Appearance
-	font pango:$nerdfont 10
-	workspace_min_width 50
+	font pango:$nerdfont 9
+	workspace_min_width 60
 	separator_symbol " "
 	tray_padding 3
+	position top
 	# Colors
 	colors {
 		background $od_cursor
@@ -252,6 +254,15 @@ bindsym --release XF86AudioMicMute     exec pkill -SIGRTMIN+11 i3blocks
 bindsym $mod+Return       exec $term
 bindsym $mod+Shift+Return exec $browser
 bindsym $mod+space        exec dmenu_run -i -fn '$monofont:pixelsize=14' -nb \$od_cursor -nf \$od_fg -sb \$od_blue -sf \$od_black
+# bindsym $mod+space exec $term \
+# 	-t fzf-menu \
+# 	-o window.dimensions.lines=15 \
+# 	   window.dimensions.columns=110 \
+# 	   window.padding.x=8 \
+# 	   window.padding.y=8 \
+# 	   background_opacity=0.7 \
+# 	-e $HOME/fzf-menu.sh
+# for_window [title="fzf-menu"] floating enable
 bindsym $mod+e            exec $filemgr
 bindsym $mod+s            exec $HOME/Documents/Bitwarden.AppImage
 # Use pactl to adjust volume in PulseAudio.

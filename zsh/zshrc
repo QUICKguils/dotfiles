@@ -50,7 +50,7 @@ zstyle ':vcs_info:git:*' formats '%U%b'
 zstyle ':vcs_info:*' enable git
 
 # Apparence de l'invite de commande
-symbol="▶"
+symbol="▶" #"➤"
 PROMPT='%(!.%F{magenta}#. )%(?.%F{green}.%F{red})$symbol%f '
 RPROMPT='%F{#5c6370}$vcs_info_msg_0_%u [%~]'
 
@@ -112,13 +112,15 @@ spinner:#e5c07b,info:#e5c07b"
 
 # fzf file search, with preview using bat.
 export FZF_CTRL_T_COMMAND="fd -Ht f"
-export FZF_CTRL_T_OPTS="--preview='bat --color=always --style=''changes'' -r :30 {}'\
-                        --preview-window=border-sharp"
+export FZF_CTRL_T_OPTS="\
+--preview='bat --color=always --style=''changes'' -r :$LINES {}' \
+--preview-window=border-sharp"
 
 # fzf directory search, with preview using tree.
 export FZF_ALT_C_COMMAND="fd -Ht d"
-export FZF_ALT_C_OPTS="--preview='tree -C {} | head -n 30'\
-                       --preview-window=border-sharp"
+export FZF_ALT_C_OPTS="\
+--preview='tree -C {} | head -n $LINES' \
+--preview-window=border-sharp"
 
 # Explore command history with fzf
 export FZF_CTRL_R_OPTS="--reverse"

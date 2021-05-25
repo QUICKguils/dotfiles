@@ -36,18 +36,18 @@ au FileType rust      nmap <buffer> <F7> :RustFmt<CR>:w<CR>
 
 " Configuration latex: utilisation du plugin lervag/vimtex
 au FileType tex setl fo=tcqj tw=100 cc=101
-au FileType tex setl spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
+au FileType tex setl spell spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
 " Démarrer un server client (:h vimtex-clientserver)
 if empty(v:servername) && exists('*remote_startserver')
-  call remote_startserver('VIM')
+	call remote_startserver('VIM')
 endif
 " Désactiver la compilation continue
 let g:vimtex_compiler_latexmk={'continuous': 0}
 
 " Mappings : compilation par type de fichier
-au FileType markdown nmap <buffer><F5> :w<CR>:!pandoc -o <C-R>%<Del><Del>html<C-R>% --mathjax<CR>
+au FileType markdown nmap <buffer><F5> :w<CR>:!pandoc -o <C-R>%<Del><Del>html <C-R>% --mathjax<CR>
 au FileType markdown nmap <buffer><F6> :!xdg-open <C-R>%<Del><Del>html<CR>
-au FileType c        nmap <buffer><F5> :w<CR>:!gcc -Wall -o <C-R>%<Del><Del><C-R>%<CR>
+au FileType c        nmap <buffer><F5> :w<CR>:!gcc -Wall -o <C-R>%<Del><Del> %<CR>
 au FileType c        nmap <buffer><F6> :sp<CR>:te <C-R>%<Del><Del><CR>
 au FileType go       nmap <buffer><F5> :w<CR>:GoRun %<CR>
 au FileType python   nmap <buffer><F5> :w<CR>:py3file <C-R>%<CR>
@@ -84,12 +84,14 @@ nnoremap <F3> :Ex /home/guil/Documents/Ecole/Bloc_3<CR>
 nnoremap <F4> :Sex /home/guil/Documents/Ecole/Bloc_3<CR>
 
 " Mappings : miscellaneous
-nnoremap <leader>f :Files<CR>
-nnoremap - :call SelectIndent()<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fl :Lines<CR>
+nnoremap <leader>fb :Buffer<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 nnoremap <F12> :Goyo 100+10x95%<CR>
-nnoremap <leader><leader> :se hls!<CR>
+nnoremap <leader>s :se hls!<CR>
+nnoremap <leader>r :se rnu!<CR>
 
 " Couleurs exactes
 if (has("termguicolors"))
@@ -99,10 +101,6 @@ endif
 packadd! onedark.vim
 let g:onedark_terminal_italics=1
 colo onedark
-" Gruvbox (https://github.com/morhetz/gruvbox/wiki)
-"packadd! gruvbox
-"let g:gruvbox_italic=1
-"colo gruvbox
 
 " Personnalisation de l'explorateur de fichier Netrw
 let g:netrw_banner=0
@@ -157,18 +155,3 @@ endfunction
 function! LightlineModified()
 	return &modifiable && &modified ? '+': ''
 endfunction
-
-" Permet de sélectionner les blocs de code indentés
-function! SelectIndent ()
-	if indent(line(".")) != 0
-		let temp_var=indent(line("."))
-		exe "normal V"
-		while indent(line(".")-1) >= temp_var
-			exe "normal k"
-		endwhile
-		exe "normal o"
-		while indent(line(".")+1) >= temp_var
-			exe "normal j"
-		endwhile
-	endif
-endfun
