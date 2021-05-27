@@ -26,10 +26,11 @@ set $od_cyan    #56b6c2
 set $od_magenta #c678dd
 
 # Default apps
-set $term     alacritty
-set $browser  brave-browser
-set $browser2 firefox
-set $filemgr  nautilus
+set $term      alacritty
+set $browser   brave-browser
+set $browser2  firefox
+set $filemgr   nautilus
+set $guiplayer mpv --player-operation-mode=pseudo-gui
 
 # Default fonts
 set $monofont Hack
@@ -61,10 +62,9 @@ exec xrandr --output eDP-1 --off
 # Wallpaper, compositor, night light, key rate, numpad lock and remaps
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id picom
-exec --no-startup-id redshift
+exec --no-startup-id redshift-gtk
 exec --no-startup-id xset r rate 230 35
 exec --no-startup-id numlockx
-exec --no-startup-id xmodmap ~/.Xmodmap
 
 # Create scratchpad
 exec_always --no-startup-id $term \
@@ -74,8 +74,7 @@ exec_always --no-startup-id $term \
 	   window.padding.x=4 \
 	   window.padding.y=4 \
 	   background_opacity=0.85
-
-for_window [title="notepad"] floating enable, sticky enable, move scratchpad
+for_window [class="Alacritty" title="notepad"] floating enable, sticky enable, move scratchpad
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -86,10 +85,10 @@ exec --no-startup-id nm-tray
 
 # ----- Reload, restart, quit and lock -----
 
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Really quit i3?' -b ' OK ' 'i3-msg exit'"
-bindsym $mod+Escape  exec i3lock --color "$od_black"
+bindsym $mod+Shift+c       reload
+bindsym $mod+Shift+r       restart
+bindsym $mod+Shift+e       exec "i3-nagbar -t warning -m 'Really quit i3?' -b ' OK ' 'i3-msg exit'"
+bindsym $mod++Shift+Escape exec i3lock --color "$od_black"
 
 # ----- Window manipulations -----
 
@@ -117,20 +116,19 @@ bindsym $mod+comma     split v
 # enter fullscreen mode for the focused container
 bindsym $mod+equal fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+u layout toggle split
-bindsym $mod+i layout stacking
-bindsym $mod+o layout tabbed
+# Toggle container layout (splith -> splitv -> stacking -> tabbed)
+bindsym $mod+p       layout toggle all
+bindsym $mod+Shift+p layout toggle tabbed stacking splitv splith  # reverse
 
-# toggle tiling / floating
-bindsym $mod+p floating toggle
-# change focus between tiling / floating windows
-bindsym $mod+y focus mode_toggle
+# toggle tiling/floating
+bindsym $mod+i floating toggle
+# change focus between tiling/floating windows
+bindsym $mod+u focus mode_toggle
 
 # focus the parent container
-bindsym $mod+ugrave focus parent
+bindsym $mod+o focus parent
 # focus the child container
-bindsym $mod+mu focus child
+bindsym $mod+y focus child
 
 # ----- Workspace manipulation -----
 
@@ -162,38 +160,41 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+n move container to workspace prev
 bindsym $mod+Shift+m move container to workspace next
 
+# Show/hide scratchpad (hidden workspace)
+bindsym $mod+BackSpace scratchpad show
+
 # ----- Modes -----
 
 # Resize mode
 bindsym $mod+colon mode "Resize"
 mode "Resize"{
-		bindsym h resize shrink width  2 px or 2 ppt
-		bindsym j resize grow   height 2 px or 2 ppt
-		bindsym k resize shrink height 2 px or 2 ppt
-		bindsym l resize grow   width  2 px or 2 ppt
-		# back to Normal mode
-		bindsym Return     mode "default"
-		bindsym Escape     mode "default"
-		bindsym $mod+colon mode "default"
+	bindsym h resize shrink width  2 px or 2 ppt
+	bindsym j resize grow   height 2 px or 2 ppt
+	bindsym k resize shrink height 2 px or 2 ppt
+	bindsym l resize grow   width  2 px or 2 ppt
+	# back to Normal mode
+	bindsym Return     mode "default"
+	bindsym Escape     mode "default"
+	bindsym $mod+colon mode "default"
 }
 
 # Launcher mode
-bindsym $mod+b mode "Launcher"
+bindsym $mod+Shift+space mode "Launcher"
 mode "Launcher" {
 	bindsym ampersand  workspace number $ws1  ; exec alacritty        ; mode "default"
 	bindsym eacute     workspace number $ws2  ; exec brave-browser    ; mode "default"
 	bindsym quotedbl   workspace number $ws3  ; exec matlab -desktop  ; mode "default"
 	bindsym apostrophe workspace number $ws4  ; exec zathura          ; mode "default"
-	bindsym parenleft  workspace number $ws5  ; exec mpv --player-operation-mode=pseudo-gui ; mode "default"
+	bindsym parenleft  workspace number $ws5  ; exec $guiplayer       ; mode "default"
 	bindsym section    workspace number $ws6  ; exec thunderbird      ; mode "default"
 	bindsym egrave     workspace number $ws7  ; exec telegram-desktop ; mode "default"
 	bindsym exclam     workspace number $ws8  ; exec mathematica      ; mode "default"
 	bindsym ccedilla   workspace number $ws9  ; exec VirtualBox       ; mode "default"
 	bindsym agrave     workspace number $ws10 ; exec spotify          ; mode "default"
 	# back to Normal mode
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-	bindsym $mod+b mode "default"
+	bindsym Return           mode "default"
+	bindsym Escape           mode "default"
+	bindsym $mod+Shift+space mode "default"
 }
 
 # ----- Window appearance -----
@@ -207,11 +208,11 @@ default_border pixel 1
 hide_edge_borders smart
 
 # window colors
-# Object                border    background text      indicator   child border
-client.focused          $od_blue  $od_blue   $od_black $od_cyan    $od_blue
-client.unfocused        $od_split $od_visual $od_fg    $od_visual  $od_visual
-client.focused_inactive $od_split $od_visual $od_blue  $od_visual  $od_visual
-client.urgent           $od_red   $od_red    $od_black $od_magenta
+# Object                border     background text      indicator   child border
+client.focused          $od_blue   $od_blue   $od_black $od_cyan    $od_blue
+client.unfocused        $od_split  $od_visual $od_fg    $od_visual  $od_visual
+client.focused_inactive $od_split  $od_visual $od_blue  $od_visual  $od_visual
+client.urgent           $od_red    $od_red    $od_black $od_magenta
 client.background       $od_cursor
 
 # ----- Status bar configuration -----
@@ -253,18 +254,11 @@ bindsym --release XF86AudioMicMute     exec pkill -SIGRTMIN+11 i3blocks
 # Special mappings dedicated to the most used apps
 bindsym $mod+Return       exec $term
 bindsym $mod+Shift+Return exec $browser
-bindsym $mod+space        exec dmenu_run -i -fn '$monofont:pixelsize=14' -nb \$od_cursor -nf \$od_fg -sb \$od_blue -sf \$od_black
-# bindsym $mod+space exec $term \
-# 	-t fzf-menu \
-# 	-o window.dimensions.lines=15 \
-# 	   window.dimensions.columns=110 \
-# 	   window.padding.x=8 \
-# 	   window.padding.y=8 \
-# 	   background_opacity=0.7 \
-# 	-e $HOME/fzf-menu.sh
-# for_window [title="fzf-menu"] floating enable
+bindsym $mod+space        exec dmenu_run -i -fn '$monofont:pixelsize=14'\
+                                         -nb \$od_cursor -nf \$od_fg\
+                                         -sb \$od_blue -sf \$od_black
 bindsym $mod+e            exec $filemgr
-bindsym $mod+s            exec $HOME/Documents/Bitwarden.AppImage
+bindsym $mod+b            exec $HOME/Documents/Bitwarden.AppImage
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
@@ -274,8 +268,6 @@ bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-# Show/hide scratchpad
-bindsym $mod+BackSpace scratchpad show
 
 # -- Alternate mappings --
 # Shortcuts for these apps already exists, but it is sometimes more convenient
@@ -284,3 +276,7 @@ bindsym $mod+BackSpace scratchpad show
 bindsym Mod1+Escape       workspace next
 bindsym Mod1+Shift+Escape workspace prev
 bindsym $mod+f            fullscreen
+
+# -- Floating applications --
+for_window [class="Org.gnome|gnome-|Gnome-"] floating enable
+for_window [class="mpv"]                     floating enable

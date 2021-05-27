@@ -35,7 +35,7 @@ interval=10
 [disk]
 color=#98c379 #green
 label= 
-interval=3600
+interval=600
 
 [wifi]
 color=#61afef #blue
@@ -56,7 +56,7 @@ interval=10
 [weather]
 color=#c678dd #magenta
 command=curl -s 'wttr.in/?format=1'
-interval=3600
+interval=600
 
 [date]
 color=#98c379 #green
