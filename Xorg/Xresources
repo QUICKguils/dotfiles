@@ -1,5 +1,0 @@
-if [ -x $(which numlockx) ]; then
-	numlockx on
-fi
-
-xset r rate 230 35

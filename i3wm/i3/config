@@ -28,7 +28,6 @@ set $od_magenta #c678dd
 # Default apps
 set $term      alacritty
 set $browser   brave-browser
-set $browser2  firefox
 set $filemgr   nautilus
 set $guiplayer mpv --player-operation-mode=pseudo-gui
 
@@ -40,9 +39,9 @@ set $sansfont Noto Sans
 # Workspace names
 set $ws1  "1  "
 set $ws2  "2  "
-set $ws3  "3  "
+set $ws3  "3  "
 set $ws4  "4  "
-set $ws5  "5  "
+set $ws5  "5  "
 set $ws6  "6  "
 set $ws7  "7  "
 set $ws8  "8  "
@@ -56,8 +55,7 @@ set $ws10 "10  "
 # you don't plan to switch to another WM it's a fine approach.
 
 # Configure monitors (disable laptop screen when using desktop monitor)
-exec xrandr --output eDP-1-1 --off
-exec xrandr --output eDP-1 --off
+#exec --no-startup-id /home/guil/.config/i3/manage-display.sh
 
 # Wallpaper, compositor, night light, key rate, numpad lock and remaps
 exec --no-startup-id nitrogen --restore
@@ -87,7 +85,8 @@ exec --no-startup-id nm-tray
 
 bindsym $mod+Shift+c       reload
 bindsym $mod+Shift+r       restart
-bindsym $mod+Shift+e       exec "i3-nagbar -t warning -m 'Really quit i3?' -b ' OK ' 'i3-msg exit'"
+bindsym $mod+Shift+e       exec i3-msg exit
+# bindsym $mod+Shift+e       exec "i3-nagbar -t warning -m 'Really quit i3?' -b ' OK ' 'i3-msg exit'"
 bindsym $mod++Shift+Escape exec i3lock --color "$od_black"
 
 # ----- Window manipulations -----
@@ -179,22 +178,22 @@ mode "Resize"{
 }
 
 # Launcher mode
-bindsym $mod+Shift+space mode "Launcher"
+bindsym $mod+space mode "Launcher"
 mode "Launcher" {
 	bindsym ampersand  workspace number $ws1  ; exec alacritty        ; mode "default"
 	bindsym eacute     workspace number $ws2  ; exec brave-browser    ; mode "default"
-	bindsym quotedbl   workspace number $ws3  ; exec matlab -desktop  ; mode "default"
+	bindsym quotedbl   workspace number $ws3  ; exec $guiplayer       ; mode "default"
 	bindsym apostrophe workspace number $ws4  ; exec zathura          ; mode "default"
-	bindsym parenleft  workspace number $ws5  ; exec $guiplayer       ; mode "default"
+	bindsym parenleft  workspace number $ws5  ; exec matlab -desktop  ; mode "default"
 	bindsym section    workspace number $ws6  ; exec thunderbird      ; mode "default"
 	bindsym egrave     workspace number $ws7  ; exec telegram-desktop ; mode "default"
 	bindsym exclam     workspace number $ws8  ; exec mathematica      ; mode "default"
 	bindsym ccedilla   workspace number $ws9  ; exec VirtualBox       ; mode "default"
 	bindsym agrave     workspace number $ws10 ; exec spotify          ; mode "default"
 	# back to Normal mode
-	bindsym Return           mode "default"
-	bindsym Escape           mode "default"
-	bindsym $mod+Shift+space mode "default"
+	bindsym Return     mode "default"
+	bindsym Escape     mode "default"
+	bindsym $mod+space mode "default"
 }
 
 # ----- Window appearance -----
@@ -250,15 +249,7 @@ bindsym --release XF86AudioMicMute     exec pkill -SIGRTMIN+11 i3blocks
 
 # ----- Application-specific instructions -----
 
-# -- Mappings perso --
-# Special mappings dedicated to the most used apps
-bindsym $mod+Return       exec $term
-bindsym $mod+Shift+Return exec $browser
-bindsym $mod+space        exec dmenu_run -i -fn '$monofont:pixelsize=14'\
-                                         -nb \$od_cursor -nf \$od_fg\
-                                         -sb \$od_blue -sf \$od_black
-bindsym $mod+e            exec $filemgr
-bindsym $mod+b            exec $HOME/Documents/Bitwarden.AppImage
+# -- Audio and media control --
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
@@ -269,6 +260,16 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# -- Mappings perso --
+# Special mappings dedicated to the most used apps
+bindsym $mod+Return       exec $term
+bindsym $mod+Shift+Return exec $browser
+bindsym $mod+e            exec $filemgr
+bindsym $mod+b            exec $HOME/Documents/Bitwarden.AppImage
+bindsym $mod+Shift+space  exec dmenu_run -i -fn '$monofont:pixelsize=14'\
+                                         -nb \$od_cursor -nf \$od_fg\
+                                         -sb \$od_blue -sf \$od_black
+
 # -- Alternate mappings --
 # Shortcuts for these apps already exists, but it is sometimes more convenient
 # to have multiples ways to do one action. Particularily, some of the mappings
@@ -278,5 +279,8 @@ bindsym Mod1+Shift+Escape workspace prev
 bindsym $mod+f            fullscreen
 
 # -- Floating applications --
-for_window [class="Org.gnome|gnome-|Gnome-"] floating enable
-for_window [class="mpv"]                     floating enable
+# Some applications should be better openend in floating mode.
+for_window [class="Org.gnome|Eog|Gnome-"]  floating enable
+for_window [class="mpv"]                   floating enable
+for_window [class="Bitwarden"]             floating enable
+for_window [class="MATLAB" title="Figure"] floating enable

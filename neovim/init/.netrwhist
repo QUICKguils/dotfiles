@@ -1,5 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/home/guil/.config/i3blocks'
-let g:netrw_dirhist_2='/home/guil/.config'
-let g:netrw_dirhist_1='/home/guil/.config/i3'
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/guil/.dotfiles/neovim/init'
+let g:netrw_dirhist_5='/home/guil/Downloads/cmu1'
+let g:netrw_dirhist_4='/home/guil/Documents/Essais/Go'
+let g:netrw_dirhist_3='/home/guil/Documents/Essais/Go/greetings'
+let g:netrw_dirhist_2='/home/guil/.dotfiles/alacritty'
+let g:netrw_dirhist_1='/home/guil/.dotfiles'
+let g:netrw_dirhist_0='/home/guil'
+let g:netrw_dirhist_9='/home/guil/.dotfiles/neovim/init'
+let g:netrw_dirhist_8='/home/guil/.config/i3'
+let g:netrw_dirhist_7='/home/guil/.dotfiles/i3wm/i3blocks/scripts'

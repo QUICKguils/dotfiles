@@ -55,9 +55,6 @@ PROMPT='%(!.%F{magenta}#. )%(?.%F{green}.%F{red})$symbol%f '
 RPROMPT='%F{#5c6370}$vcs_info_msg_0_%u [%~]'
 
 # ========== Keybindings/aliases ==========
-# Choisir neovim comme éditeur par défaut
-export EDITOR='nvim'
-export VISUAL='nvim'
 # Utiliser le mode vi dans le shell
 bindkey -v
 
@@ -78,9 +75,16 @@ alias ml='matlab -nojvm'
 alias py='python'
 
 # Raccourcis de chemins
-ing="$HOME/Documents/Ecole/Bloc_3"
+ing="$HOME/Documents/Ecole/Bloc_3/"
 
 # ========== reading tools ==========
+# Choisir neovim comme éditeur par défaut
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+# Lecteur de documents (pdf, ps, eps, ...)
+export READER='zathura'
+
 # Choix du pager par défaut et du pager pour les pages de manuel
 export PAGER="cat"
 export MANPAGER="nvim +Man!"
@@ -94,7 +98,7 @@ export BAT_STYLE="auto"
 # Chargement de fzf. Repo situé à ~/.dotfiles/neovim/plugin/fzf
 # Setup fzf
 if [[ ! "$PATH" == */home/guil/.dotfiles/neovim/plugin/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/home/guil/.dotfiles/neovim/plugin/fzf/bin"
+	export PATH="${PATH:+${PATH}:}/home/guil/.dotfiles/neovim/plugin/fzf/bin"
 fi
 # Auto-completion
 [[ $- == *i* ]] && source "/home/guil/.dotfiles/neovim/plugin/fzf/shell/completion.zsh" 2> /dev/null
@@ -148,13 +152,13 @@ source "$HOME/.cargo/env"
 # Gestionnaire de paquets miniconda
 __conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+	eval "$__conda_setup"
 else
-    if [ -f "/home/guil/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/guil/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/guil/miniconda3/bin:$PATH"
-    fi
+	if [ -f "/home/guil/miniconda3/etc/profile.d/conda.sh" ]; then
+		. "/home/guil/miniconda3/etc/profile.d/conda.sh"
+	else
+		export PATH="/home/guil/miniconda3/bin:$PATH"
+	fi
 fi
 unset __conda_setup
 # Enlèvement de l'indication «(base)» dans l'invite de commande:
@@ -167,5 +171,7 @@ fpath=($HOME/.config/zsh/zsh-completions/src $fpath)
 source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Recherche dans l'hstorique des commandes
 source $HOME/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey "^K" history-substring-search-up
 bindkey "^[[A" history-substring-search-up
+bindkey "^J" history-substring-search-down
 bindkey "^[[B" history-substring-search-down

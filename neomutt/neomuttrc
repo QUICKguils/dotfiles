@@ -20,8 +20,8 @@ set spoolfile = +INBOX
 set editor = nvim
 
 # Display Sidebar
-set sidebar_width = 20
 set sidebar_visible = yes
+set sidebar_width = 20
 
 # If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more
 set header_cache = ~/.cache/mutt
@@ -34,7 +34,3 @@ bind index,pager \CP sidebar-prev                 # Ctrl-n Next Folder
 bind index,pager \CN sidebar-next                 # Ctrl-p Previous Folder
 bind index,pager \CI sidebar-open                 # Ctrl-i Open Folder
 bind index,pager \CB sidebar-toggle-visible       # Ctrl-b Toggle Sidebar
-
-# Theming
-# source /home/guil/.config/neomutt/gruvbox.muttrc
-# source /home/guil/.config/neomutt/gruvbox-extended.muttrc
