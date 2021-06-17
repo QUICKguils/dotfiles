@@ -146,6 +146,9 @@ alias py='python'
 # Raccourcis de chemins
 ing="$HOME/Documents/Ecole/Bloc_3"
 
+# Changement de dossier automatique ("cd" implicite)
+shopt -s autocd
+
 # ========== reading tools ==========
 # Choix du pager par défaut et du pager pour les pages de manuel
 export PAGER="cat"
@@ -198,4 +201,3 @@ export FZF_CTRL_R_OPTS="--reverse"
 export PATH="$PATH:/usr/local/julia/bin"
 # Enrefistrement de matlab dans ls PATH
 export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
-source "$HOME/.cargo/env"

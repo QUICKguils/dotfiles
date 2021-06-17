@@ -40,6 +40,9 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:
 
 autoload -Uz compinit && compinit
 
+# Changement de dossier automatique ("cd" implicite)
+setopt autocd
+
 # ========== Personnalisation de l'invite de commande ==========
 # Ajout d'informations sur git dans l'invite de commande
 autoload -Uz vcs_info
@@ -59,6 +62,7 @@ RPROMPT='%F{#5c6370}$vcs_info_msg_0_%u [%~]'
 bindkey -v
 
 # Aliases
+alias md='mkdir -p'
 alias v='nvim'
 alias la='ls -A'
 alias lah='ls -lAh'
@@ -76,6 +80,7 @@ alias py='python'
 
 # Raccourcis de chemins
 ing="$HOME/Documents/Ecole/Bloc_3/"
+hdd="/run/media/guil/Data/"
 
 # ========== reading tools ==========
 # Choisir neovim comme éditeur par défaut
@@ -134,6 +139,8 @@ export FZF_CTRL_R_OPTS="--reverse"
 #export FZF_COMPLETION_OPTS=""
 
 # ========== Ajouts au PATH ==========
+# Java (from Oracle, not OpenJDK)
+export PATH="$PATH:/usr/local/java/jdk-16.0.1/bin"
 # Enregistrement de julia dans le PATH
 export PATH="$PATH:/usr/local/julia/bin"
 # Enregistrement de matlab dans le PATH
@@ -147,22 +154,20 @@ export GOROOT="/usr/local/go"
 export PATH="$PATH:$GOROOT/bin"
 export GOPATH="$HOME/.golib"
 export PATH="$PATH:$GOPATH/bin"
-# Cargo (gestionnaire de paquets de Rust)
-source "$HOME/.cargo/env"
 # Gestionnaire de paquets miniconda
 __conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-	eval "$__conda_setup"
+    eval "$__conda_setup"
 else
-	if [ -f "/home/guil/miniconda3/etc/profile.d/conda.sh" ]; then
-		. "/home/guil/miniconda3/etc/profile.d/conda.sh"
-	else
-		export PATH="/home/guil/miniconda3/bin:$PATH"
-	fi
+    if [ -f "/home/guil/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/guil/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/guil/miniconda3/bin:$PATH"
+    fi
 fi
 unset __conda_setup
 # Enlèvement de l'indication «(base)» dans l'invite de commande:
-# aller voir le fichier ~/miniconda3/etc/conda/activate.d/remove-base-prompt.sh
+# aller voir le fichier ~/miniconda3/etc/conda/activate.d/remove-base.sh
 
 # ========== Ajouts de plugins ==========
 # Complétions supplémentaires
@@ -175,3 +180,4 @@ bindkey "^K" history-substring-search-up
 bindkey "^[[A" history-substring-search-up
 bindkey "^J" history-substring-search-down
 bindkey "^[[B" history-substring-search-down
+

@@ -22,14 +22,14 @@
     ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
     ~/.bashrc: bash/bashrc
     ~/.dir_colors: dircolors/dir_colors
-    ~/.config/gedit/themes/gruvbox.xml: gedit/gruvbox.xml
+    ~/.config/gedit/themes: gedit
     ~/.gitconfig: git/gitconfig
     ~/.config/i3/config: i3wm/i3/config
     ~/.config/i3blocks/config: i3wm/i3blocks/config
     ~/.config/i3blocks/scripts: i3wm/i3blocks/scripts
     ~/.config/neofetch/config.conf: neofetch/config.conf
     ~/.config/neomutt/neomuttrc: neomutt/neomuttrc
-    ~/.config/nvim/init.vim: neovim/init.vim
+    ~/.config/nvim/init.vim: neovim/init/init.vim
     ~/.local/share/nvim/site/pack/plugin/start: neovim/plugin
     ~/.local/share/nvim/site/pack/ftplugin/start: neovim/ftplugin
     ~/.local/share/nvim/site/pack/colorscheme/opt: neovim/colorscheme

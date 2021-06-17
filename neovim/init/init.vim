@@ -87,10 +87,11 @@ nnoremap <M-l> 8zl
 " Mappings : explorateur de fichier Netrw
 nnoremap <F1> :Ex<CR>
 nnoremap <F2> :Sex<CR>
-nnoremap <S-F1> :Ex /home/guil/Documents/Ecole/Bloc_3<CR>
-nnoremap <S-F2> :Sex /home/guil/Documents/Ecole/Bloc_3<CR>
+nnoremap <F3> :Ex /home/guil/Documents/Ecole/Bloc_3<CR>
+nnoremap <F4> :Sex /home/guil/Documents/Ecole/Bloc_3<CR>
 
 " Mappings : fuzzy search (from fzf.vim plugin)
+nnoremap <leader>fi :Files 
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fl :BLines<CR>
 nnoremap <leader>fb :Buffer<CR>
@@ -98,7 +99,6 @@ nnoremap <leader>fh :Helptags<CR>
 nnoremap <leader>fm :Marks<CR>
 
 " Mappings : quick setting toggles
-nnoremap <leader>s :se hls!<CR>
 nnoremap <leader>sh :se hls!<CR>
 nnoremap <leader>sn :setl rnu!<CR>
 nnoremap <leader>ss :setl nospell!<CR>
