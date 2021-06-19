@@ -29,7 +29,7 @@
     ~/.config/i3blocks/scripts: i3wm/i3blocks/scripts
     ~/.config/neofetch/config.conf: neofetch/config.conf
     ~/.config/neomutt/neomuttrc: neomutt/neomuttrc
-    ~/.config/nvim/init.vim: neovim/init/init.vim
+    ~/.config/nvim/init.vim: neovim/init.vim
     ~/.local/share/nvim/site/pack/plugin/start: neovim/plugin
     ~/.local/share/nvim/site/pack/ftplugin/start: neovim/ftplugin
     ~/.local/share/nvim/site/pack/colorscheme/opt: neovim/colorscheme

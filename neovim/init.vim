@@ -45,17 +45,18 @@ au FileType python   nmap <buffer><F5> :w<CR>:py3file <C-R>%<CR>
 let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
 let g:loaded_python_provider = 0
 
-" Latex config (lervag/vimtex)
+" Latex config
 au FileType tex setl fo=tcqj tw=100 cc=101
 au FileType tex setl spell spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
+
+" Vimtex config
+let g:vimtex_compiler_latexmk={'continuous': 0}
+let g:vimtex_compiler_progname='nvr'
 
 " Start a client server (:h vimtex-clientserver)
 if empty(v:servername) && exists('*remote_startserver')
 	call remote_startserver('VIM')
 endif
-
-" Deactivate continuous compilation
-let g:vimtex_compiler_latexmk={'continuous': 0}
 
 "---------
 " Mappings
