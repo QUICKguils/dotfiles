@@ -41,6 +41,7 @@ au FileType markdown nmap <buffer><F6> :!xdg-open <C-R>%<Del><Del>html<CR>
 au FileType c        nmap <buffer><F5> :w<CR>:!gcc -Wall -o <C-R>%<Del><Del> %<CR>
 au FileType c        nmap <buffer><F6> :sp<CR>:te <C-R>%<Del><Del><CR>
 au FileType go       nmap <buffer><F5> :w<CR>:GoRun %<CR>
+au FileType go       nmap <F6> <Plug>(go-run-split)
 au FileType python   nmap <buffer><F5> :w<CR>:py3file <C-R>%<CR>
 let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
 let g:loaded_python_provider = 0
@@ -86,18 +87,20 @@ nnoremap <M-h> 8zh
 nnoremap <M-l> 8zl
 
 " Mappings : explorateur de fichier Netrw
-nnoremap <F1> :Ex<CR>
-nnoremap <F2> :Sex<CR>
-nnoremap <F3> :Ex /home/guil/Documents/Ecole/Bloc_3<CR>
-nnoremap <F4> :Sex /home/guil/Documents/Ecole/Bloc_3<CR>
+nnoremap <leader>eh :Vex<CR>
+nnoremap <leader>el :Vex!<CR>
+nnoremap <leader>ej :Hex<CR>
+nnoremap <leader>ek :Hex!<CR>
 
 " Mappings : fuzzy search (from fzf.vim plugin)
 nnoremap <leader>fi :Files 
+nnoremap <leader>fd :Files ~/Documents<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fl :BLines<CR>
 nnoremap <leader>fb :Buffer<CR>
 nnoremap <leader>fh :Helptags<CR>
 nnoremap <leader>fm :Marks<CR>
+nnoremap <leader>ft :Filetypes<CR>
 
 " Mappings : quick setting toggles
 nnoremap <leader>sh :se hls!<CR>
@@ -110,9 +113,11 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 
 " Mappings : plugin-related
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-nnoremap <F12> :Goyo 100+10x95%<CR>
+vmap ga    <Plug>(EasyAlign)
+nmap ga    <Plug>(EasyAlign)
+nmap gA    <Plug>(LiveEasyAlign)
+vmap gA    <Plug>(LiveEasyAlign)
+nmap <F12> :Goyo 100+10x95%<CR>
 
 "------------------------------------------
 " Colorscheme and gui-capabilities settings

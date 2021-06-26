@@ -46,7 +46,7 @@
 <!-- Code -->
 <style name="def:base-n-integer"      foreground="orange"/>
 <style name="def:boolean"             foreground="orange"/>
-<style name="def:builtin"             foreground="blue"/>
+<style name="def:builtin"             foreground="cyan"/>
 <style name="def:character"           foreground="orange"/>
 <style name="def:comment"             foreground="comment" italic="true"/>
 <style name="def:complex"             foreground="orange"/>
