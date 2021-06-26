@@ -65,3 +65,6 @@
 [submodule "neovim/colorscheme/nord-vim"]
 	path = neovim/colorscheme/nord-vim
 	url = https://github.com/arcticicestudio/nord-vim.git
+[submodule "neovim/plugin/vim-repeat"]
+	path = neovim/plugin/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
