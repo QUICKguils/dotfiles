@@ -79,7 +79,7 @@ for_window [class="Alacritty" title="notepad"] floating enable, sticky enable, m
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Applet from NetworkManager, appearing in the tray icon.
-exec --no-startup-id nm-tray
+exec --no-startup-id nm-applet
 
 # ----- Reload, restart, quit and lock -----
 

@@ -15,12 +15,17 @@ se tabstop=4 softtabstop=4 shiftwidth=4
 se smartindent
 se noshowmode
 se nu rnu
-se nowrap textwidth=80 cc=81 formatoptions=cqj
+se nowrap nojoinspaces textwidth=80 cc=81 formatoptions=cqj
 se scrolloff=5
 se nohls ignorecase smartcase
 se list lcs=trail:•,tab:│\ ,extends:▶,precedes:◀
 se spelllang=en_us,fr
 se spellfile=/home/guil/.local/share/nvim/site/spell/LexiquePerso.utf-8.add
+
+" Netrw settings (default file explorer)
+" Note that some default options are overriden by vinegar.
+let g:netrw_liststyle=1
+let g:netrw_bufsettings="noma nomod nobl nowrap ro rnu"
 
 "--------------------------------------------------
 " Formatting, mappings and compilation by file type
@@ -43,18 +48,18 @@ au FileType c        nmap <buffer><F6> :sp<CR>:te <C-R>%<Del><Del><CR>
 au FileType go       nmap <buffer><F5> :w<CR>:GoRun %<CR>
 au FileType go       nmap <F6> <Plug>(go-run-split)
 au FileType python   nmap <buffer><F5> :w<CR>:py3file <C-R>%<CR>
+
+" Python3 config
 let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
 let g:loaded_python_provider = 0
 
 " Latex config
 au FileType tex setl fo=tcqj tw=100 cc=101
 au FileType tex setl spell spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
-
 " Vimtex config
 let g:vimtex_compiler_latexmk={'continuous': 0}
-let g:vimtex_compiler_progname='nvr'
-
-" Start a client server (:h vimtex-clientserver)
+let g:vimtex_view_method="zathura"
+" Start a client server (see vimtex-clientserver)
 if empty(v:servername) && exists('*remote_startserver')
 	call remote_startserver('VIM')
 endif
@@ -63,8 +68,8 @@ endif
 " Mappings
 "---------
 
-" Mappings : navigation entre les fenêtres
-let mapleader=" "
+" Mappings : navigation between windows
+let mapleader="\<Space>"
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
@@ -76,7 +81,7 @@ nnoremap <leader>L <C-w>L
 nnoremap <leader>= <C-w>=
 nnoremap <leader>n <C-w>n
 
-" Mappings : navigation dans la fenêtre avec alt au lieu de ctrl (plus ergo)
+" Mappings : navigation inside a window with alt instead of ctrl (more ergo)
 nnoremap <M-j> 3<C-e>
 nnoremap <M-k> 3<C-y>
 nnoremap <M-d> <C-d>
@@ -86,7 +91,7 @@ nnoremap <M-b> <C-b>
 nnoremap <M-h> 8zh
 nnoremap <M-l> 8zl
 
-" Mappings : explorateur de fichier Netrw
+" Mappings : Netrw file explorer
 nnoremap <leader>eh :Vex<CR>
 nnoremap <leader>el :Vex!<CR>
 nnoremap <leader>ej :Hex<CR>
@@ -113,11 +118,14 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 
 " Mappings : plugin-related
-vmap ga    <Plug>(EasyAlign)
 nmap ga    <Plug>(EasyAlign)
+vmap ga    <Plug>(EasyAlign)
 nmap gA    <Plug>(LiveEasyAlign)
 vmap gA    <Plug>(LiveEasyAlign)
 nmap <F12> :Goyo 100+10x95%<CR>
+
+" Mappings : terminal mode
+tnoremap <M-q> <C-\><C-N>
 
 "------------------------------------------
 " Colorscheme and gui-capabilities settings
@@ -133,21 +141,16 @@ packadd! onedark.vim
 let g:onedark_terminal_italics=1
 colo onedark
 
-"---------------------------------------
-" Netrw settings (default file explorer)
-"---------------------------------------
-
-let g:netrw_banner=0
-let g:netrw_liststyle=1
-let g:netrw_sort_by="name"
-let g:netrw_sort_sequence="[\/],*,.\*$,\~$"
-let g:netrw_bufsettings="noma nomod nonu nobl nowrap ro rnu"
+" " Gruvbox (https://github.com/morhetz/gruvbox)
+" packadd! gruvbox
+" let g:gruvbox_italic=1
+" let g:gruvbox_invert_selection=0
+" colo gruvbox
 
 "----------------------------------
 " Statusline config (lightline.vim)
 "----------------------------------
 
-" Configuration de la barre de statut
 let g:lightline = {
 \	'colorscheme':'onedark',
 \	'active': {
@@ -171,12 +174,12 @@ let g:lightline = {
 \	'subseparator': {'left': "│", 'right': "│"}
 \}
 
-" Barre de statut : afficher le verrou  si fichier 'read only'
+" Print the lock '' for RO file
 function! LightlineReadonly()
 	return &readonly ? "\ue0a2" : ''
 endfunction
 
-" Barre de statut : afficher la branche  si git est activé pour le dossier
+" Print the branch '' if the file is under git control
 function! LightlineFugitive()
 	if exists('*FugitiveHead')
 		let branch = FugitiveHead()
@@ -185,7 +188,7 @@ function! LightlineFugitive()
 	return ''
 endfunction
 
-" Barre de statut : afficher '+' seulement si le fichier est modifié
+" Print the '+' sign only when the buffer is modified
 function! LightlineModified()
 	return &modifiable && &modified ? '+': ''
 endfunction

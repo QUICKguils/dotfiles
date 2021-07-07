@@ -71,7 +71,7 @@ alias g='git'
 alias x='exit'
 alias t='tmux'
 alias o='xdg-open'
-alias b='bat --style=changes,numbers,snip'
+alias b='bat --style=rule,changes,numbers,snip'
 alias fl='figlet -t -f slant'
 alias jl='julia --banner=no'
 alias mlj='matlab -nodesktop -nosplash'
@@ -96,6 +96,7 @@ export MANPAGER="nvim +Man!"
 
 # Configuration de bat, un cat amélioré.
 # Cf. https://github.com/sharkdp/bat
+#export BAT_THEME="gruvbox"
 export BAT_THEME="OneHalfDark"
 export BAT_STYLE="auto"
 
@@ -114,10 +115,35 @@ source "/home/guil/.dotfiles/neovim/plugin/fzf/shell/key-bindings.zsh"
 # Cf. https://github.com/sharkdp/fd
 export FZF_DEFAULT_COMMAND="fd -H"
 # fzf customization (see man page)
-export FZF_DEFAULT_OPTS="-m --height=60% --reverse --bind=ctrl-p:toggle-preview \
---color=bg:#282c34,bg+:#2c323c,fg:#5c6370,fg+:#abb2bf:bold,hl:#98c379,hl+:#98c379:bold,\
-border:#c678dd,pointer:#e06c75:bold,marker:#be5046,prompt:#61afef,\
-spinner:#e5c07b,info:#e5c07b"
+export FZF_DEFAULT_OPTS="\
+-m --height=60% --reverse --bind=ctrl-p:toggle-preview \
+--color=\
+bg:#282c34,\
+bg+:#2c323c,\
+fg:#5c6370,\
+fg+:#abb2bf:bold,\
+hl:#98c379,\
+hl+:#98c379:bold,\
+border:#c678dd,\
+pointer:#e06c75:bold,\
+marker:#be5046,\
+prompt:#61afef,\
+spinner:#e5c07b,\
+info:#e5c07b"
+
+# --color=\
+# bg:#282828,\
+# bg+:#3c3836,\
+# fg:#928374,\
+# fg+:#ebdbb2:bold,\
+# hl:#98971a,\
+# hl+:#98971a:bold,\
+# border:#b16286,\
+# pointer:#cc241d:bold,\
+# marker:#fb4934,\
+# prompt:#83a598,\
+# spinner:#8ec07c,\
+# info:#8ec07c"
 
 # fzf file search, with preview using bat.
 export FZF_CTRL_T_COMMAND="fd -Ht f"
@@ -157,13 +183,13 @@ export PATH="$PATH:$GOPATH/bin"
 # Gestionnaire de paquets miniconda
 __conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+	eval "$__conda_setup"
 else
-    if [ -f "/home/guil/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/guil/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/guil/miniconda3/bin:$PATH"
-    fi
+	if [ -f "/home/guil/miniconda3/etc/profile.d/conda.sh" ]; then
+		. "/home/guil/miniconda3/etc/profile.d/conda.sh"
+	else
+		export PATH="/home/guil/miniconda3/bin:$PATH"
+	fi
 fi
 unset __conda_setup
 # Enlèvement de l'indication «(base)» dans l'invite de commande:
