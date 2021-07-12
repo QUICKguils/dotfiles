@@ -7,7 +7,7 @@
 # ===== Configuration générale =====
 
 # Police de zathura
-set font "Hack 9"
+set font "Iosevka Term Medium Extended 10"
 
 # Disposition par défaut
 set window-height 1080
@@ -135,3 +135,5 @@ set render-loading-fg       "#abb2bf"
 # set render-loading          "true"
 # set render-loading-bg       "#282828" # bg
 # set render-loading-fg       "#ebdbb2" # fg
+
+# vim: ft=sh

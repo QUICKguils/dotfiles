@@ -32,8 +32,8 @@ set $filemgr   nautilus
 set $guiplayer mpv --player-operation-mode=pseudo-gui
 
 # Default fonts
-set $monofont Hack
-set $nerdfont Hack Nerd Font
+set $monofont Iosevka Term Extended
+set $nerdfont Iosevka Term Extended
 set $sansfont Noto Sans
 
 # Workspace names

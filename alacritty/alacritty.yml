@@ -208,9 +208,9 @@ colors:
     # affected cell, or hexadecimal colors like #ff00ff.
     matches:
       foreground: '#282c34'
-      background: '#d19a66'
+      background: '#e5c07b'
     focused_match:
-      foreground: '#d19a66'
+      foreground: '#e5c07b'
       background: '#3e4452'
     bar:
       background: '#d19a66'

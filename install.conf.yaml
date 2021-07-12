@@ -40,8 +40,9 @@
     ~/.Xmodmap: Xorg/Xmodmap
     ~/.Xkbmap: Xorg/Xkbmap
     ~/.config/zathura/zathurarc: zathura/zathurarc
-    ~/.zshrc: zsh/zshrc
+    ~/.zshenv: zsh/zshenv
     ~/.config/zsh: zsh/plugins
+    ~/.config/zsh: zsh/zshrc
 
 - shell:
     -

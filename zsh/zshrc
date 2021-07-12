@@ -4,24 +4,24 @@
 #  _ / /_(__  ) / / / /  / /__
 # (_)___/____/_/ /_/_/   \___/
 #
-# Configuration personnelle de zsh
-# --------------------------------
+# Personal configuration of zsh
 
-# Référence: http://zsh.sourceforge.net/Doc/Release/zsh_toc.html
+# Reference: http://zsh.sourceforge.net/Doc/Release/zsh_toc.html
 
-# ========== Setup de l'historique ==========
+# ========== History setup ==========
+
 setopt histignorealldups sharehistory
-# Sauvegarder les 5000 dernières commandes zsh dans ~/.zsh_history
+# Save the 5000 last commands in .zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
-HISTFILE=~/.zsh_history
+HISTFILE=$ZDOTDIR/.zsh_history
 
-# # ========== Coloration ==========
-# Les outils ls, grep, tree et fd utilisent la variable d'environnement
-# LS_COLORS pour coloriser leurs sorties. Le fichier .dir_colors (que j'ai copié
-# de arcticicestudio) sert à définir LS_COLORS. Et la commande ci-dessous ne
-# fait que changer LS_COLORS (grâce à la commande `dircolors`) selon les
-# directives énoncées dans .dir_colors.
+# ========== Colorization ==========
+
+# Tools like ls, grep, tree and fd use the LS_COLORS environment variable to
+# colorize their outputs. The ~/.dir_colors file defines LS_COLORS. The
+# following command does nothing but loading LS_COLORS under the directives
+# contained in ~/.dir_colors.
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
@@ -29,10 +29,11 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-# Couleurs pour GCC (tiré de bashrc)
+# Colors for GCC
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# ========== Autocomplétion ==========
+# ========== Autocompletion ==========
+
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' menu select=2
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
@@ -40,11 +41,12 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:
 
 autoload -Uz compinit && compinit
 
-# Changement de dossier automatique ("cd" implicite)
+# Atomatic file change (implicit "cd")
 setopt autocd
 
-# ========== Personnalisation de l'invite de commande ==========
-# Ajout d'informations sur git dans l'invite de commande
+# ========== Command prompt customization ==========
+
+# Git information
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
@@ -52,13 +54,14 @@ setopt prompt_subst
 zstyle ':vcs_info:git:*' formats '%U%b'
 zstyle ':vcs_info:*' enable git
 
-# Apparence de l'invite de commande
-symbol="▶" #"➤"
+# Command promt appearance
+symbol="▶"
 PROMPT='%(!.%F{magenta}#. )%(?.%F{green}.%F{red})$symbol%f '
 RPROMPT='%F{#5c6370}$vcs_info_msg_0_%u [%~]'
 
 # ========== Keybindings/aliases ==========
-# Utiliser le mode vi dans le shell
+
+# Vim-like keybindings
 bindkey -v
 
 # Aliases
@@ -78,31 +81,32 @@ alias mlj='matlab -nodesktop -nosplash'
 alias ml='matlab -nojvm'
 alias py='python'
 
-# Raccourcis de chemins
+# Path shortcuts
 ing="$HOME/Documents/Ecole/Bloc_3/"
 hdd="/run/media/guil/Data/"
 
 # ========== reading tools ==========
-# Choisir neovim comme éditeur par défaut
+
+# Use neovim as default editor
 export EDITOR='nvim'
 export VISUAL='nvim'
 
-# Lecteur de documents (pdf, ps, eps, ...)
+# Document reader (pdf, ps, eps, ...)
 export READER='zathura'
 
-# Choix du pager par défaut et du pager pour les pages de manuel
+# Default pager and manual pager
 export PAGER="cat"
 export MANPAGER="nvim +Man!"
 
-# Configuration de bat, un cat amélioré.
+# Bat configuration (a cat clone with wings)
 # Cf. https://github.com/sharkdp/bat
 #export BAT_THEME="gruvbox"
 export BAT_THEME="OneHalfDark"
 export BAT_STYLE="auto"
 
 # ========== searching tools ==========
-# Chargement de fzf. Repo situé à ~/.dotfiles/neovim/plugin/fzf
-# Setup fzf
+
+# Fzf loading. Repo located at ~/.dotfiles/neovim/plugin/fzf
 if [[ ! "$PATH" == */home/guil/.dotfiles/neovim/plugin/fzf/bin* ]]; then
 	export PATH="${PATH:+${PATH}:}/home/guil/.dotfiles/neovim/plugin/fzf/bin"
 fi
@@ -111,7 +115,7 @@ fi
 # Key bindings
 source "/home/guil/.dotfiles/neovim/plugin/fzf/shell/key-bindings.zsh"
 
-# non-piped fzf: use fd to feed fzf instead of find.
+# Non-piped fzf: use fd to feed fzf instead of find.
 # Cf. https://github.com/sharkdp/fd
 export FZF_DEFAULT_COMMAND="fd -H"
 # fzf customization (see man page)
@@ -130,20 +134,6 @@ marker:#be5046,\
 prompt:#61afef,\
 spinner:#e5c07b,\
 info:#e5c07b"
-
-# --color=\
-# bg:#282828,\
-# bg+:#3c3836,\
-# fg:#928374,\
-# fg+:#ebdbb2:bold,\
-# hl:#98971a,\
-# hl+:#98971a:bold,\
-# border:#b16286,\
-# pointer:#cc241d:bold,\
-# marker:#fb4934,\
-# prompt:#83a598,\
-# spinner:#8ec07c,\
-# info:#8ec07c"
 
 # fzf file search, with preview using bat.
 export FZF_CTRL_T_COMMAND="fd -Ht f"
@@ -165,13 +155,14 @@ export FZF_CTRL_R_OPTS="--reverse"
 #export FZF_COMPLETION_OPTS=""
 
 # ========== Ajouts au PATH ==========
+
 # Java (from Oracle, not OpenJDK)
 export PATH="$PATH:/usr/local/java/jdk-16.0.1/bin"
-# Enregistrement de julia dans le PATH
+# Julia
 export PATH="$PATH:/usr/local/julia/bin"
-# Enregistrement de matlab dans le PATH
+# Matlab
 export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
-# Distribution latex (TexLive 2021)
+# Latex distribution (TexLive 2021)
 export PATH="$PATH:/run/media/guil/Data/texlive/2021/bin/x86_64-linux"
 export MANPATH="$MANPATH:/run/media/guil/Data/texlive/2021/texmf-dist/doc/man"
 export INFOPATH="$INFOPATH:/run/media/guil/Data/texlive/2021/texmf-dist/doc/info"
@@ -180,7 +171,9 @@ export GOROOT="/usr/local/go"
 export PATH="$PATH:$GOROOT/bin"
 export GOPATH="$HOME/.golib"
 export PATH="$PATH:$GOPATH/bin"
-# Gestionnaire de paquets miniconda
+# Cargo (rust)
+. "$HOME/.cargo/env"
+# Miniconda package manager
 __conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
 	eval "$__conda_setup"
@@ -192,18 +185,18 @@ else
 	fi
 fi
 unset __conda_setup
-# Enlèvement de l'indication «(base)» dans l'invite de commande:
-# aller voir le fichier ~/miniconda3/etc/conda/activate.d/remove-base.sh
+# Removing the "(base)" indication appearing in the command prompt:
+# check this file: ~/miniconda3/etc/conda/activate.d/remove-base.sh
 
-# ========== Ajouts de plugins ==========
-# Complétions supplémentaires
-fpath=($HOME/.config/zsh/zsh-completions/src $fpath)
-# Coloration syntaxique des commandes introduites
-source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# Recherche dans l'hstorique des commandes
-source $HOME/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+# ========== Plugins ==========
+
+# Additional completions
+fpath=($ZDOTDIR/zsh-completions/src $fpath)
+# Syntax highlighting for the shell commands
+source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Backward search by substrings in the command history
+source $ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey "^K" history-substring-search-up
 bindkey "^[[A" history-substring-search-up
 bindkey "^J" history-substring-search-down
 bindkey "^[[B" history-substring-search-down
-

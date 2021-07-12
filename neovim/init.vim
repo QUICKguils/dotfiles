@@ -37,17 +37,17 @@ au FileType matlab    setl commentstring=\%\ %s
 au FileType vhdl      setl commentstring=--\ %s
 au FileType haskell   setl et
 au FileType gitcommit setl tw=72 cc=73
-au FileType rust      setl cc=100 fo=cqj " overwrite g:rust_recommended_style
-au FileType rust      nmap <buffer> <F7> :RustFmt<CR>:w<CR>
+au FileType rust      setl cc=100
 
 " Mappings : compilation by file type
-au FileType markdown nmap <buffer><F5> :w<CR>:!pandoc -o <C-R>%<Del><Del>html <C-R>% --mathjax<CR>
-au FileType markdown nmap <buffer><F6> :!xdg-open <C-R>%<Del><Del>html<CR>
-au FileType c        nmap <buffer><F5> :w<CR>:!gcc -Wall -o <C-R>%<Del><Del> %<CR>
-au FileType c        nmap <buffer><F6> :sp<CR>:te <C-R>%<Del><Del><CR>
-au FileType go       nmap <buffer><F5> :w<CR>:GoRun %<CR>
-au FileType go       nmap <F6> <Plug>(go-run-split)
-au FileType python   nmap <buffer><F5> :w<CR>:py3file <C-R>%<CR>
+map <F5> :w<Bar>:make<CR>
+au FileType markdown setl makeprg=pandoc\ -o\ %:r.html\ %\ --mathjax
+au FileType markdown nmap <buffer><F6> :!xdg-open %:r.html<CR>
+au FileType c        setl makeprg=gcc\ -Wall\ -o\ %:r\ %
+au FileType c        nmap <buffer><F6> :sp<Bar>:te %:r<CR>
+au FileType go       nmap <buffer><F5> :w<Bar>:GoRun %
+au FileType go       nmap <buffer><F6> <Plug>(go-run-split)
+au FileType python   setl makeprg=py3file\ %
 
 " Python3 config
 let g:python3_host_prog = '/home/guil/miniconda3/bin/python'

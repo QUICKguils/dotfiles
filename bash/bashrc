@@ -201,3 +201,5 @@ export FZF_CTRL_R_OPTS="--reverse"
 export PATH="$PATH:/usr/local/julia/bin"
 # Enrefistrement de matlab dans ls PATH
 export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
+# Cargo (rust)
+. "$HOME/.cargo/env"
