@@ -191,11 +191,11 @@ unset __conda_setup
 # ========== Plugins ==========
 
 # Additional completions
-fpath=($ZDOTDIR/zsh-completions/src $fpath)
+fpath=($ZDOTDIR/plugins/zsh-completions/src $fpath)
 # Syntax highlighting for the shell commands
-source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Backward search by substrings in the command history
-source $ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
+source $ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey "^K" history-substring-search-up
 bindkey "^[[A" history-substring-search-up
 bindkey "^J" history-substring-search-down

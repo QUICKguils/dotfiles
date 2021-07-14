@@ -1,1 +1,0 @@
-/home/guil/.dotfiles/zsh/zshrc

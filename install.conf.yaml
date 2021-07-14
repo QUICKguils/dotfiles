@@ -41,7 +41,7 @@
     ~/.Xkbmap: Xorg/Xkbmap
     ~/.config/zathura/zathurarc: zathura/zathurarc
     ~/.zshenv: zsh/zshenv
-    ~/.config/zsh: zsh/plugins
+    ~/.config/zsh/plugins: zsh/plugins
     ~/.config/zsh/.zshrc: zsh/zshrc
 
 - shell:
