@@ -42,7 +42,7 @@
     ~/.config/zathura/zathurarc: zathura/zathurarc
     ~/.zshenv: zsh/zshenv
     ~/.config/zsh: zsh/plugins
-    ~/.config/zsh: zsh/zshrc
+    ~/.config/zsh/.zshrc: zsh/zshrc
 
 - shell:
     -

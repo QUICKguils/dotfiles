@@ -45,9 +45,9 @@ au FileType markdown setl makeprg=pandoc\ -o\ %:r.html\ %\ --mathjax
 au FileType markdown nmap <buffer><F6> :!xdg-open %:r.html<CR>
 au FileType c        setl makeprg=gcc\ -Wall\ -o\ %:r\ %
 au FileType c        nmap <buffer><F6> :sp<Bar>:te %:r<CR>
-au FileType go       nmap <buffer><F5> :w<Bar>:GoRun %
+au FileType go       nmap <buffer><F5> :w<Bar>:GoRun %<CR>
 au FileType go       nmap <buffer><F6> <Plug>(go-run-split)
-au FileType python   setl makeprg=py3file\ %
+au FileType python   nmap <buffer><F5> :w<Bar>py3file %<CR>
 
 " Python3 config
 let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
@@ -146,6 +146,32 @@ colo onedark
 " let g:gruvbox_italic=1
 " let g:gruvbox_invert_selection=0
 " colo gruvbox
+
+" ------------------------------
+" Neovim lsp config (nvim 0.5.0)
+" ------------------------------
+
+" Settings for completion-nvim plugin
+se completeopt=menuone,noinsert,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+se omnifunc=v:lua.vim.lsp.omnifunc
+
+lua << EOF
+-- Set a bunch of language server
+require('lspconfig').pyright.setup { on_attach=require'completion'.on_attach }
+require('lspconfig').vimls.setup   { on_attach=require'completion'.on_attach }
+require('lspconfig').gopls.setup   { on_attach=require'completion'.on_attach }
+-- require('lspconfig').julials.setup { on_attach=require'completion'.on_attach }
+
+local custom_lsp_attach = function(client)
+	-- See `:help nvim_buf_set_keymap()` for more information
+	vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
+	vim.api.nvim_buf_set_keymap(0, 'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
+	-- Use LSP as the handler for omnifunc.
+	-- See `:help omnifunc` and `:help ins-completion` for more information.
+	vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+end
+EOF
 
 "----------------------------------
 " Statusline config (lightline.vim)

@@ -145,7 +145,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  #size: 11.0
+  # size: 11.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -212,6 +212,7 @@ colors:
     focused_match:
       foreground: '#e5c07b'
       background: '#3e4452'
+
     bar:
       background: '#d19a66'
       foreground: '#282c34'
@@ -456,7 +457,7 @@ mouse:
   #   - MoveViModeCursor
   #       Move the vi mode cursor to the beginning of the hint.
   #enabled:
-  # - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+  # - regex: "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
   #           [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
   #   command: xdg-open
   #   post_processing: true
