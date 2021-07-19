@@ -1,4 +1,4 @@
-#          __                _ __  __
+#         __                _ __  __
 #   ____ _/ /___ ___________(_) /_/ /___  __
 #  / __ `/ / __ `/ ___/ ___/ / __/ __/ / / /
 # / /_/ / / /_/ / /__/ /  / / /_/ /_/ /_/ /
@@ -38,7 +38,7 @@ window:
   # fall back to the window manager's recommended size.
   dimensions:
     columns: 115
-    lines: 49
+    lines: 52
 
   # Window position (changes require restart)
   #
@@ -54,7 +54,7 @@ window:
   # by DPI and the specified value is always added at both opposing sides.
   padding:
     x: 2
-    y: 2
+    y: 0
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -106,7 +106,7 @@ font:
   # Normal (roman) font face
   normal:
     # Font family
-    family: Iosevka Term Extended
+    family: Hack
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -145,7 +145,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  # size: 11.0
+  #size: 11.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter

@@ -131,6 +131,8 @@ tnoremap <M-q> <C-\><C-N>
 " Colorscheme and gui-capabilities settings
 "------------------------------------------
 
+se guifont=Iosevka\ Custom:h11
+
 " Exact colors (16bits)
 if (has("termguicolors"))
 	se termguicolors
@@ -160,7 +162,7 @@ lua << EOF
 -- Set a bunch of language server
 require('lspconfig').pyright.setup { on_attach=require'completion'.on_attach }
 require('lspconfig').vimls.setup   { on_attach=require'completion'.on_attach }
-require('lspconfig').gopls.setup   { on_attach=require'completion'.on_attach }
+-- require('lspconfig').gopls.setup   { on_attach=require'completion'.on_attach }
 -- require('lspconfig').julials.setup { on_attach=require'completion'.on_attach }
 
 local custom_lsp_attach = function(client)

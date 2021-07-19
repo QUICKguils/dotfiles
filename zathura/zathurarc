@@ -7,7 +7,7 @@
 # ===== Configuration générale =====
 
 # Police de zathura
-set font "Iosevka Term Medium Extended 10"
+set font "Hack 11"
 
 # Disposition par défaut
 set window-height 1080
