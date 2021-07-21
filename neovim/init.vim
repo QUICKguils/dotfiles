@@ -111,11 +111,33 @@ nnoremap <leader>ft :Filetypes<CR>
 nnoremap <leader>sh :se hls!<CR>
 nnoremap <leader>sn :setl rnu!<CR>
 nnoremap <leader>ss :setl nospell!<CR>
+nnoremap <leader>sv :call ToggleVE()<CR>
 
-" Mappings : quick write and quit
+function! ToggleVE()
+	if &ve == ""
+		set ve=all
+	else
+		set ve=""
+	endif
+	set ve?
+endfunction
+
+" Mappings : quick write, quit and close
 nnoremap <leader>q :q<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
+nnoremap <leader>c :clo<CR>
+
+" Source vimscript, reload nvim config
+nnoremap <leader>so :w<Bar>:source %<CR>
+nnoremap <leader>r :call IsConfigFile() <Bar> :source $MYVIMRC<CR>
+" TODO: rewrite a ReloadConfig() function. Problem was that 'source $MYVIMRC'
+" does not work inside a function, apparently...
+function! IsConfigFile()
+	if $MYVIMRC == expand("%:p")
+		write
+	endif
+endfunction
 
 " Mappings : plugin-related
 nmap ga    <Plug>(EasyAlign)
@@ -131,8 +153,6 @@ tnoremap <M-q> <C-\><C-N>
 " Colorscheme and gui-capabilities settings
 "------------------------------------------
 
-se guifont=Iosevka\ Custom:h11
-
 " Exact colors (16bits)
 if (has("termguicolors"))
 	se termguicolors
@@ -143,37 +163,31 @@ packadd! onedark.vim
 let g:onedark_terminal_italics=1
 colo onedark
 
-" " Gruvbox (https://github.com/morhetz/gruvbox)
-" packadd! gruvbox
-" let g:gruvbox_italic=1
-" let g:gruvbox_invert_selection=0
-" colo gruvbox
-
 " ------------------------------
 " Neovim lsp config (nvim 0.5.0)
 " ------------------------------
 
-" Settings for completion-nvim plugin
-se completeopt=menuone,noinsert,noselect
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-se omnifunc=v:lua.vim.lsp.omnifunc
+"" Settings for completion-nvim plugin
+""se completeopt=menuone,noinsert,noselect
+"let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+"se omnifunc=v:lua.vim.lsp.omnifunc
 
-lua << EOF
--- Set a bunch of language server
-require('lspconfig').pyright.setup { on_attach=require'completion'.on_attach }
-require('lspconfig').vimls.setup   { on_attach=require'completion'.on_attach }
--- require('lspconfig').gopls.setup   { on_attach=require'completion'.on_attach }
--- require('lspconfig').julials.setup { on_attach=require'completion'.on_attach }
+"lua << EOF
+"-- Set a bunch of language server
+"require('lspconfig').pyright.setup { on_attach=require'completion'.on_attach }
+"require('lspconfig').vimls.setup   { on_attach=require'completion'.on_attach }
+"-- require('lspconfig').gopls.setup   { on_attach=require'completion'.on_attach }
+"-- require('lspconfig').julials.setup { on_attach=require'completion'.on_attach }
 
-local custom_lsp_attach = function(client)
-	-- See `:help nvim_buf_set_keymap()` for more information
-	vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
-	vim.api.nvim_buf_set_keymap(0, 'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
-	-- Use LSP as the handler for omnifunc.
-	-- See `:help omnifunc` and `:help ins-completion` for more information.
-	vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-end
-EOF
+"local custom_lsp_attach = function(client)
+"	-- See `:help nvim_buf_set_keymap()` for more information
+"	vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
+"	vim.api.nvim_buf_set_keymap(0, 'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
+"	-- Use LSP as the handler for omnifunc.
+"	-- See `:help omnifunc` and `:help ins-completion` for more information.
+"	vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+"end
+"EOF
 
 "----------------------------------
 " Statusline config (lightline.vim)
