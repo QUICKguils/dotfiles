@@ -38,7 +38,6 @@
     ~/.tmux.conf: tmux/tmux.conf
     ~/.Xresources: Xorg/Xresources
     ~/.Xmodmap: Xorg/Xmodmap
-    ~/.Xkbmap: Xorg/Xkbmap
     ~/.config/zathura/zathurarc: zathura/zathurarc
     ~/.zshenv: zsh/zshenv
     ~/.config/zsh/plugins: zsh/plugins

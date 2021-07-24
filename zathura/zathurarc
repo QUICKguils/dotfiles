@@ -33,18 +33,6 @@ set zoom-step 5
 set zoom-center     "true"
 set vertical-center "true"
 
-# ===== Remaps =====
-
-# # Navigation hjkl
-# unmap h
-# unmap l
-# unmap <S-j>
-# unmap <S-k>
-# map h scroll previous
-# map l scroll next
-# map <A-h> scroll left
-# map <A-l> scroll right
-
 # ===== Couleurs =====
 
 # Transparence du surlignage des termes recherchés
@@ -94,46 +82,5 @@ set default-fg              "#abb2bf"
 set render-loading          "true"
 set render-loading-bg       "#282c34"
 set render-loading-fg       "#abb2bf"
-
-# ----- Gruvbox -----
-
-# # Recoloration
-# set recolor-lightcolor "#282828" # bg
-# set recolor-darkcolor  "#ebdbb2" # fg
-# set recolor            "true"
-
-# set notification-error-bg   "#504945" # bg2
-# set notification-error-fg   "#fb4934" # bright:red
-# set notification-warning-bg "#504945" # bg2
-# set notification-warning-fg "#fabd2f" # bright:yellow
-# set notification-bg         "#504945" # bg2
-# set notification-fg         "#b8bb26" # bright:green
-
-# set completion-bg           "#3c3836" # bg1
-# set completion-fg           "#ebdbb2" # fg
-# set completion-group-bg     "#504945" # bg2
-# set completion-group-fg     "#fbf1c7" # fg0
-# set completion-highlight-bg "#98971a" # dark:green
-# set completion-highlight-fg "#3c3836" # bg1
-
-# set index-bg                "#3c3836" # bg1
-# set index-fg                "#ebdbb2" # fg
-# set index-active-bg         "#98971a" # dark:green
-# set index-active-fg         "#3c3836" # bg1
-
-# set inputbar-bg             "#504945" # bg2
-# set inputbar-fg             "#ebdbb2" # fg
-
-# set statusbar-bg            "#504945" # bg2
-# set statusbar-fg            "#ebdbb2" # fg
-
-# set highlight-color         "#fabd2f" # bright:yellow
-# set highlight-active-color  "#fe8019" # bright:orange
-
-# set default-bg              "#3c3836" # bg1
-# set default-fg              "#ebdbb2" # fg
-# set render-loading          "true"
-# set render-loading-bg       "#282828" # bg
-# set render-loading-fg       "#ebdbb2" # fg
 
 # vim: ft=sh

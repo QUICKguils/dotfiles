@@ -14,11 +14,11 @@ se clipboard=unnamedplus
 se tabstop=4 softtabstop=4 shiftwidth=4
 se smartindent
 se noshowmode
-se nu rnu
-se nowrap nojoinspaces textwidth=80 cc=81 formatoptions=cqj
+se number relativenumber
+se nowrap nojoinspaces textwidth=80 colorcolumn=+1 formatoptions=cqj
 se scrolloff=5
-se nohls ignorecase smartcase
-se list lcs=trail:•,tab:│\ ,extends:▶,precedes:◀
+se nohlsearch ignorecase smartcase wildignorecase
+se list listchars=trail:•,tab:│\ ,extends:▶,precedes:◀
 se spelllang=en_us,fr
 se spellfile=/home/guil/.local/share/nvim/site/spell/LexiquePerso.utf-8.add
 
@@ -32,12 +32,11 @@ let g:netrw_bufsettings="noma nomod nobl nowrap ro rnu"
 "--------------------------------------------------
 
 " Formatting by file type
-au FileType markdown  setl fo=tcqjn spell commentstring=<!--\ %s\ -->
-au FileType matlab    setl commentstring=\%\ %s
-au FileType vhdl      setl commentstring=--\ %s
-au FileType haskell   setl et
-au FileType gitcommit setl tw=72 cc=73
-au FileType rust      setl cc=100
+au FileType markdown  setl formatoptions=tcqjn spell commentstring=<!--%s-->
+au FileType matlab    setl commentstring=\%%s
+au FileType vhdl      setl commentstring=--%s
+au FileType haskell   setl expandtab
+au FileType gitcommit setl textwidth=72
 
 " Mappings : compilation by file type
 map <F5> :w<Bar>:make<CR>
@@ -54,7 +53,7 @@ let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
 let g:loaded_python_provider = 0
 
 " Latex config
-au FileType tex setl fo=tcqj tw=100 cc=101
+au FileType tex setl formatoptions=tcqj textwidth=100
 au FileType tex setl spell spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
 " Vimtex config
 let g:vimtex_compiler_latexmk={'continuous': 0}
@@ -130,21 +129,23 @@ nnoremap <leader>c :clo<CR>
 
 " Source vimscript, reload nvim config
 nnoremap <leader>so :w<Bar>:source %<CR>
-nnoremap <leader>r :call IsConfigFile() <Bar> :source $MYVIMRC<CR>
-" TODO: rewrite a ReloadConfig() function. Problem was that 'source $MYVIMRC'
-" does not work inside a function, apparently...
-function! IsConfigFile()
-	if $MYVIMRC == expand("%:p")
-		write
-	endif
-endfunction
+
+" TODO: Implement ReloadConfig().
+" Problem is that `source $MYVIMRC` does not work.
+" nnoremap <leader>r :call ReloadConfig()<CR>
+" function! ReloadConfig()
+" 	if $MYVIMRC == expand("%:p")
+" 		write
+" 		echo "I'm in the init.vim file"
+" 	endif
+" 	source $MYVIMRC
+" endfunction
 
 " Mappings : plugin-related
-nmap ga    <Plug>(EasyAlign)
-vmap ga    <Plug>(EasyAlign)
-nmap gA    <Plug>(LiveEasyAlign)
-vmap gA    <Plug>(LiveEasyAlign)
-nmap <F12> :Goyo 100+10x95%<CR>
+nmap ga <Plug>(EasyAlign)
+vmap ga <Plug>(EasyAlign)
+nmap gA <Plug>(LiveEasyAlign)
+vmap gA <Plug>(LiveEasyAlign)
 
 " Mappings : terminal mode
 tnoremap <M-q> <C-\><C-N>
@@ -162,32 +163,6 @@ endif
 packadd! onedark.vim
 let g:onedark_terminal_italics=1
 colo onedark
-
-" ------------------------------
-" Neovim lsp config (nvim 0.5.0)
-" ------------------------------
-
-"" Settings for completion-nvim plugin
-""se completeopt=menuone,noinsert,noselect
-"let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-"se omnifunc=v:lua.vim.lsp.omnifunc
-
-"lua << EOF
-"-- Set a bunch of language server
-"require('lspconfig').pyright.setup { on_attach=require'completion'.on_attach }
-"require('lspconfig').vimls.setup   { on_attach=require'completion'.on_attach }
-"-- require('lspconfig').gopls.setup   { on_attach=require'completion'.on_attach }
-"-- require('lspconfig').julials.setup { on_attach=require'completion'.on_attach }
-
-"local custom_lsp_attach = function(client)
-"	-- See `:help nvim_buf_set_keymap()` for more information
-"	vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
-"	vim.api.nvim_buf_set_keymap(0, 'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
-"	-- Use LSP as the handler for omnifunc.
-"	-- See `:help omnifunc` and `:help ins-completion` for more information.
-"	vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-"end
-"EOF
 
 "----------------------------------
 " Statusline config (lightline.vim)
@@ -234,3 +209,29 @@ endfunction
 function! LightlineModified()
 	return &modifiable && &modified ? '+': ''
 endfunction
+
+" ------------------------------
+" Neovim lsp config (nvim 0.5.0)
+" ------------------------------
+
+"" Settings for completion-nvim plugin
+""se completeopt=menuone,noinsert,noselect
+"let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+"se omnifunc=v:lua.vim.lsp.omnifunc
+
+"lua << EOF
+"-- Set a bunch of language server
+"require('lspconfig').pyright.setup { on_attach=require'completion'.on_attach }
+"require('lspconfig').vimls.setup   { on_attach=require'completion'.on_attach }
+"-- require('lspconfig').gopls.setup   { on_attach=require'completion'.on_attach }
+"-- require('lspconfig').julials.setup { on_attach=require'completion'.on_attach }
+
+"local custom_lsp_attach = function(client)
+"	-- See `:help nvim_buf_set_keymap()` for more information
+"	vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
+"	vim.api.nvim_buf_set_keymap(0, 'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
+"	-- Use LSP as the handler for omnifunc.
+"	-- See `:help omnifunc` and `:help ins-completion` for more information.
+"	vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+"end
+"EOF
