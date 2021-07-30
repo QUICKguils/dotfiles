@@ -4,9 +4,8 @@
 "  / / / / / / /__| |/ / / / / / / /
 " /_/_/ /_/_/\__(_)___/_/_/ /_/ /_/
 
-"-----------------
-" General settings
-"-----------------
+" General settings  {{{1
+" ----------------
 
 cd /home/guil
 se mouse=a mousem=popup
@@ -27,9 +26,8 @@ se spellfile=/home/guil/.local/share/nvim/site/spell/LexiquePerso.utf-8.add
 let g:netrw_liststyle=1
 let g:netrw_bufsettings="noma nomod nobl nowrap ro rnu"
 
-"--------------------------------------------------
-" Formatting, mappings and compilation by file type
-"--------------------------------------------------
+" Formatting, mappings and compilation by file type  {{{1
+" -------------------------------------------------
 
 " Formatting by file type
 au FileType markdown  setl formatoptions=tcqjn spell commentstring=<!--%s-->
@@ -63,9 +61,8 @@ if empty(v:servername) && exists('*remote_startserver')
 	call remote_startserver('VIM')
 endif
 
-"---------
-" Mappings
-"---------
+" Mappings  {{{1
+" --------
 
 " Mappings : navigation between windows
 let mapleader="\<Space>"
@@ -130,17 +127,6 @@ nnoremap <leader>c :clo<CR>
 " Source vimscript, reload nvim config
 nnoremap <leader>so :w<Bar>:source %<CR>
 
-" TODO: Implement ReloadConfig().
-" Problem is that `source $MYVIMRC` does not work.
-" nnoremap <leader>r :call ReloadConfig()<CR>
-" function! ReloadConfig()
-" 	if $MYVIMRC == expand("%:p")
-" 		write
-" 		echo "I'm in the init.vim file"
-" 	endif
-" 	source $MYVIMRC
-" endfunction
-
 " Mappings : plugin-related
 nmap ga <Plug>(EasyAlign)
 vmap ga <Plug>(EasyAlign)
@@ -150,40 +136,44 @@ vmap gA <Plug>(LiveEasyAlign)
 " Mappings : terminal mode
 tnoremap <M-q> <C-\><C-N>
 
-"------------------------------------------
-" Colorscheme and gui-capabilities settings
-"------------------------------------------
+" Colorscheme and gui-capabilities settings  {{{1
+" -----------------------------------------
 
 " Exact colors (16bits)
 if (has("termguicolors"))
 	se termguicolors
 endif
 
-" Onedark (https://github.com/joshdick/onedark.vim)
+" Onedark <https://github.com/joshdick/onedark.vim>
 packadd! onedark.vim
 let g:onedark_terminal_italics=1
 colo onedark
 
-"----------------------------------
-" Statusline config (lightline.vim)
-"----------------------------------
+" " Gruvbox <https://github.com/morhetz/gruvbox>
+" packadd! gruvbox
+" let g:gruvbox_italic=1
+" let g:gruvbox_invert_selection=0
+" colo gruvbox
+
+" Statusline config (lightline.vim)  {{{1
+" ---------------------------------
 
 let g:lightline = {
 \	'colorscheme':'onedark',
 \	'active': {
 \		'left': [
 \			['mode', 'paste'],
-\			['fugitive', 'filename', 'readonly', 'mymodified']
+\			['fugitive', 'filename', 'permission', 'mymodified']
 \		],
 \		'right': [['lineinfo'], ['filetype'], ['fileencoding']]
 \	},
 \	'inactive': {
-\		'left': [['filename', 'readonly', 'mymodified']],
+\		'left': [['filename', 'permission', 'mymodified']],
 \		'right': [['lineinfo']]
 \	},
 \	'component': {'lineinfo': "%P \u2022 %L"},
 \	'component_function': {
-\		'readonly':   'LightlineReadonly',
+\		'permission': 'LightlinePermission',
 \		'fugitive':   'LightlineFugitive',
 \		'mymodified': 'LightlineModified'
 \	},
@@ -191,9 +181,9 @@ let g:lightline = {
 \	'subseparator': {'left': "│", 'right': "│"}
 \}
 
-" Print the lock '' for RO file
-function! LightlineReadonly()
-	return &readonly ? "\ue0a2" : ''
+" Print the lock '' for RO or NOMA file
+function! LightlinePermission()
+	return &readonly || &modifiable == 0 ? "\ue0a2" : ''
 endfunction
 
 " Print the branch '' if the file is under git control
@@ -210,8 +200,7 @@ function! LightlineModified()
 	return &modifiable && &modified ? '+': ''
 endfunction
 
-" ------------------------------
-" Neovim lsp config (nvim 0.5.0)
+" Neovim lsp config (nvim 0.5.0)  {{{1
 " ------------------------------
 
 "" Settings for completion-nvim plugin
@@ -235,3 +224,7 @@ endfunction
 "	vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 "end
 "EOF
+
+" }}}
+
+" vim: fdm=marker

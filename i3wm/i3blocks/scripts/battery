@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Author : Guilain Ernotte <guilainsjc@gmail.com>
-
 # Ce script consiste dans un premier temps à aller extraire l'information
 # renvoyée par la commande `acpi -b` concernant la batterie du pc, et dans un
 # second temps à mettre en forme puis afficher cette information dans la barre
 # de statut.
+#
+# Author : Guilain Ernotte <guilainsjc@gmail.com>
 
 # Sélectionner la bonne batterie (celle du PC)
 BAT=$(acpi -b | grep -v "rate information unavailable")

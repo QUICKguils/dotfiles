@@ -4,7 +4,8 @@
 #  / /___/ / |/ |/ / / / / / /
 # /_//____/|__/|__/_/ /_/ /_/
 
-# ----- Set variables -----
+# Set variables {{{1
+# -------------
 
 # Modifier = Mod4 = Super_L
 set $mod Mod4
@@ -48,7 +49,8 @@ set $ws8  "8  "
 set $ws9  "9  "
 set $ws10 "10  "
 
-# ----- Applications launched during i3 startup -----
+# Applications launched during i3 startup {{{1
+# ---------------------------------------
 
 # It may be preferable to launch some of these programs from .xsession or
 # .xprofile and not from the config file of a specific window manager. But if
@@ -81,7 +83,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # Applet from NetworkManager, appearing in the tray icon.
 exec --no-startup-id nm-applet
 
-# ----- Reload, restart, quit and lock -----
+# Reload, restart, quit and lock {{{1
+# ------------------------------
 
 bindsym $mod+Shift+c       reload
 bindsym $mod+Shift+r       restart
@@ -89,7 +92,8 @@ bindsym $mod+Shift+e       exec i3-msg exit
 # bindsym $mod+Shift+e       exec "i3-nagbar -t warning -m 'Really quit i3?' -b ' OK ' 'i3-msg exit'"
 bindsym $mod++Shift+Escape exec i3lock --color "$od_black"
 
-# ----- Window manipulations -----
+# Window manipulations {{{1
+# --------------------
 
 # change focus
 bindsym $mod+h focus left
@@ -106,7 +110,8 @@ bindsym $mod+Shift+l move right
 # kill focused window
 bindsym $mod+q kill
 
-# ----- Layouts behaviour -----
+# Layouts behaviour {{{1
+# -----------------
 
 # split container
 bindsym $mod+semicolon split h
@@ -129,7 +134,8 @@ bindsym $mod+o focus parent
 # focus the child container
 bindsym $mod+y focus child
 
-# ----- Workspace manipulation -----
+# Workspace manipulation {{{1
+# ----------------------
 
 # switch to workspace
 bindsym $mod+ampersand  workspace number $ws1
@@ -162,7 +168,8 @@ bindsym $mod+Shift+m move container to workspace next
 # Show/hide scratchpad (hidden workspace)
 bindsym $mod+BackSpace scratchpad show
 
-# ----- Modes -----
+# Modes {{{1
+# -----
 
 # Resize mode
 bindsym $mod+colon mode "Resize"
@@ -196,7 +203,8 @@ mode "Launcher" {
 	bindsym $mod+space mode "default"
 }
 
-# ----- Window appearance -----
+# Window appearance {{{1
+# -----------------
 
 # Window title
 font pango: $sansfont 10
@@ -214,7 +222,8 @@ client.focused_inactive $od_split  $od_visual $od_blue  $od_visual  $od_visual
 client.urgent           $od_red    $od_red    $od_black $od_magenta
 client.background       $od_cursor
 
-# ----- Status bar configuration -----
+# Status bar configuration {{{1
+# ------------------------
 
 bar {
 	# External status manager: i3blocks (~/.config/i3blocks/config)
@@ -247,7 +256,8 @@ bindsym --release XF86AudioLowerVolume exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release XF86AudioMute        exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release XF86AudioMicMute     exec pkill -SIGRTMIN+11 i3blocks
 
-# ----- Application-specific instructions -----
+# Application-specific instructions {{{1
+# ---------------------------------
 
 # -- Audio and media control --
 # Use pactl to adjust volume in PulseAudio.
@@ -284,3 +294,7 @@ for_window [class="Org.gnome|Eog|Gnome-"]  floating enable
 for_window [class="mpv"]                   floating enable
 for_window [class="Bitwarden"]             floating enable
 for_window [class="MATLAB" title="Figure"] floating enable
+
+# }}}
+
+# vim: fdm=marker
