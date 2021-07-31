@@ -107,6 +107,7 @@ nnoremap <leader>ft :Filetypes<CR>
 nnoremap <leader>sh :se hls!<CR>
 nnoremap <leader>sn :setl rnu!<CR>
 nnoremap <leader>ss :setl nospell!<CR>
+nnoremap <leader>sl :set cursorline!<CR>
 nnoremap <leader>sv :call ToggleVE()<CR>
 
 function! ToggleVE()
@@ -152,8 +153,14 @@ colo onedark
 " " Gruvbox <https://github.com/morhetz/gruvbox>
 " packadd! gruvbox
 " let g:gruvbox_italic=1
+" let g:gruvbox_italicize_comments=0
 " let g:gruvbox_invert_selection=0
 " colo gruvbox
+
+" " Nord <https://www.nordtheme.com/ports/vim>
+" packadd! nord-vim
+" let g:nord_italic=1
+" colo nord
 
 " Statusline config (lightline.vim)  {{{1
 " ---------------------------------
