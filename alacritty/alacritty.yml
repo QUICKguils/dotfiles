@@ -38,7 +38,59 @@ key_bindings:
 
 draw_bold_text_with_bright_colors: true
 
-# Onedark colorscheme
+# Nord colorscheme (modified) {{{1
+# colors:
+#   primary:
+#     background: '#2d333f'
+#     foreground: '#cbd1db'
+#   cursor:
+#     text:   '#4c566a'
+#     cursor: '#cbd1db'
+#   selection:
+#     text:       CellForeground
+#     background: '#434c5e'
+#   search:
+#     matches:
+#       foreground: '#3b4252'
+#       background: '#73bcd1'
+#     focused_match:
+#       foreground: '#eceff4'
+#       background: '#5e81ac'
+#     bar:
+#       background: '#3b4252'
+#       foreground: '#cbd1db'
+#   line_indicator:
+#     foreground: '#3b4252'
+#     background: '#d08770'
+#   normal:
+#     black:   '#3b4252'
+#     red:     '#bf616a'
+#     green:   '#a3be8c'
+#     yellow:  '#ebcb8b'
+#     blue:    '#81a1c1'
+#     magenta: '#b48ead'
+#     cyan:    '#73bcd1'
+#     white:   '#e5e9f0'
+#   bright:
+#     black:   '#4c566a'
+#     red:     '#bf616a'
+#     green:   '#a3be8c'
+#     yellow:  '#ebcb8b'
+#     blue:    '#81a1c1'
+#     magenta: '#b48ead'
+#     cyan:    '#8fbcbb'
+#     white:   '#eceff4'
+#   dim:
+#     black:   '#373e4d'
+#     red:     '#94545d'
+#     green:   '#809575'
+#     yellow:  '#b29e75'
+#     blue:    '#68809a'
+#     magenta: '#8c738c'
+#     cyan:    '#6d96a5'
+#     white:   '#aeb3bb'
+
+# Onedark colorscheme  {{{1
 colors:
   primary:
     background: '#282c34'
@@ -81,52 +133,6 @@ colors:
     cyan:    '#56b6c2'
     white:   '#5c6370'
 
-# # Nord colorscheme
-# colors:
-#   primary:
-#     background: '#2e3440'
-#     foreground: '#d8dee9'
-#     dim_foreground: '#a5abb6'
-#   cursor:
-#     text: '#2e3440'
-#     cursor: '#d8dee9'
-#   vi_mode_cursor:
-#     text: '#2e3440'
-#     cursor: '#d8dee9'
-#   selection:
-#     text: CellForeground
-#     background: '#4c566a'
-#   search:
-#     matches:
-#       foreground: CellBackground
-#       background: '#88c0d0'
-#     bar:
-#       background: '#434c5e'
-#       foreground: '#d8dee9'
-#   normal:
-#     black: '#3b4252'
-#     red: '#bf616a'
-#     green: '#a3be8c'
-#     yellow: '#ebcb8b'
-#     blue: '#81a1c1'
-#     magenta: '#b48ead'
-#     cyan: '#88c0d0'
-#     white: '#e5e9f0'
-#   bright:
-#     black: '#4c566a'
-#     red: '#bf616a'
-#     green: '#a3be8c'
-#     yellow: '#ebcb8b'
-#     blue: '#81a1c1'
-#     magenta: '#b48ead'
-#     cyan: '#8fbcbb'
-#     white: '#eceff4'
-#   dim:
-#     black: '#373e4d'
-#     red: '#94545d'
-#     green: '#809575'
-#     yellow: '#b29e75'
-#     blue: '#68809a'
-#     magenta: '#8c738c'
-#     cyan: '#6d96a5'
-#     white: '#aeb3bb'
+# }}}1
+
+# vim: fdm=marker

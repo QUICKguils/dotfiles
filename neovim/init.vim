@@ -50,6 +50,12 @@ au FileType python   nmap <buffer><F5> :w<Bar>py3file %<CR>
 let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
 let g:loaded_python_provider = 0
 
+" Go config
+let  g:go_highlight_types=1
+let  g:go_highlight_extra_types=1
+"let  g:go_highlight_operators=1
+"let  g:go_highlight_functions=1
+
 " Latex config
 au FileType tex setl formatoptions=tcqj textwidth=100
 au FileType tex setl spell spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
@@ -107,7 +113,7 @@ nnoremap <leader>ft :Filetypes<CR>
 nnoremap <leader>sh :se hls!<CR>
 nnoremap <leader>sn :setl rnu!<CR>
 nnoremap <leader>ss :setl nospell!<CR>
-nnoremap <leader>sl :set cursorline!<CR>
+nnoremap <leader>sl :setl cursorline!<CR>
 nnoremap <leader>sv :call ToggleVE()<CR>
 
 function! ToggleVE()
@@ -149,13 +155,6 @@ endif
 packadd! onedark.vim
 let g:onedark_terminal_italics=1
 colo onedark
-
-" " Gruvbox <https://github.com/morhetz/gruvbox>
-" packadd! gruvbox
-" let g:gruvbox_italic=1
-" let g:gruvbox_italicize_comments=0
-" let g:gruvbox_invert_selection=0
-" colo gruvbox
 
 " " Nord <https://www.nordtheme.com/ports/vim>
 " packadd! nord-vim

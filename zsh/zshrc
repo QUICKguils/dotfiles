@@ -59,7 +59,7 @@ zstyle ':vcs_info:*' enable git
 # Command promt appearance
 symbol="▶"
 PROMPT='%(!.%F{magenta}#. )%(?.%F{green}.%F{red})$symbol%f '
-RPROMPT='%F{15}$vcs_info_msg_0_ [%~]'
+RPROMPT='%F{8}$vcs_info_msg_0_ [%~]'
 
 # Keybindings/aliases  {{{1
 # -------------------

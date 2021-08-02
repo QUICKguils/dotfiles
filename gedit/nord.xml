@@ -17,7 +17,8 @@ References:
   <author>Arctic Ice Studio</author>
   <description>An arctic, north-bluish clean and elegant gedit syntax theme.</description>
 
-  <color name="nord0" value="#2E3440" />
+  <!-- <color name="nord0" value="#2E3440" /> -->
+  <color name="nord0" value="#2d333f" />
   <color name="nord1" value="#3B4252" />
   <color name="nord2" value="#434C5E" />
   <color name="nord3" value="#4C566A" />
