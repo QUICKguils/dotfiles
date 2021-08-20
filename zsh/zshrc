@@ -104,8 +104,8 @@ export MANPAGER="nvim +Man!"
 
 # Bat configuration (a cat clone with wings)
 # Cf. https://github.com/sharkdp/bat
-#export BAT_THEME="Nord"
-export BAT_THEME="OneHalfDark"
+export BAT_THEME="Nord"
+#export BAT_THEME="OneHalfDark"
 export BAT_STYLE="auto"
 
 # searching tools  {{{1
@@ -127,31 +127,31 @@ export FZF_DEFAULT_COMMAND="fd -H"
 export FZF_DEFAULT_OPTS="\
 -m --height=60% --reverse --bind=ctrl-p:toggle-preview \
 --color=\
-bg:#282c34,\
-bg+:#2c323c,\
-fg:#5c6370,\
-fg+:#abb2bf:bold,\
-hl:#98c379,\
-hl+:#98c379:bold,\
-border:#c678dd,\
-pointer:#e06c75:bold,\
-marker:#be5046,\
-prompt:#61afef,\
-spinner:#e5c07b,\
-info:#e5c07b"
+bg:#2e3440,\
+bg+:#3b4252,\
+fg:#616e88,\
+fg+:#d8dee9:bold,\
+hl:#a3be8c,\
+hl+:#a3be8c:bold,\
+border:#b48ead,\
+pointer:#bf616a:bold,\
+marker:#d08770,\
+prompt:#88c0d0,\
+spinner:#ebcb8b,\
+info:#ebcb8b"
 # --color=\
-# bg:#2e3440,\
-# bg+:#3b4252,\
-# fg:#616e88,\
-# fg+:#d8dee9:bold,\
-# hl:#a3be8c,\
-# hl+:#a3be8c:bold,\
-# border:#b48ead,\
-# pointer:#bf616a:bold,\
-# marker:#d08770,\
-# prompt:#88c0d0,\
-# spinner:#ebcb8b,\
-# info:#ebcb8b"
+# bg:#282c34,\
+# bg+:#2c323c,\
+# fg:#5c6370,\
+# fg+:#abb2bf:bold,\
+# hl:#98c379,\
+# hl+:#98c379:bold,\
+# border:#c678dd,\
+# pointer:#e06c75:bold,\
+# marker:#be5046,\
+# prompt:#61afef,\
+# spinner:#e5c07b,\
+# info:#e5c07b"
 
 # fzf file search, with preview using bat.
 export FZF_CTRL_T_COMMAND="fd -Ht f"
@@ -220,7 +220,3 @@ bindkey "^K" history-substring-search-up
 bindkey "^[[A" history-substring-search-up
 bindkey "^J" history-substring-search-down
 bindkey "^[[B" history-substring-search-down
-
-# }}}
-
-# vim: fdm=marker

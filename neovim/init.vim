@@ -14,7 +14,8 @@ se tabstop=4 softtabstop=4 shiftwidth=4
 se smartindent
 se noshowmode
 se number relativenumber
-se nowrap nojoinspaces textwidth=80 colorcolumn=+1 formatoptions=cqj
+se nowrap nojoinspaces foldmethod=marker
+se textwidth=80 colorcolumn=+1 formatoptions=cqj
 se scrolloff=5
 se nohlsearch ignorecase smartcase wildignorecase
 se list listchars=trail:•,tab:│\ ,extends:▶,precedes:◀
@@ -45,6 +46,7 @@ au FileType c        nmap <buffer><F6> :sp<Bar>:te %:r<CR>
 au FileType go       nmap <buffer><F5> :w<Bar>:GoRun %<CR>
 au FileType go       nmap <buffer><F6> <Plug>(go-run-split)
 au FileType python   nmap <buffer><F5> :w<Bar>py3file %<CR>
+au FileType vim      nmap <buffer><F5> :w<Bar>source %<CR>
 
 " Python3 config
 let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
@@ -53,7 +55,7 @@ let g:loaded_python_provider = 0
 " Go config
 let  g:go_highlight_types=1
 let  g:go_highlight_extra_types=1
-"let  g:go_highlight_operators=1
+let  g:go_highlight_operators=1
 "let  g:go_highlight_functions=1
 
 " Latex config
@@ -131,9 +133,6 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 nnoremap <leader>c :clo<CR>
 
-" Source vimscript, reload nvim config
-nnoremap <leader>so :w<Bar>:source %<CR>
-
 " Mappings : plugin-related
 nmap ga <Plug>(EasyAlign)
 vmap ga <Plug>(EasyAlign)
@@ -151,21 +150,21 @@ if (has("termguicolors"))
 	se termguicolors
 endif
 
-" Onedark <https://github.com/joshdick/onedark.vim>
-packadd! onedark.vim
-let g:onedark_terminal_italics=1
-colo onedark
+" " Onedark <https://github.com/joshdick/onedark.vim>
+" packadd! onedark.vim
+" let g:onedark_terminal_italics=1
+" colo onedark
 
-" " Nord <https://www.nordtheme.com/ports/vim>
-" packadd! nord-vim
-" let g:nord_italic=1
-" colo nord
+" Nord <https://www.nordtheme.com/ports/vim>
+packadd! nord-vim
+let g:nord_italic=1
+colo nord
 
 " Statusline config (lightline.vim)  {{{1
 " ---------------------------------
 
 let g:lightline = {
-\	'colorscheme':'onedark',
+\	'colorscheme':'nord',
 \	'active': {
 \		'left': [
 \			['mode', 'paste'],
@@ -230,7 +229,3 @@ endfunction
 "	vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 "end
 "EOF
-
-" }}}
-
-" vim: fdm=marker

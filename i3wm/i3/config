@@ -294,7 +294,3 @@ for_window [class="Org.gnome|Eog|Gnome-"]  floating enable
 for_window [class="mpv"]                   floating enable
 for_window [class="Bitwarden"]             floating enable
 for_window [class="MATLAB" title="Figure"] floating enable
-
-# }}}
-
-# vim: fdm=marker
