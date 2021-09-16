@@ -1,3 +1,4 @@
+# Adapted from:
 # Copyright (C) 2017-present Arctic Ice Studio <development@arcticicestudio.com>
 # Copyright (C) 2017-present Sven Greb <development@svengreb.de>
 
@@ -6,8 +7,6 @@
 # Repository: https://github.com/arcticicestudio/nord-dircolors
 # License:    MIT
 
-# Ce sript a été écrit pour s'harmoniser avec le thème Nord. Mais il reste bon
-# avec n'importe quelle autre palette de couleurs.
 COLOR tty
 
 TERM alacritty
@@ -81,7 +80,7 @@ SETGID 01;04;37
 CAPABILITY 01;37
 
 STICKY_OTHER_WRITABLE 01;37;44
-OTHER_WRITABLE 01;34 #OTHER_WRITABLE 01;04;34
+OTHER_WRITABLE 01;34
 STICKY 04;37;44
 
 #+-------------------+
@@ -183,17 +182,17 @@ STICKY 04;37;44
 .reg 01;36
 
 #+--- Ignores ---+
-*~ 02;37
-.bak 02;37
-.BAK 02;37
-.log 02;37
-.log 02;37
-.old 02;37
-.OLD 02;37
-.orig 02;37
-.ORIG 02;37
-.swo 02;37
-.swp 02;37
+*~ 90
+.bak 90
+.BAK 90
+.log 90
+.log 90
+.old 90
+.OLD 90
+.orig 90
+.ORIG 90
+.swo 90
+.swp 90
 
 #+--- Images ---+
 .bmp 32

@@ -31,7 +31,7 @@ let g:netrw_bufsettings="noma nomod nobl nowrap ro rnu"
 " -------------------------------------------------
 
 " Formatting by file type
-au FileType markdown  setl formatoptions=tcqjn spell commentstring=<!--%s-->
+au FileType markdown  setl formatoptions=tcqjn commentstring=<!--%s-->
 au FileType matlab    setl commentstring=\%%s
 au FileType vhdl      setl commentstring=--%s
 au FileType haskell   setl expandtab
@@ -56,11 +56,12 @@ let g:loaded_python_provider = 0
 let  g:go_highlight_types=1
 let  g:go_highlight_extra_types=1
 let  g:go_highlight_operators=1
-"let  g:go_highlight_functions=1
+let  g:go_highlight_functions=1
+let  g:go_highlight_function_calls=1
 
 " Latex config
 au FileType tex setl formatoptions=tcqj textwidth=100
-au FileType tex setl spell spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
+au FileType tex setl spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
 " Vimtex config
 let g:vimtex_compiler_latexmk={'continuous': 0}
 let g:vimtex_view_method="zathura"
@@ -88,6 +89,8 @@ nnoremap <leader>n <C-w>n
 " Mappings : navigation inside a window with alt instead of ctrl (more ergo)
 nnoremap <M-j> 3<C-e>
 nnoremap <M-k> 3<C-y>
+nnoremap <M-e> <C-e>
+nnoremap <M-y> <C-y>
 nnoremap <M-d> <C-d>
 nnoremap <M-u> <C-u>
 nnoremap <M-f> <C-f>
@@ -133,6 +136,9 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 nnoremap <leader>c :clo<CR>
 
+" Infos about the current file
+nnoremap <leader>i :se fenc? ff?<CR>
+
 " Mappings : plugin-related
 nmap ga <Plug>(EasyAlign)
 vmap ga <Plug>(EasyAlign)
@@ -168,12 +174,12 @@ let g:lightline = {
 \	'active': {
 \		'left': [
 \			['mode', 'paste'],
-\			['fugitive', 'filename', 'permission', 'mymodified']
+\			['fugitive', 'filename', 'mymodified', 'permission']
 \		],
-\		'right': [['lineinfo'], ['filetype'], ['fileencoding']]
+\		'right': [['lineinfo'], ['filetype']]
 \	},
 \	'inactive': {
-\		'left': [['filename', 'permission', 'mymodified']],
+\		'left': [['filename', 'mymodified', 'permission']],
 \		'right': [['lineinfo']]
 \	},
 \	'component': {'lineinfo': "%P \u2022 %L"},
@@ -188,21 +194,21 @@ let g:lightline = {
 
 " Print the lock '' for RO or NOMA file
 function! LightlinePermission()
-	return &readonly || &modifiable == 0 ? "\ue0a2" : ''
+	return &readonly || &modifiable == 0 ? "\ue0a2" : ""
 endfunction
 
 " Print the branch '' if the file is under git control
 function! LightlineFugitive()
 	if exists('*FugitiveHead')
 		let branch = FugitiveHead()
-		return branch !=# '' ? "\ue0a0 ".branch : ''
+		return branch !=# '' ? "\ue0a0 ".branch : ""
 	endif
 	return ''
 endfunction
 
 " Print the '+' sign only when the buffer is modified
 function! LightlineModified()
-	return &modifiable && &modified ? '+': ''
+	return &modifiable && &modified ? "+": ""
 endfunction
 
 " Neovim lsp config (nvim 0.5.0)  {{{1

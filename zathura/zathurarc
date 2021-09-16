@@ -1,3 +1,4 @@
+# vim: ft=sh
 #               __  __
 #  ____  ____ _/ /_/ /_  __  ___________ ___________
 # /_  / / __ `/ __/ __ \/ / / / ___/ __ `/ ___/ ___/
@@ -7,7 +8,7 @@
 # ===== Configuration générale =====
 
 # Police de zathura
-set font "Hack 10"
+set font "Iosevka Custom 10"
 
 # Disposition par défaut
 set window-height 1080
