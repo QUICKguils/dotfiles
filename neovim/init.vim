@@ -42,8 +42,8 @@ map <F5> :w<Bar>:make<CR>
 au FileType markdown setl makeprg=pandoc\ -o\ %:r.html\ %\ --mathjax
 au FileType markdown nmap <buffer><F6> :!xdg-open %:r.html<CR>
 au FileType c        setl makeprg=gcc\ -Wall\ -o\ %:r\ %
-au FileType c        nmap <buffer><F6> :sp<Bar>:te %:r<CR>
-au FileType go       nmap <buffer><F5> :w<Bar>:GoRun %<CR>
+au FileType c        nmap <buffer><F6> :sp<Bar>te %:r<CR>
+au FileType go       nmap <buffer><F5> :w<Bar>GoRun %<CR>
 au FileType go       nmap <buffer><F6> <Plug>(go-run-split)
 au FileType python   nmap <buffer><F5> :w<Bar>py3file %<CR>
 au FileType vim      nmap <buffer><F5> :w<Bar>source %<CR>
@@ -73,8 +73,11 @@ endif
 " Mappings  {{{1
 " --------
 
-" Mappings : navigation between windows
+" Leader and local leader
 let mapleader="\<Space>"
+let maplocalleader="\\"
+
+" Mappings : navigation between windows
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k

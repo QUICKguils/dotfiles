@@ -9,23 +9,23 @@
 
 window:
   dimensions:
-    columns: 120
-    lines: 49
+    columns: 115
+    lines: 50
   padding:
     x: 2
-    y: 2
+    y: 1
   dynamic_padding: true
 
 font:
   normal:
-    family: Iosevka Custom
+    family: Hack
   offset:
     x: 0
-    y: 1
+    y: 3
   glyph_offset:
     x: 0
-    y: 0
-  size: 11.5
+    y: 1
+  size: 11
 
 shell:
   program: /usr/bin/zsh

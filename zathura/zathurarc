@@ -8,7 +8,7 @@
 # ===== Configuration générale =====
 
 # Police de zathura
-set font "Iosevka Custom 10"
+set font "Hack 10"
 
 # Disposition par défaut
 set window-height 1080
@@ -34,10 +34,13 @@ set zoom-step 5
 set zoom-center     "true"
 set vertical-center "true"
 
+# Clipboard
+set selection-clipboard "clipboard"
+
 # ===== Couleurs =====
 
 # Transparence du surlignage des termes recherchés
-set highlight-transparency 0.7
+set highlight-transparency 0.5
 
 # Options utiles de recoloration
 set recolor-keephue       "true"
@@ -100,16 +103,16 @@ set notification-warning-fg "#ebcb8b"
 set notification-bg         "#3b4252"
 set notification-fg         "#a3be8c"
 
-set completion-bg           "#292e39"
+set completion-bg           "#2e3440"
 set completion-fg           "#d8dee9"
 set completion-group-bg     "#3b4252"
 set completion-group-fg     "#eceff4"
 set completion-highlight-bg "#88c0d0"
-set completion-highlight-fg "#3b4252"
+set completion-highlight-fg "#2e3440"
 
-set index-bg                "#282e38"
+set index-bg                "#2e3440"
 set index-fg                "#d8dee9"
-set index-active-bg         "#81c0cf"
+set index-active-bg         "#88c0d0"
 set index-active-fg         "#3b4252"
 
 set inputbar-bg             "#3b4252"
