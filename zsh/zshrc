@@ -79,7 +79,7 @@ alias t='tmux'
 alias o='xdg-open'
 alias b='bat --style=rule,changes,numbers,snip'
 alias fl='figlet -t -f slant'
-alias jl='julia --banner=no'
+alias jl='julia'
 alias mlj='matlab -nodesktop -nosplash'
 alias ml='matlab -nojvm'
 alias py='python'
@@ -182,7 +182,7 @@ export PATH="$PATH:/usr/local/julia/bin"
 # Matlab
 export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
 # Latex distribution (TexLive 2021)
-export PATH="$PATH:/run/media/guil/Data/texlive/2021/bin/x86_64-linux"
+export PATH="/run/media/guil/Data/texlive/2021/bin/x86_64-linux:$PATH"
 export MANPATH="$MANPATH:/run/media/guil/Data/texlive/2021/texmf-dist/doc/man"
 export INFOPATH="$INFOPATH:/run/media/guil/Data/texlive/2021/texmf-dist/doc/info"
 # Go environment setup

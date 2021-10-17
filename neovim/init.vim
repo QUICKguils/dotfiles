@@ -27,8 +27,8 @@ se spellfile=/home/guil/.local/share/nvim/site/spell/LexiquePerso.utf-8.add
 let g:netrw_liststyle=1
 let g:netrw_bufsettings="noma nomod nobl nowrap ro rnu"
 
-" Formatting, mappings and compilation by file type  {{{1
-" -------------------------------------------------
+" Configuration by file type  {{{1
+" --------------------------
 
 " Formatting by file type
 au FileType markdown  setl formatoptions=tcqjn commentstring=<!--%s-->
@@ -37,7 +37,7 @@ au FileType vhdl      setl commentstring=--%s
 au FileType haskell   setl expandtab
 au FileType gitcommit setl textwidth=72
 
-" Mappings : compilation by file type
+" Compilation by file type
 map <F5> :w<Bar>:make<CR>
 au FileType markdown setl makeprg=pandoc\ -o\ %:r.html\ %\ --mathjax
 au FileType markdown nmap <buffer><F6> :!xdg-open %:r.html<CR>
@@ -46,6 +46,7 @@ au FileType c        nmap <buffer><F6> :sp<Bar>te %:r<CR>
 au FileType go       nmap <buffer><F5> :w<Bar>GoRun %<CR>
 au FileType go       nmap <buffer><F6> <Plug>(go-run-split)
 au FileType python   nmap <buffer><F5> :w<Bar>py3file %<CR>
+au FileType julia    nmap <buffer><F5> :w<Bar>!julia %<CR>
 au FileType vim      nmap <buffer><F5> :w<Bar>source %<CR>
 
 " Python3 config
@@ -65,6 +66,7 @@ au FileType tex setl spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.
 " Vimtex config
 let g:vimtex_compiler_latexmk={'continuous': 0}
 let g:vimtex_view_method="zathura"
+let g:vimtex_quickfix_mode=0
 " Start a client server (see vimtex-clientserver)
 if empty(v:servername) && exists('*remote_startserver')
 	call remote_startserver('VIM')
@@ -89,7 +91,7 @@ nnoremap <leader>L <C-w>L
 nnoremap <leader>= <C-w>=
 nnoremap <leader>n <C-w>n
 
-" Mappings : navigation inside a window with alt instead of ctrl (more ergo)
+" Mappings : navigation inside a window
 nnoremap <M-j> 3<C-e>
 nnoremap <M-k> 3<C-y>
 nnoremap <M-e> <C-e>
@@ -118,19 +120,31 @@ nnoremap <leader>fm :Marks<CR>
 nnoremap <leader>ft :Filetypes<CR>
 
 " Mappings : quick setting toggles
-nnoremap <leader>sh :se hls!<CR>
-nnoremap <leader>sn :setl rnu!<CR>
-nnoremap <leader>ss :setl nospell!<CR>
-nnoremap <leader>sl :setl cursorline!<CR>
-nnoremap <leader>sv :call ToggleVE()<CR>
+nnoremap <silent> <leader>sh :se hls!<CR>
+nnoremap <silent> <leader>sn :setl rnu!<CR>
+nnoremap <silent> <leader>ss :setl nospell!<CR>
+nnoremap <silent> <leader>sl :setl cursorline!<CR>
+nnoremap          <leader>sv :call VirtualEdit_toggle()<CR>
+nnoremap <silent> <F2>       :call QuickFix_toggle()<cr>
 
-function! ToggleVE()
+function! VirtualEdit_toggle()
 	if &ve == ""
 		set ve=all
 	else
 		set ve=""
 	endif
 	set ve?
+endfunction
+
+function! QuickFix_toggle()
+    for i in range(1, winnr('$'))
+        let bnum = winbufnr(i)
+        if getbufvar(bnum, '&buftype') == 'quickfix'
+            cclose
+            return
+        endif
+    endfor
+    copen 8
 endfunction
 
 " Mappings : quick write, quit and close
@@ -168,6 +182,11 @@ endif
 packadd! nord-vim
 let g:nord_italic=1
 colo nord
+
+" " Solarized8 <https://github.com/lifepillar/vim-solarized8>
+" packadd! vim-solarized8
+" let g:solarized_extra_hi_groups=1
+" colo solarized8_flat
 
 " Statusline config (lightline.vim)  {{{1
 " ---------------------------------

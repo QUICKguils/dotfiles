@@ -37,6 +37,8 @@ set vertical-center "true"
 # Clipboard
 set selection-clipboard "clipboard"
 
+# Synctex backward search
+set synctex-editor-command 'nvr --remote +"%line" "%file"'
 # ===== Couleurs =====
 
 # Transparence du surlignage des termes recherchés
