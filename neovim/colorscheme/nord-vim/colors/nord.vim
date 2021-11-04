@@ -129,12 +129,12 @@ call s:hi("Italic", "", "", "", "", s:italic, "")
 
 "+--- Editor ---+
 call s:hi("ColorColumn",   "",           s:nord1_gui, "NONE",        s:nord1_term, "",          "")
-call s:hi("Cursor",        s:nord0_gui,  s:nord4_gui, "",            "NONE",       "",          "")
+call s:hi("Cursor",        s:nord1_gui,  s:nord4_gui, "",            "NONE",       "",          "")
 call s:hi("CursorLine",    "",           s:nord1_gui, "NONE",        s:nord1_term, "NONE",      "")
-call s:hi("iCursor",       s:nord0_gui,  s:nord4_gui, "",            "NONE",       "",          "")
+call s:hi("lCursor",       s:nord1_gui,  s:nord4_gui, "",            "NONE",       "",          "")
 call s:hi("LineNr",        s:nord3_gui,  "NONE",      s:nord3_term,  "NONE",       "",          "")
 call s:hi("MatchParen",    s:nord8_gui,  s:nord3_gui, s:nord8_term,  s:nord3_term, "",          "")
-call s:hi("NonText",       s:nord2_gui,  "",          s:nord3_term,  "",           "",          "")
+call s:hi("NonText",       s:nord3_gui,  "",          s:nord3_term,  "",           "",          "")
 call s:hi("Normal",        s:nord4_gui,  s:nord0_gui, "NONE",        "NONE",       "",          "")
 call s:hi("Pmenu",         s:nord4_gui,  s:nord2_gui, "NONE",        s:nord1_term, "NONE",      "")
 call s:hi("PmenuSbar",     s:nord4_gui,  s:nord2_gui, "NONE",        s:nord1_term, "",          "")
@@ -147,6 +147,7 @@ call s:hi("SpellLocal",    s:nord5_gui,  s:nord0_gui, s:nord5_term,  "NONE",    
 call s:hi("SpellRare",     s:nord6_gui,  s:nord0_gui, s:nord6_term,  "NONE",       "undercurl", s:nord6_gui)
 call s:hi("Visual",        "",           s:nord2_gui, "",            s:nord1_term, "",          "")
 call s:hi("VisualNOS",     "",           s:nord2_gui, "",            s:nord1_term, "",          "")
+
 "+- Neovim Support -+
 call s:hi("healthError",   s:nord11_gui, s:nord1_gui, s:nord11_term, s:nord1_term, "",          "")
 call s:hi("healthSuccess", s:nord14_gui, s:nord1_gui, s:nord14_term, s:nord1_term, "",          "")
@@ -180,34 +181,32 @@ if g:nord_cursor_line_number_background == 0
 else
 	call s:hi("CursorLineNr", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "NONE", "")
 endif
-call s:hi("Folded",     s:nord3_gui, "NONE", s:nord3_term, "NONE", s:bold, "")
-call s:hi("FoldColumn", s:nord3_gui, "NONE", s:nord3_term, "NONE", "",     "")
-call s:hi("SignColumn", s:nord1_gui, "NONE", s:nord1_term, "NONE", "",     "")
+call s:hi("Folded",     s:nord3_gui,  "NONE", s:nord3_term,  "NONE", s:bold, "")
+call s:hi("FoldColumn", s:nord10_gui, "NONE", s:nord10_term, "NONE", s:bold, "")
+call s:hi("SignColumn", s:nord1_gui,  "NONE", s:nord1_term,  "NONE", "",     "")
 
 "+--- Navigation ---+
 call s:hi("Directory", s:nord8_gui, "", s:nord8_term, "NONE", "", "")
 
 "+--- Prompt/Status ---+
-call s:hi("EndOfBuffer",      s:nord1_gui, "",           s:nord1_term, "NONE",        "",     "")
-call s:hi("ErrorMsg",         s:nord4_gui, s:nord11_gui, "NONE",       s:nord11_term, "",     "")
+call s:hi("EndOfBuffer",      s:nord3_gui, "",           s:nord3_term, "NONE",        "",     "")
+call s:hi("ErrorMsg",         s:nord5_gui, s:nord11_gui, "NONE",       s:nord11_term, "",     "")
 call s:hi("ModeMsg",          s:nord4_gui, "",           "",           "",            "",     "")
 call s:hi("MoreMsg",          s:nord8_gui, "",           s:nord8_term, "",            "",     "")
 call s:hi("Question",         s:nord4_gui, "",           "NONE",       "",            "",     "")
-call s:hi("StatusLine",       s:nord8_gui, s:nord3_gui,  s:nord8_term, s:nord3_term,  "NONE", "")
-call s:hi("StatusLineNC",     s:nord4_gui, s:nord1_gui,  "NONE",       s:nord1_term,  "NONE", "")
-call s:hi("StatusLineTerm",   s:nord8_gui, s:nord3_gui,  s:nord8_term, s:nord3_term,  "NONE", "")
-call s:hi("StatusLineTermNC", s:nord4_gui, s:nord1_gui,  "NONE",       s:nord1_term,  "NONE", "")
-call s:hi("WarningMsg",       s:nord0_gui, s:nord13_gui, s:nord1_term, s:nord13_term, "",     "")
+call s:hi("StatusLine",       s:nord1_gui, s:nord8_gui,  s:nord1_term, s:nord8_term,  "NONE", "")
+call s:hi("StatusLineNC",     s:nord5_gui, s:nord2_gui,  "NONE",       s:nord1_term,  "NONE", "")
+call s:hi("WarningMsg",       s:nord1_gui, s:nord13_gui, s:nord1_term, s:nord13_term, "",     "")
 call s:hi("WildMenu",         s:nord8_gui, s:nord1_gui,  s:nord8_term, s:nord1_term,  "",     "")
 
 "+--- Search ---+
 call s:hi("IncSearch", s:nord6_gui, s:nord10_gui, s:nord6_term, s:nord10_term, s:underline, "")
-call s:hi("Search", s:nord1_gui, s:nord8_gui, s:nord1_term, s:nord8_term, "NONE", "")
+call s:hi("Search",    s:nord1_gui, s:nord8_gui,  s:nord1_term, s:nord8_term,  "NONE",      "")
 
 "+--- Tabs ---+
-call s:hi("TabLine", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "NONE", "")
-call s:hi("TabLineFill", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "NONE", "")
-call s:hi("TabLineSel", s:nord8_gui, s:nord3_gui, s:nord8_term, s:nord3_term, "NONE", "")
+call s:hi("TabLine",     s:nord4_gui, s:nord2_gui, "NONE",       s:nord1_term, "NONE", "")
+call s:hi("TabLineFill", s:nord4_gui, s:nord1_gui, "NONE",       s:nord1_term, "NONE", "")
+call s:hi("TabLineSel",  s:nord8_gui, s:nord1_gui, s:nord8_term, s:nord1_term, "NONE", "")
 
 "+--- Window ---+
 call s:hi("Title", s:nord4_gui, "", "NONE", "", "NONE", "")
@@ -259,7 +258,7 @@ call s:hi("Underlined", s:nord9_gui, "", s:nord9_term, "", s:underline, "")
 
 call s:hi("Conceal", "", "NONE", "", "NONE", "", "")
 
-call s:hi("Error", s:nord4_gui, s:nord11_gui, "", s:nord11_term, "", "")
+call s:hi("Error", s:nord5_gui, s:nord11_gui, "", s:nord11_term, "", "")
 
 call s:hi("Todo", s:nord10_gui, "NONE", s:nord10_term, "NONE", s:bold, "")
 
@@ -275,56 +274,56 @@ call s:hi("asciidocOneLineTitle",          s:nord8_gui,  "", s:nord8_term,  "", 
 call s:hi("asciidocPassthroughBlock",      s:nord9_gui,  "", s:nord9_term,  "", "", "")
 call s:hi("asciidocQuotedMonospaced",      s:nord7_gui,  "", s:nord7_term,  "", "", "")
 call s:hi("asciidocTriplePlusPassthrough", s:nord7_gui,  "", s:nord7_term,  "", "", "")
-hi! link asciidocAdmonition Keyword
-hi! link asciidocAttributeRef markdownH1
-hi! link asciidocBackslash Keyword
-hi! link asciidocMacro Keyword
-hi! link asciidocQuotedBold Bold
-hi! link asciidocQuotedEmphasized Italic
-hi! link asciidocQuotedMonospaced2 asciidocQuotedMonospaced
-hi! link asciidocQuotedUnconstrainedBold asciidocQuotedBold
+hi! link asciidocAdmonition                    Keyword
+hi! link asciidocAttributeRef                  markdownH1
+hi! link asciidocBackslash                     Keyword
+hi! link asciidocMacro                         Keyword
+hi! link asciidocQuotedBold                    Bold
+hi! link asciidocQuotedEmphasized              Italic
+hi! link asciidocQuotedMonospaced2             asciidocQuotedMonospaced
+hi! link asciidocQuotedUnconstrainedBold       asciidocQuotedBold
 hi! link asciidocQuotedUnconstrainedEmphasized asciidocQuotedEmphasized
-hi! link asciidocURL markdownLinkText
+hi! link asciidocURL                           markdownLinkText
 
 call s:hi("awkCharClass", s:nord7_gui, "", s:nord7_term, "", "",     "")
 call s:hi("awkPatterns",  s:nord9_gui, "", s:nord9_term, "", s:bold, "")
-hi! link awkArrayElement Identifier
-hi! link awkBoolLogic Keyword
-hi! link awkBrktRegExp SpecialChar
-hi! link awkComma Delimiter
-hi! link awkExpression Keyword
-hi! link awkFieldVars Identifier
-hi! link awkLineSkip Keyword
-hi! link awkOperator Operator
-hi! link awkRegExp SpecialChar
-hi! link awkSearch Keyword
-hi! link awkSemicolon Delimiter
+hi! link awkArrayElement     Identifier
+hi! link awkBoolLogic        Keyword
+hi! link awkBrktRegExp       SpecialChar
+hi! link awkComma            Delimiter
+hi! link awkExpression       Keyword
+hi! link awkFieldVars        Identifier
+hi! link awkLineSkip         Keyword
+hi! link awkOperator         Operator
+hi! link awkRegExp           SpecialChar
+hi! link awkSearch           Keyword
+hi! link awkSemicolon        Delimiter
 hi! link awkSpecialCharacter SpecialChar
-hi! link awkSpecialPrintf SpecialChar
-hi! link awkVariables Identifier
+hi! link awkSpecialPrintf    SpecialChar
+hi! link awkVariables        Identifier
 
 call s:hi("cIncluded", s:nord7_gui, "", s:nord7_term, "", "", "")
-hi! link cOperator Operator
+hi! link cOperator  Operator
 hi! link cPreCondit PreCondit
 
 call s:hi("cmakeGeneratorExpression", s:nord10_gui, "", s:nord10_term, "", "", "")
 
 hi! link csPreCondit PreCondit
-hi! link csType Type
-hi! link csXmlTag SpecialComment
+hi! link csType      Type
+hi! link csXmlTag    SpecialComment
 
 call s:hi("cssAttributeSelector", s:nord7_gui, "", s:nord7_term, "", "",          "")
 call s:hi("cssDefinition",        s:nord7_gui, "", s:nord7_term, "", "NONE",      "")
 call s:hi("cssIdentifier",        s:nord7_gui, "", s:nord7_term, "", s:underline, "")
 call s:hi("cssStringQ",           s:nord7_gui, "", s:nord7_term, "", "",          "")
-hi! link cssAttr Keyword
-hi! link cssBraces Delimiter
-hi! link cssClassName cssDefinition
-hi! link cssColor Number
-hi! link cssProp cssDefinition
-hi! link cssPseudoClass cssDefinition
+hi! link cssAttr          Keyword
+hi! link cssBraces        Delimiter
+hi! link cssClassName     cssDefinition
+hi! link cssColor         Number
+hi! link cssProp          cssDefinition
+hi! link cssPseudoClass   cssDefinition
 hi! link cssPseudoClassId cssPseudoClass
-hi! link cssVendor Keyword
+hi! link cssVendor        Keyword
 
 call s:hi("dosiniHeader", s:nord8_gui, "", s:nord8_term, "", "", "")
 hi! link dosiniLabel Type
@@ -334,9 +333,9 @@ call s:hi("dtExecKey",    s:nord7_gui, "", s:nord7_term, "", "", "")
 call s:hi("dtLocaleKey",  s:nord7_gui, "", s:nord7_term, "", "", "")
 call s:hi("dtNumericKey", s:nord7_gui, "", s:nord7_term, "", "", "")
 call s:hi("dtTypeKey",    s:nord7_gui, "", s:nord7_term, "", "", "")
-hi! link dtDelim Delimiter
+hi! link dtDelim       Delimiter
 hi! link dtLocaleValue Keyword
-hi! link dtTypeValue Keyword
+hi! link dtTypeValue   Keyword
 
 if g:nord_uniform_diff_background == 0
   call s:hi("DiffAdd",    s:nord14_gui, s:nord0_gui, s:nord14_term, "NONE",       "inverse", "")
@@ -350,7 +349,7 @@ else
   call s:hi("DiffText",   s:nord9_gui,  s:nord1_gui, s:nord9_term,  s:nord1_term, "",        "")
 endif
 " Legacy groups for official git.vim and diff.vim syntax
-hi! link diffAdded DiffAdd
+hi! link diffAdded   DiffAdd
 hi! link diffChanged DiffChange
 hi! link diffRemoved DiffDelete
 
@@ -364,38 +363,38 @@ call s:hi("helpHyperTextJump", s:nord8_gui, "", s:nord8_term, "", s:underline, "
 
 call s:hi("htmlArg",  s:nord7_gui, "", s:nord7_term, "", "",     "")
 call s:hi("htmlLink", s:nord4_gui, "", "",           "", "NONE", "NONE")
-hi! link htmlBold Bold
-hi! link htmlEndTag htmlTag
-hi! link htmlItalic Italic
-hi! link htmlH1 markdownH1
-hi! link htmlH2 markdownH1
-hi! link htmlH3 markdownH1
-hi! link htmlH4 markdownH1
-hi! link htmlH5 markdownH1
-hi! link htmlH6 markdownH1
+hi! link htmlBold        Bold
+hi! link htmlEndTag      htmlTag
+hi! link htmlItalic      Italic
+hi! link htmlH1          markdownH1
+hi! link htmlH2          markdownH1
+hi! link htmlH3          markdownH1
+hi! link htmlH4          markdownH1
+hi! link htmlH5          markdownH1
+hi! link htmlH6          markdownH1
 hi! link htmlSpecialChar SpecialChar
-hi! link htmlTag Keyword
-hi! link htmlTagN htmlTag
+hi! link htmlTag         Keyword
+hi! link htmlTagN        htmlTag
 
 call s:hi("javaDocTags", s:nord7_gui, "", s:nord7_term, "", "", "")
-hi! link javaCommentTitle Comment
-hi! link javaScriptBraces Delimiter
+hi! link javaCommentTitle     Comment
+hi! link javaScriptBraces     Delimiter
 hi! link javaScriptIdentifier Keyword
-hi! link javaScriptNumber Number
+hi! link javaScriptNumber     Number
 
 call s:hi("jsonKeyword", s:nord7_gui, "", s:nord7_term, "", "", "")
 
 call s:hi("lessClass", s:nord7_gui, "", s:nord7_term, "", "", "")
-hi! link lessAmpersand Keyword
+hi! link lessAmpersand    Keyword
 hi! link lessCssAttribute Delimiter
-hi! link lessFunction Function
-hi! link cssSelectorOp Keyword
+hi! link lessFunction     Function
+hi! link cssSelectorOp    Keyword
 
 hi! link lispAtomBarSymbol SpecialChar
-hi! link lispAtomList SpecialChar
-hi! link lispAtomMark Keyword
-hi! link lispBarSymbol SpecialChar
-hi! link lispFunc Function
+hi! link lispAtomList      SpecialChar
+hi! link lispAtomMark      Keyword
+hi! link lispBarSymbol     SpecialChar
+hi! link lispFunc          Function
 
 hi! link luaFunc Function
 
@@ -408,28 +407,28 @@ call s:hi("markdownIdDeclaration", s:nord7_gui, "", s:nord7_term, "", "",     ""
 call s:hi("markdownH1",            s:nord8_gui, "", s:nord8_term, "", "",     "")
 call s:hi("markdownLinkText",      s:nord8_gui, "", s:nord8_term, "", "",     "")
 call s:hi("markdownUrl",           s:nord4_gui, "", "NONE",       "", "NONE", "")
-hi! link markdownBold Bold
-hi! link markdownBoldDelimiter Keyword
+hi! link markdownBold               Bold
+hi! link markdownBoldDelimiter      Keyword
 hi! link markdownFootnoteDefinition markdownFootnote
-hi! link markdownH2 markdownH1
-hi! link markdownH3 markdownH1
-hi! link markdownH4 markdownH1
-hi! link markdownH5 markdownH1
-hi! link markdownH6 markdownH1
-hi! link markdownIdDelimiter Keyword
-hi! link markdownItalic Italic
-hi! link markdownItalicDelimiter Keyword
-hi! link markdownLinkDelimiter Keyword
-hi! link markdownLinkTextDelimiter Keyword
-hi! link markdownListMarker Keyword
-hi! link markdownRule Keyword
-hi! link markdownHeadingDelimiter Keyword
+hi! link markdownH2                 markdownH1
+hi! link markdownH3                 markdownH1
+hi! link markdownH4                 markdownH1
+hi! link markdownH5                 markdownH1
+hi! link markdownH6                 markdownH1
+hi! link markdownIdDelimiter        Keyword
+hi! link markdownItalic             Italic
+hi! link markdownItalicDelimiter    Keyword
+hi! link markdownLinkDelimiter      Keyword
+hi! link markdownLinkTextDelimiter  Keyword
+hi! link markdownListMarker         Keyword
+hi! link markdownRule               Keyword
+hi! link markdownHeadingDelimiter   Keyword
 
 call s:hi("perlPackageDecl", s:nord7_gui, "", s:nord7_term, "", "", "")
 
 call s:hi("phpClasses", s:nord7_gui, "", s:nord7_term, "", "", "")
 call s:hi("phpDocTags", s:nord7_gui, "", s:nord7_term, "", "", "")
-hi! link phpDocCustomTags phpDocTags
+hi! link phpDocCustomTags  phpDocTags
 hi! link phpMemberSelector Keyword
 
 call s:hi("podCmdText",      s:nord7_gui, "", s:nord7_term, "", "", "")
@@ -437,17 +436,17 @@ call s:hi("podVerbatimLine", s:nord4_gui, "", "NONE",       "", "", "")
 hi! link podFormat Keyword
 
 hi! link pythonBuiltin Type
-hi! link pythonEscape SpecialChar
+hi! link pythonEscape  SpecialChar
 
 call s:hi("rubyConstant", s:nord7_gui, "", s:nord7_term, "", "",     "")
 call s:hi("rubySymbol",   s:nord6_gui, "", s:nord6_term, "", s:bold, "")
-hi! link rubyAttribute Identifier
-hi! link rubyBlockParameterList Operator
+hi! link rubyAttribute              Identifier
+hi! link rubyBlockParameterList     Operator
 hi! link rubyInterpolationDelimiter Keyword
-hi! link rubyKeywordAsMethod Function
-hi! link rubyLocalVariableOrMethod Function
-hi! link rubyPseudoVariable Keyword
-hi! link rubyRegexp SpecialChar
+hi! link rubyKeywordAsMethod        Function
+hi! link rubyLocalVariableOrMethod  Function
+hi! link rubyPseudoVariable         Keyword
+hi! link rubyRegexp                 SpecialChar
 
 call s:hi("rustAttribute", s:nord10_gui, "", s:nord10_term, "", "",       "")
 call s:hi("rustEnum",      s:nord7_gui,  "", s:nord7_term,  "", s:bold,   "")
@@ -456,31 +455,31 @@ call s:hi("rustModPath",   s:nord7_gui,  "", s:nord7_term,  "", "",       "")
 call s:hi("rustPanic",     s:nord9_gui,  "", s:nord9_term,  "", s:bold,   "")
 call s:hi("rustTrait",     s:nord7_gui,  "", s:nord7_term,  "", s:italic, "")
 hi! link rustCommentLineDoc Comment
-hi! link rustDerive rustAttribute
-hi! link rustEnumVariant rustEnum
-hi! link rustEscape SpecialChar
-hi! link rustQuestionMark Keyword
+hi! link rustDerive         rustAttribute
+hi! link rustEnumVariant    rustEnum
+hi! link rustEscape         SpecialChar
+hi! link rustQuestionMark   Keyword
 
 call s:hi("sassClass", s:nord7_gui, "", s:nord7_term, "", "",          "")
 call s:hi("sassId",    s:nord7_gui, "", s:nord7_term, "", s:underline, "")
-hi! link sassAmpersand Keyword
-hi! link sassClassChar Delimiter
-hi! link sassControl Keyword
-hi! link sassControlLine Keyword
-hi! link sassExtend Keyword
-hi! link sassFor Keyword
+hi! link sassAmpersand    Keyword
+hi! link sassClassChar    Delimiter
+hi! link sassControl      Keyword
+hi! link sassControlLine  Keyword
+hi! link sassExtend       Keyword
+hi! link sassFor          Keyword
 hi! link sassFunctionDecl Keyword
 hi! link sassFunctionName Function
-hi! link sassidChar sassId
-hi! link sassInclude SpecialChar
-hi! link sassMixinName Function
-hi! link sassMixing SpecialChar
-hi! link sassReturn Keyword
+hi! link sassidChar       sassId
+hi! link sassInclude      SpecialChar
+hi! link sassMixinName    Function
+hi! link sassMixing       SpecialChar
+hi! link sassReturn       Keyword
 
 hi! link shCmdParenRegion Delimiter
-hi! link shCmdSubRegion Delimiter
-hi! link shDerefSimple Identifier
-hi! link shDerefVar Identifier
+hi! link shCmdSubRegion   Delimiter
+hi! link shDerefSimple    Identifier
+hi! link shDerefVar       Identifier
 
 hi! link sqlKeyword Keyword
 hi! link sqlSpecial Keyword
@@ -488,23 +487,23 @@ hi! link sqlSpecial Keyword
 call s:hi("vimAugroup",  s:nord7_gui, "", s:nord7_term, "", "", "")
 call s:hi("vimMapRhs",   s:nord7_gui, "", s:nord7_term, "", "", "")
 call s:hi("vimNotation", s:nord7_gui, "", s:nord7_term, "", "", "")
-hi! link vimFunc Function
+hi! link vimFunc     Function
 hi! link vimFunction Function
 hi! link vimUserFunc Function
 
 call s:hi("xmlAttrib",     s:nord7_gui,        "", s:nord7_term, "", "",     "")
 call s:hi("xmlCdataStart", s:nord3_gui_bright, "", s:nord3_term, "", s:bold, "")
 call s:hi("xmlNamespace",  s:nord7_gui,        "", s:nord7_term, "", "",     "")
-hi! link xmlAttribPunct Delimiter
-hi! link xmlCdata Comment
-hi! link xmlCdataCdata xmlCdataStart
-hi! link xmlCdataEnd xmlCdataStart
-hi! link xmlEndTag xmlTagName
+hi! link xmlAttribPunct     Delimiter
+hi! link xmlCdata           Comment
+hi! link xmlCdataCdata      xmlCdataStart
+hi! link xmlCdataEnd        xmlCdataStart
+hi! link xmlEndTag          xmlTagName
 hi! link xmlProcessingDelim Keyword
-hi! link xmlTagName Keyword
+hi! link xmlTagName         Keyword
 
 call s:hi("yamlBlockMappingKey", s:nord7_gui, "", s:nord7_term, "", "", "")
-hi! link yamlBool Keyword
+hi! link yamlBool          Keyword
 hi! link yamlDocumentStart Keyword
 
 " Plugin Support. {{1
