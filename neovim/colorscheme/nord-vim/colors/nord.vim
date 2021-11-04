@@ -17,7 +17,7 @@ let g:colors_name = "nord"
 let s:nord_vim_version="0.18.0"
 set background=dark
 
-" Color palette. {{{1
+" Color palette {{{1
 
 " Original color palette.
 let s:nord_gui   = "#292E39"  " Picked from Nord's website.
@@ -54,7 +54,7 @@ let s:nord13_term = "3"
 let s:nord14_term = "2"
 let s:nord15_term = "5"
 
-" Toggle options. {{{1
+" Toggle options {{{1
 
 " Bold text.
 if !exists("g:nord_bold")
@@ -98,7 +98,7 @@ if !exists("g:nord_cursor_line_number_background")
 	let g:nord_cursor_line_number_background = 0
 endif
 
-" Highlighting function. {{{1
+" Highlighting function {{{1
 
 function! s:hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
 	if a:guifg != ""
@@ -121,7 +121,7 @@ function! s:hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
 	endif
 endfunction
 
-" UI Components. {{{1
+" UI Components {{{1
 
 "+--- Attributes ---+
 call s:hi("Bold",   "", "", "", "", s:bold,   "")
@@ -189,15 +189,15 @@ call s:hi("SignColumn", s:nord1_gui,  "NONE", s:nord1_term,  "NONE", "",     "")
 call s:hi("Directory", s:nord8_gui, "", s:nord8_term, "NONE", "", "")
 
 "+--- Prompt/Status ---+
-call s:hi("EndOfBuffer",      s:nord3_gui, "",           s:nord3_term, "NONE",        "",     "")
-call s:hi("ErrorMsg",         s:nord5_gui, s:nord11_gui, "NONE",       s:nord11_term, "",     "")
-call s:hi("ModeMsg",          s:nord4_gui, "",           "",           "",            "",     "")
-call s:hi("MoreMsg",          s:nord8_gui, "",           s:nord8_term, "",            "",     "")
-call s:hi("Question",         s:nord4_gui, "",           "NONE",       "",            "",     "")
-call s:hi("StatusLine",       s:nord1_gui, s:nord8_gui,  s:nord1_term, s:nord8_term,  "NONE", "")
-call s:hi("StatusLineNC",     s:nord5_gui, s:nord2_gui,  "NONE",       s:nord1_term,  "NONE", "")
-call s:hi("WarningMsg",       s:nord1_gui, s:nord13_gui, s:nord1_term, s:nord13_term, "",     "")
-call s:hi("WildMenu",         s:nord8_gui, s:nord1_gui,  s:nord8_term, s:nord1_term,  "",     "")
+call s:hi("EndOfBuffer",  s:nord1_gui, "",           s:nord1_term, "NONE",        "",     "")
+call s:hi("ErrorMsg",     s:nord5_gui, s:nord11_gui, "NONE",       s:nord11_term, "",     "")
+call s:hi("ModeMsg",      s:nord4_gui, "",           "",           "",            "",     "")
+call s:hi("MoreMsg",      s:nord8_gui, "",           s:nord8_term, "",            "",     "")
+call s:hi("Question",     s:nord4_gui, "",           "NONE",       "",            "",     "")
+call s:hi("StatusLine",   s:nord1_gui, s:nord8_gui,  s:nord1_term, s:nord8_term,  "NONE", "")
+call s:hi("StatusLineNC", s:nord5_gui, s:nord2_gui,  "NONE",       s:nord1_term,  "NONE", "")
+call s:hi("WarningMsg",   s:nord1_gui, s:nord13_gui, s:nord1_term, s:nord13_term, "",     "")
+call s:hi("WildMenu",     s:nord8_gui, s:nord1_gui,  s:nord8_term, s:nord1_term,  "",     "")
 
 "+--- Search ---+
 call s:hi("IncSearch", s:nord6_gui, s:nord10_gui, s:nord6_term, s:nord10_term, s:underline, "")
@@ -213,7 +213,7 @@ call s:hi("Title", s:nord4_gui, "", "NONE", "", "NONE", "")
 
 call s:hi("VertSplit", s:nord2_gui, s:nord0_gui, s:nord3_term, "NONE", "NONE", "")
 
-" Language Base Groups. {{{1
+" Language Base Groups {{{1
 
 call s:hi("Comment",        s:nord3_gui_bright, "", s:nord3_term,  "", "",     "")
 
@@ -262,7 +262,7 @@ call s:hi("Error", s:nord5_gui, s:nord11_gui, "", s:nord11_term, "", "")
 
 call s:hi("Todo", s:nord10_gui, "NONE", s:nord10_term, "NONE", s:bold, "")
 
-" Languages. {{{1
+" Languages {{{1
 
 call s:hi("asciidocAttributeEntry",        s:nord10_gui, "", s:nord10_term, "", "", "")
 call s:hi("asciidocAttributeList",         s:nord10_gui, "", s:nord10_term, "", "", "")
@@ -359,7 +359,7 @@ call s:hi("goBuiltins", s:nord7_gui, "", s:nord7_term, "", "", "")
 hi! link goConstants Keyword
 
 call s:hi("helpBar",           s:nord3_gui, "", s:nord3_term, "", "",          "")
-call s:hi("helpHyperTextJump", s:nord8_gui, "", s:nord8_term, "", s:underline, "")
+call s:hi("helpHyperTextJump", s:nord9_gui, "", s:nord9_term, "", s:underline, "")
 
 call s:hi("htmlArg",  s:nord7_gui, "", s:nord7_term, "", "",     "")
 call s:hi("htmlLink", s:nord4_gui, "", "",           "", "NONE", "NONE")
@@ -535,7 +535,7 @@ call s:hi("haskellPreProc", s:nord10_gui, "", s:nord10_term, "", "", "")
 call s:hi("haskellType",    s:nord7_gui,  "", s:nord7_term,  "", "", "")
 hi! link haskellPragma haskellPreProc
 
-" Public API. {{{1
+" Public API {{{1
 
 function! NordPalette() abort
 	let ret = {}
