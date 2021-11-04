@@ -4,7 +4,7 @@
 "  / / / / / / /__| |/ / / / / / / /
 " /_/_/ /_/_/\__(_)___/_/_/ /_/ /_/
 
-" General settings  {{{1
+" General settings {{{1
 " ----------------
 
 cd /home/guil
@@ -27,12 +27,11 @@ se spellfile=/home/guil/.local/share/nvim/site/spell/LexiquePerso.utf-8.add
 let g:netrw_liststyle=1
 let g:netrw_bufsettings="noma nomod nobl nowrap ro rnu"
 
-" Configuration by file type  {{{1
+" Configuration by file type {{{1
 " --------------------------
 
 " Formatting by file type
 au FileType markdown  setl formatoptions=tcqjn commentstring=<!--%s-->
-au FileType matlab    setl commentstring=\%%s
 au FileType vhdl      setl commentstring=--%s
 au FileType haskell   setl expandtab
 au FileType gitcommit setl textwidth=72
@@ -54,11 +53,11 @@ let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
 let g:loaded_python_provider = 0
 
 " Go config
-let  g:go_highlight_types=1
-let  g:go_highlight_extra_types=1
-let  g:go_highlight_operators=1
-let  g:go_highlight_functions=1
-let  g:go_highlight_function_calls=1
+let g:go_highlight_types=1
+let g:go_highlight_extra_types=1
+let g:go_highlight_operators=1
+let g:go_highlight_functions=1
+let g:go_highlight_function_calls=1
 
 " Latex config
 au FileType tex setl formatoptions=tcqj textwidth=100
@@ -67,12 +66,8 @@ au FileType tex setl spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.
 let g:vimtex_compiler_latexmk={'continuous': 0}
 let g:vimtex_view_method="zathura"
 let g:vimtex_quickfix_mode=0
-" Start a client server (see vimtex-clientserver)
-if empty(v:servername) && exists('*remote_startserver')
-	call remote_startserver('VIM')
-endif
 
-" Mappings  {{{1
+" Mappings {{{1
 " --------
 
 " Leader and local leader
@@ -165,7 +160,7 @@ vmap gA <Plug>(LiveEasyAlign)
 " Mappings : terminal mode
 tnoremap <M-q> <C-\><C-N>
 
-" Colorscheme and gui-capabilities settings  {{{1
+" Colorscheme and gui-capabilities settings {{{1
 " -----------------------------------------
 
 " Exact colors (16bits)
@@ -183,12 +178,7 @@ packadd! nord-vim
 let g:nord_italic=1
 colo nord
 
-" " Solarized8 <https://github.com/lifepillar/vim-solarized8>
-" packadd! vim-solarized8
-" let g:solarized_extra_hi_groups=1
-" colo solarized8_flat
-
-" Statusline config (lightline.vim)  {{{1
+" Statusline config (lightline.vim) {{{1
 " ---------------------------------
 
 let g:lightline = {
@@ -233,7 +223,7 @@ function! LightlineModified()
 	return &modifiable && &modified ? "+": ""
 endfunction
 
-" Neovim lsp config (nvim 0.5.0)  {{{1
+" Neovim lsp config (nvim 0.5.0) {{{1
 " ------------------------------
 
 "" Settings for completion-nvim plugin

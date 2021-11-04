@@ -176,7 +176,7 @@ export FZF_CTRL_R_OPTS="--reverse"
 # --------------
 
 # Java (from Oracle, not OpenJDK)
-export PATH="$PATH:/usr/local/java/jdk-16.0.1/bin"
+export PATH="$PATH:/usr/local/java/jdk-17.0.1/bin"
 # Julia
 export PATH="$PATH:/usr/local/julia/bin"
 # Matlab
