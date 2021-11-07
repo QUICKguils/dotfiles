@@ -255,11 +255,8 @@ call s:hi("Debug",          s:nord12_gui,       "", s:nord12_term, "", "",     "
 hi! link Decorator SpecialChar
 
 call s:hi("Underlined", s:nord9_gui, "", s:nord9_term, "", s:underline, "")
-
 call s:hi("Conceal", "", "NONE", "", "NONE", "", "")
-
 call s:hi("Error", s:nord5_gui, s:nord11_gui, "", s:nord11_term, "", "")
-
 call s:hi("Todo", s:nord10_gui, "NONE", s:nord10_term, "NONE", s:bold, "")
 
 " Languages {{{1
@@ -355,11 +352,8 @@ hi! link diffRemoved DiffDelete
 
 call s:hi("gitconfigVariable", s:nord7_gui, "", s:nord7_term, "", "", "")
 
-call s:hi("goBuiltins", s:nord7_gui, "", s:nord7_term, "", "", "")
-hi! link goConstants Keyword
-
-call s:hi("helpBar",           s:nord3_gui, "", s:nord3_term, "", "",          "")
-call s:hi("helpHyperTextJump", s:nord9_gui, "", s:nord9_term, "", s:underline, "")
+call s:hi("helpBar",           s:nord3_gui, "", s:nord3_term, "", "", "")
+call s:hi("helpHyperTextJump", s:nord9_gui, "", s:nord9_term, "", "", "")
 
 call s:hi("htmlArg",  s:nord7_gui, "", s:nord7_term, "", "",     "")
 call s:hi("htmlLink", s:nord4_gui, "", "",           "", "NONE", "NONE")
@@ -367,11 +361,11 @@ hi! link htmlBold        Bold
 hi! link htmlEndTag      htmlTag
 hi! link htmlItalic      Italic
 hi! link htmlH1          markdownH1
-hi! link htmlH2          markdownH1
-hi! link htmlH3          markdownH1
-hi! link htmlH4          markdownH1
-hi! link htmlH5          markdownH1
-hi! link htmlH6          markdownH1
+hi! link htmlH2          markdownH2
+hi! link htmlH3          markdownH3
+hi! link htmlH4          markdownH4
+hi! link htmlH5          markdownH5
+hi! link htmlH6          markdownH6
 hi! link htmlSpecialChar SpecialChar
 hi! link htmlTag         Keyword
 hi! link htmlTagN        htmlTag
@@ -398,23 +392,24 @@ hi! link lispFunc          Function
 
 hi! link luaFunc Function
 
-call s:hi("markdownBlockquote",    s:nord7_gui, "", s:nord7_term, "", "",     "")
-call s:hi("markdownCode",          s:nord7_gui, "", s:nord7_term, "", "",     "")
-call s:hi("markdownCodeDelimiter", s:nord7_gui, "", s:nord7_term, "", "",     "")
-call s:hi("markdownFootnote",      s:nord7_gui, "", s:nord7_term, "", "",     "")
-call s:hi("markdownId",            s:nord7_gui, "", s:nord7_term, "", "",     "")
-call s:hi("markdownIdDeclaration", s:nord7_gui, "", s:nord7_term, "", "",     "")
-call s:hi("markdownH1",            s:nord8_gui, "", s:nord8_term, "", "",     "")
-call s:hi("markdownLinkText",      s:nord8_gui, "", s:nord8_term, "", "",     "")
-call s:hi("markdownUrl",           s:nord4_gui, "", "NONE",       "", "NONE", "")
+call s:hi("markdownBlockquote",       s:nord7_gui,        "", s:nord7_term,  "", "",     "")
+call s:hi("markdownCode",             s:nord7_gui,        "", s:nord7_term,  "", "",     "")
+call s:hi("markdownCodeDelimiter",    s:nord7_gui,        "", s:nord7_term,  "", "",     "")
+call s:hi("markdownFootnote",         s:nord7_gui,        "", s:nord7_term,  "", "",     "")
+call s:hi("markdownId",               s:nord7_gui,        "", s:nord7_term,  "", "",     "")
+call s:hi("markdownIdDeclaration",    s:nord7_gui,        "", s:nord7_term,  "", "",     "")
+call s:hi("markdownLinkText",         s:nord8_gui,        "", s:nord8_term,  "", "",     "")
+call s:hi("markdownUrl",              s:nord4_gui,        "", "NONE",        "", "NONE", "")
+call s:hi("markdownHeadingDelimiter", s:nord8_gui,        "", s:nord8_term,  "", "",     "")
+call s:hi("markdownH1",               s:nord6_gui,        "", s:nord6_term,  "", s:bold, "")
+call s:hi("markdownH2",               s:nord7_gui,        "", s:nord7_term,  "", s:bold, "")
+call s:hi("markdownH3",               s:nord9_gui,        "", s:nord9_term,  "", s:bold, "")
+call s:hi("markdownH4",               s:nord10_gui,       "", s:nord10_term, "", s:bold, "")
+call s:hi("markdownH5",               s:nord3_gui_bright, "", s:nord3_term,  "", s:bold, "")
+call s:hi("markdownH6",               s:nord3_gui_bright, "", s:nord3_term,  "", "",     "")
 hi! link markdownBold               Bold
 hi! link markdownBoldDelimiter      Keyword
 hi! link markdownFootnoteDefinition markdownFootnote
-hi! link markdownH2                 markdownH1
-hi! link markdownH3                 markdownH1
-hi! link markdownH4                 markdownH1
-hi! link markdownH5                 markdownH1
-hi! link markdownH6                 markdownH1
 hi! link markdownIdDelimiter        Keyword
 hi! link markdownItalic             Italic
 hi! link markdownItalicDelimiter    Keyword
@@ -422,7 +417,6 @@ hi! link markdownLinkDelimiter      Keyword
 hi! link markdownLinkTextDelimiter  Keyword
 hi! link markdownListMarker         Keyword
 hi! link markdownRule               Keyword
-hi! link markdownHeadingDelimiter   Keyword
 
 call s:hi("perlPackageDecl", s:nord7_gui, "", s:nord7_term, "", "", "")
 

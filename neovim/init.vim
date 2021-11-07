@@ -53,11 +53,11 @@ let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
 let g:loaded_python_provider = 0
 
 " Go config
-let g:go_highlight_types=1
-let g:go_highlight_extra_types=1
+" let g:go_highlight_types=1
+" let g:go_highlight_extra_types=1
 let g:go_highlight_operators=1
-let g:go_highlight_functions=1
-let g:go_highlight_function_calls=1
+" let g:go_highlight_functions=1
+" let g:go_highlight_function_calls=1
 
 " Latex config
 au FileType tex setl formatoptions=tcqj textwidth=100
@@ -178,11 +178,18 @@ packadd! nord-vim
 let g:nord_italic=1
 colo nord
 
+" " Gruvbox <https://github.com/morhetz/gruvbox>
+" packadd! gruvbox
+" let g:gruvbox_italic=1
+" let g:gruvbox_italicize_comments=0
+" let g:gruvbox_invert_selection=0
+" colo gruvbox
+
 " Statusline config (lightline.vim) {{{1
 " ---------------------------------
 
 let g:lightline = {
-\	'colorscheme':'nord',
+\	'colorscheme':'Nord',
 \	'active': {
 \		'left': [
 \			['mode', 'paste'],

@@ -54,4 +54,4 @@ let s:p.tabline.tabsel  = [ [ s:nord1, s:nord8 ] ]
 let s:p.normal.warning  = [ [ s:nord1, s:nord13 ] ]
 let s:p.normal.error    = [ [ s:nord1, s:nord11 ] ]
 
-let g:lightline#colorscheme#nord#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline#colorscheme#Nord#palette = lightline#colorscheme#flatten(s:p)
