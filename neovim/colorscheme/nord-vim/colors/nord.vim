@@ -20,7 +20,6 @@ set background=dark
 " Color palette {{{1
 
 " Original color palette.
-let s:nord_gui   = "#292E39"  " Picked from Nord's website.
 let s:nord0_gui  = "#2E3440"
 let s:nord1_gui  = "#3B4252"
 let s:nord2_gui  = "#434C5E"
@@ -128,25 +127,25 @@ call s:hi("Bold",   "", "", "", "", s:bold,   "")
 call s:hi("Italic", "", "", "", "", s:italic, "")
 
 "+--- Editor ---+
-call s:hi("ColorColumn",   "",           s:nord1_gui, "NONE",        s:nord1_term, "",          "")
-call s:hi("Cursor",        s:nord1_gui,  s:nord4_gui, "",            "NONE",       "",          "")
-call s:hi("CursorLine",    "",           s:nord1_gui, "NONE",        s:nord1_term, "NONE",      "")
-call s:hi("lCursor",       s:nord1_gui,  s:nord4_gui, "",            "NONE",       "",          "")
-call s:hi("LineNr",        s:nord3_gui,  "NONE",      s:nord3_term,  "NONE",       "",          "")
-call s:hi("MatchParen",    s:nord8_gui,  s:nord3_gui, s:nord8_term,  s:nord3_term, "",          "")
-call s:hi("NonText",       s:nord3_gui,  "",          s:nord3_term,  "",           "",          "")
-call s:hi("Normal",        s:nord4_gui,  s:nord0_gui, "NONE",        "NONE",       "",          "")
-call s:hi("Pmenu",         s:nord4_gui,  s:nord2_gui, "NONE",        s:nord1_term, "NONE",      "")
-call s:hi("PmenuSbar",     s:nord4_gui,  s:nord2_gui, "NONE",        s:nord1_term, "",          "")
-call s:hi("PmenuSel",      s:nord8_gui,  s:nord3_gui, s:nord8_term,  s:nord3_term, "",          "")
-call s:hi("PmenuThumb",    s:nord8_gui,  s:nord3_gui, "NONE",        s:nord3_term, "",          "")
-call s:hi("SpecialKey",    s:nord3_gui,  "",          s:nord3_term,  "",           "",          "")
-call s:hi("SpellBad",      s:nord11_gui, s:nord0_gui, s:nord11_term, "NONE",       "undercurl", s:nord11_gui)
-call s:hi("SpellCap",      s:nord13_gui, s:nord0_gui, s:nord13_term, "NONE",       "undercurl", s:nord13_gui)
-call s:hi("SpellLocal",    s:nord5_gui,  s:nord0_gui, s:nord5_term,  "NONE",       "undercurl", s:nord5_gui)
-call s:hi("SpellRare",     s:nord6_gui,  s:nord0_gui, s:nord6_term,  "NONE",       "undercurl", s:nord6_gui)
-call s:hi("Visual",        "",           s:nord2_gui, "",            s:nord1_term, "",          "")
-call s:hi("VisualNOS",     "",           s:nord2_gui, "",            s:nord1_term, "",          "")
+call s:hi("ColorColumn", "",           s:nord1_gui, "NONE",        s:nord1_term, "",          "")
+call s:hi("Cursor",      s:nord1_gui,  s:nord4_gui, "",            "NONE",       "",          "")
+call s:hi("CursorLine",  "",           s:nord1_gui, "NONE",        s:nord1_term, "NONE",      "")
+call s:hi("lCursor",     s:nord1_gui,  s:nord4_gui, "",            "NONE",       "",          "")
+call s:hi("LineNr",      s:nord3_gui,  "NONE",      s:nord3_term,  "NONE",       "",          "")
+call s:hi("MatchParen",  s:nord8_gui,  s:nord3_gui, s:nord8_term,  s:nord3_term, "",          "")
+call s:hi("NonText",     s:nord3_gui,  "",          s:nord3_term,  "",           "",          "")
+call s:hi("Normal",      s:nord4_gui,  s:nord0_gui, "NONE",        "NONE",       "",          "")
+call s:hi("Pmenu",       s:nord4_gui,  s:nord2_gui, "NONE",        s:nord1_term, "NONE",      "")
+call s:hi("PmenuSbar",   s:nord4_gui,  s:nord2_gui, "NONE",        s:nord1_term, "",          "")
+call s:hi("PmenuSel",    s:nord8_gui,  s:nord3_gui, s:nord8_term,  s:nord3_term, "",          "")
+call s:hi("PmenuThumb",  s:nord8_gui,  s:nord3_gui, "NONE",        s:nord3_term, "",          "")
+call s:hi("SpecialKey",  s:nord3_gui,  "",          s:nord3_term,  "",           "",          "")
+call s:hi("SpellBad",    s:nord11_gui, s:nord0_gui, s:nord11_term, "NONE",       "undercurl", s:nord11_gui)
+call s:hi("SpellCap",    s:nord13_gui, s:nord0_gui, s:nord13_term, "NONE",       "undercurl", s:nord13_gui)
+call s:hi("SpellLocal",  s:nord5_gui,  s:nord0_gui, s:nord5_term,  "NONE",       "undercurl", s:nord5_gui)
+call s:hi("SpellRare",   s:nord6_gui,  s:nord0_gui, s:nord6_term,  "NONE",       "undercurl", s:nord6_gui)
+call s:hi("Visual",      "",           s:nord2_gui, "",            s:nord1_term, "",          "")
+call s:hi("VisualNOS",   "",           s:nord2_gui, "",            s:nord1_term, "",          "")
 
 "+- Neovim Support -+
 call s:hi("healthError",   s:nord11_gui, s:nord1_gui, s:nord11_term, s:nord1_term, "",          "")
@@ -254,10 +253,10 @@ call s:hi("SpecialComment", s:nord10_gui,       "", s:nord10_term, "", "",     "
 call s:hi("Debug",          s:nord12_gui,       "", s:nord12_term, "", "",     "")
 hi! link Decorator SpecialChar
 
-call s:hi("Underlined", s:nord9_gui, "", s:nord9_term, "", s:underline, "")
-call s:hi("Conceal", "", "NONE", "", "NONE", "", "")
-call s:hi("Error", s:nord5_gui, s:nord11_gui, "", s:nord11_term, "", "")
-call s:hi("Todo", s:nord10_gui, "NONE", s:nord10_term, "NONE", s:bold, "")
+call s:hi("Underlined", s:nord9_gui,  "",           s:nord9_term,  "",            s:underline, "")
+call s:hi("Conceal",    "",           "NONE",       "",            "NONE",        "",          "")
+call s:hi("Error",      s:nord5_gui,  s:nord11_gui, "",            s:nord11_term, "",          "")
+call s:hi("Todo",       s:nord10_gui, "NONE",       s:nord10_term, "NONE",        s:bold,      "")
 
 " Languages {{{1
 
@@ -335,15 +334,15 @@ hi! link dtLocaleValue Keyword
 hi! link dtTypeValue   Keyword
 
 if g:nord_uniform_diff_background == 0
-  call s:hi("DiffAdd",    s:nord14_gui, s:nord0_gui, s:nord14_term, "NONE",       "inverse", "")
-  call s:hi("DiffChange", s:nord13_gui, s:nord0_gui, s:nord13_term, "NONE",       "inverse", "")
-  call s:hi("DiffDelete", s:nord11_gui, s:nord0_gui, s:nord11_term, "NONE",       "inverse", "")
-  call s:hi("DiffText",   s:nord9_gui,  s:nord0_gui, s:nord9_term,  "NONE",       "inverse", "")
+	call s:hi("DiffAdd",    s:nord14_gui, s:nord0_gui, s:nord14_term, "NONE",       "inverse", "")
+	call s:hi("DiffChange", s:nord13_gui, s:nord0_gui, s:nord13_term, "NONE",       "inverse", "")
+	call s:hi("DiffDelete", s:nord11_gui, s:nord0_gui, s:nord11_term, "NONE",       "inverse", "")
+	call s:hi("DiffText",   s:nord9_gui,  s:nord0_gui, s:nord9_term,  "NONE",       "inverse", "")
 else
-  call s:hi("DiffAdd",    s:nord14_gui, s:nord1_gui, s:nord14_term, s:nord1_term, "",        "")
-  call s:hi("DiffChange", s:nord13_gui, s:nord1_gui, s:nord13_term, s:nord1_term, "",        "")
-  call s:hi("DiffDelete", s:nord11_gui, s:nord1_gui, s:nord11_term, s:nord1_term, "",        "")
-  call s:hi("DiffText",   s:nord9_gui,  s:nord1_gui, s:nord9_term,  s:nord1_term, "",        "")
+	call s:hi("DiffAdd",    s:nord14_gui, s:nord1_gui, s:nord14_term, s:nord1_term, "",        "")
+	call s:hi("DiffChange", s:nord13_gui, s:nord1_gui, s:nord13_term, s:nord1_term, "",        "")
+	call s:hi("DiffDelete", s:nord11_gui, s:nord1_gui, s:nord11_term, s:nord1_term, "",        "")
+	call s:hi("DiffText",   s:nord9_gui,  s:nord1_gui, s:nord9_term,  s:nord1_term, "",        "")
 endif
 " Legacy groups for official git.vim and diff.vim syntax
 hi! link diffAdded   DiffAdd
@@ -500,7 +499,7 @@ call s:hi("yamlBlockMappingKey", s:nord7_gui, "", s:nord7_term, "", "", "")
 hi! link yamlBool          Keyword
 hi! link yamlDocumentStart Keyword
 
-" Plugin Support. {{1
+" Plugin Support. {{{1
 
 " NOTE: J'ai supprimé pleins de support pour des plugins que je n'utilise pas.
 " Pas hésiter à aller checker la version de Nord-vim sur github.

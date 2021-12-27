@@ -10,9 +10,9 @@
 # -------------
 
 setopt histignorealldups sharehistory
-# Save the 5000 last commands in .zsh_history
-HISTSIZE=5000
-SAVEHIST=5000
+# Save the 10_000 last commands in .zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=$ZDOTDIR/.zsh_history
 
 # Colorization  {{{1
@@ -39,6 +39,10 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' menu select=2
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+
+# Additional completions
+fpath+=$ZDOTDIR/plugins/zsh-completions/src
+fpath+=$ZDOTDIR/completions
 
 autoload -Uz compinit && compinit
 
@@ -70,10 +74,10 @@ bindkey -v
 # Aliases
 alias md='mkdir -p'
 alias v='nvim'
+alias ll='ls -lh'
 alias la='ls -A'
-alias lah='ls -lAh'
+alias lla='ls -Alh'
 alias z='zathura'
-alias g='git'
 alias x='exit'
 alias t='tmux'
 alias o='xdg-open'
@@ -82,7 +86,8 @@ alias fl='figlet -t -f slant'
 alias jl='julia'
 alias mlj='matlab -nodesktop -nosplash'
 alias ml='matlab -nojvm'
-alias py='python'
+alias py='/home/guil/miniconda3/bin/python'
+alias ipy='/home/guil/miniconda3/bin/ipython'
 
 # Path shortcuts
 ing="$HOME/Documents/Ecole/Bloc_3/"
@@ -192,7 +197,7 @@ export GOPATH="$HOME/.golib"
 export PATH="$PATH:$GOPATH/bin"
 # Cargo (rust)
 . "$HOME/.cargo/env"
-# Miniconda package manager
+# Miniconda
 __conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
 	eval "$__conda_setup"
@@ -204,14 +209,10 @@ else
 	fi
 fi
 unset __conda_setup
-# Removing the "(base)" indication appearing in the command prompt:
-# check this file: ~/miniconda3/etc/conda/activate.d/remove-base.sh
 
 # Plugins  {{{1
 # -------
 
-# Additional completions
-fpath=($ZDOTDIR/plugins/zsh-completions/src $fpath)
 # Syntax highlighting for the shell commands
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Backward search by substrings in the command history

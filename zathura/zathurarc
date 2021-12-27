@@ -8,7 +8,7 @@
 # ===== Configuration générale =====
 
 # Police de zathura
-set font "Hack 10"
+set font "Iosevka Term 10"
 
 # Disposition par défaut
 set window-height 1080
@@ -37,8 +37,6 @@ set vertical-center "true"
 # Clipboard
 set selection-clipboard "clipboard"
 
-# Synctex backward search
-set synctex-editor-command 'nvr --remote +"%line" "%file"'
 # ===== Couleurs =====
 
 # Transparence du surlignage des termes recherchés

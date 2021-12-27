@@ -18,61 +18,89 @@ se nowrap nojoinspaces foldmethod=marker
 se textwidth=80 colorcolumn=+1 formatoptions=cqj
 se scrolloff=5
 se nohlsearch ignorecase smartcase wildignorecase
-se list listchars=trail:•,tab:│\ ,extends:▶,precedes:◀
+se list listchars=tab:│\ ,lead:·,trail:•,precedes:◀,extends:▶
 se spelllang=en_us,fr
 se spellfile=/home/guil/.local/share/nvim/site/spell/LexiquePerso.utf-8.add
 
 " Netrw settings (default file explorer)
-" Note that some default options are overriden by vinegar.
+" Note that some default options are overriden by vim-vinegar.
 let g:netrw_liststyle=1
 let g:netrw_bufsettings="noma nomod nobl nowrap ro rnu"
-
-" Configuration by file type {{{1
-" --------------------------
-
-" Formatting by file type
-au FileType markdown  setl formatoptions=tcqjn commentstring=<!--%s-->
-au FileType vhdl      setl commentstring=--%s
-au FileType haskell   setl expandtab
-au FileType gitcommit setl textwidth=72
-
-" Compilation by file type
-map <F5> :w<Bar>:make<CR>
-au FileType markdown setl makeprg=pandoc\ -o\ %:r.html\ %\ --mathjax
-au FileType markdown nmap <buffer><F6> :!xdg-open %:r.html<CR>
-au FileType c        setl makeprg=gcc\ -Wall\ -o\ %:r\ %
-au FileType c        nmap <buffer><F6> :sp<Bar>te %:r<CR>
-au FileType go       nmap <buffer><F5> :w<Bar>GoRun %<CR>
-au FileType go       nmap <buffer><F6> <Plug>(go-run-split)
-au FileType python   nmap <buffer><F5> :w<Bar>py3file %<CR>
-au FileType julia    nmap <buffer><F5> :w<Bar>!julia %<CR>
-au FileType vim      nmap <buffer><F5> :w<Bar>source %<CR>
-
-" Python3 config
-let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
-let g:loaded_python_provider = 0
-
-" Go config
-" let g:go_highlight_types=1
-" let g:go_highlight_extra_types=1
-let g:go_highlight_operators=1
-" let g:go_highlight_functions=1
-" let g:go_highlight_function_calls=1
-
-" Latex config
-au FileType tex setl formatoptions=tcqj textwidth=100
-au FileType tex setl spf=/home/guil/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
-" Vimtex config
-let g:vimtex_compiler_latexmk={'continuous': 0}
-let g:vimtex_view_method="zathura"
-let g:vimtex_quickfix_mode=0
-
-" Mappings {{{1
-" --------
 
 " Leader and local leader
 let mapleader="\<Space>"
 let maplocalleader="\\"
+
+" Configuration by file type {{{1
+" --------------------------
+
+" Conventions :
+"   c  -> clean, remove auxilliary files.
+"   f  -> format the code.
+"   k  -> check the code.
+"   l  -> local execution, run the script or single file.
+"   m  -> make, build, compile the program.
+"   t  -> test the program, run test files.
+"   v  -> visualize output.
+" <CR> -> execute binaries, run the whole program.
+
+" C - ft-c-syntax
+au FileType c setl makeprg=gcc\ -Wall\ -o\ %:r\ %
+au FileType c nmap <buffer><localleader>m :w<Bar>:make<CR>
+au FileType c nmap <buffer><localleader><CR> :sp<Bar>te %:r<CR>
+
+" Go - vim-go
+au FileType go nmap <buffer><localleader>l :w<Bar>GoRun %<CR>
+au FileType go nmap <buffer><localleader><CR> <Plug>(go-run-split)
+let g:go_highlight_operators=1
+
+" Git - vim-fugitive
+au FileType gitcommit setl textwidth=72
+
+" Haskell - haskell-vim
+au FileType haskell setl expandtab
+
+" Julia - julia-vim
+au FileType julia nmap <buffer><localleader>l :w<Bar>!julia %<CR>
+
+" Latex - vimtex
+" TODO: remap vimtex in accordance with aforementionned naming conventions.
+au FileType tex setl formatoptions=tcqj textwidth=100
+au FileType tex setl spf=~/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
+let g:vimtex_compiler_latexmk={'continuous': 0}
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+
+" Markdown
+au FileType markdown setl formatoptions=tcqjn commentstring=<!--%s-->
+au FileType markdown setl makeprg=pandoc\ -o\ %:r.html\ %\ --mathjax
+au FileType markdown nmap <buffer><localleader>m :w<Bar>:make<CR>
+au FileType markdown nmap <buffer><localleader>v :!xdg-open %:r.html<CR>
+
+" Python3 - python-mode
+au FileType python nmap <buffer>l :w<Bar>py3file %<CR>
+let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
+let g:loaded_python_provider = 0
+
+" Rust - rust.vim
+let g:rust_fold=1
+let g:rustfmt_autosave=1
+au FileType rust nmap <buffer><localleader>f :RustFmt<CR>
+au FileType rust nmap <buffer><localleader>l :RustRun<CR>
+au FileType rust nmap <buffer><localleader>m :Cbuild<CR>
+au FileType rust nmap <buffer><localleader>c :Cclean<CR>
+au FileType rust nmap <buffer><localleader>k :Ccheck<CR>
+au FileType rust nmap <buffer><localleader>t :Ctest<CR>
+au FileType rust nmap <buffer><localleader><CR> :Crun<CR>
+
+" Vhdl
+au FileType vhdl setl commentstring=--%s
+
+" Vim
+au FileType vim nmap <buffer><localleader>l :w<Bar>source %<CR>
+
+" Mappings {{{1
+" --------
 
 " Mappings : navigation between windows
 nnoremap <leader>h <C-w>h
@@ -115,12 +143,13 @@ nnoremap <leader>fm :Marks<CR>
 nnoremap <leader>ft :Filetypes<CR>
 
 " Mappings : quick setting toggles
-nnoremap <silent> <leader>sh :se hls!<CR>
-nnoremap <silent> <leader>sn :setl rnu!<CR>
-nnoremap <silent> <leader>ss :setl nospell!<CR>
-nnoremap <silent> <leader>sl :setl cursorline!<CR>
-nnoremap          <leader>sv :call VirtualEdit_toggle()<CR>
-nnoremap <silent> <F2>       :call QuickFix_toggle()<cr>
+nnoremap <silent> <leader>th :se hls!<CR>
+nnoremap <silent> <leader>tn :setl rnu!<CR>
+nnoremap <silent> <leader>ts :setl nospell!<CR>
+nnoremap <silent> <leader>tc :setl cursorline!<CR>
+nnoremap <silent> <leader>tl :setl list!<CR>
+nnoremap          <leader>tv :call VirtualEdit_toggle()<CR>
+nnoremap <silent> <leader>tq :call QuickFix_toggle()<CR>
 
 function! VirtualEdit_toggle()
 	if &ve == ""
@@ -132,14 +161,14 @@ function! VirtualEdit_toggle()
 endfunction
 
 function! QuickFix_toggle()
-    for i in range(1, winnr('$'))
-        let bnum = winbufnr(i)
-        if getbufvar(bnum, '&buftype') == 'quickfix'
-            cclose
-            return
-        endif
-    endfor
-    copen 8
+	for i in range(1, winnr('$'))
+		let bnum = winbufnr(i)
+		if getbufvar(bnum, '&buftype') == 'quickfix'
+			cclose
+			return
+		endif
+	endfor
+	copen 8
 endfunction
 
 " Mappings : quick write, quit and close
@@ -148,16 +177,15 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 nnoremap <leader>c :clo<CR>
 
-" Infos about the current file
-nnoremap <leader>i :se fenc? ff?<CR>
-
-" Mappings : plugin-related
+" Mappings : vim-easy-align
 nmap ga <Plug>(EasyAlign)
 vmap ga <Plug>(EasyAlign)
 nmap gA <Plug>(LiveEasyAlign)
 vmap gA <Plug>(LiveEasyAlign)
 
-" Mappings : terminal mode
+" Mappings : miscellaneous
+nnoremap <leader>i :se fenc? ff?<CR>
+nnoremap <leader>m :lc %:h<CR>
 tnoremap <M-q> <C-\><C-N>
 
 " Colorscheme and gui-capabilities settings {{{1
@@ -168,22 +196,10 @@ if (has("termguicolors"))
 	se termguicolors
 endif
 
-" " Onedark <https://github.com/joshdick/onedark.vim>
-" packadd! onedark.vim
-" let g:onedark_terminal_italics=1
-" colo onedark
-
 " Nord <https://www.nordtheme.com/ports/vim>
 packadd! nord-vim
 let g:nord_italic=1
 colo nord
-
-" " Gruvbox <https://github.com/morhetz/gruvbox>
-" packadd! gruvbox
-" let g:gruvbox_italic=1
-" let g:gruvbox_italicize_comments=0
-" let g:gruvbox_invert_selection=0
-" colo gruvbox
 
 " Statusline config (lightline.vim) {{{1
 " ---------------------------------

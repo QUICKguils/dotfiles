@@ -1,9 +1,9 @@
 body{
 	margin: auto;
 	max-width: 40em;
-	font-family: "Noto Serif";
+	font-family: "STIX Two Text";
 	font-style: normal;
-	font-size: 16px;
+	font-size: 17px;
 	line-height: 1.65;
 	background-color: #2e3440;
 	color: #d8dee9;
@@ -11,47 +11,48 @@ body{
 
 h1{
 	color: #eceff4;
+	font-family: "Roboto";
 	text-align: center;
 	font-size:34px;
 }
 
 h2{
 	color: #8fbcbb;
-	font-family: "Noto Sans";
+	font-family: "Roboto";
 	font-size: 26px;
 }
 
 h3{
 	color: #81a1c1;
-	font-family: "Noto Sans";
+	font-family: "Roboto";
 	font-weight: bold;
 	font-size: 20px;
 }
 
 h4{
 	color: #5e81ac;
-	font-family: "Noto Sans";
+	font-family: "Roboto";
 	font-weight: normal;
-	font-size: 18px;
+	font-size: 17px;
 }
 
 h5{
 	color: #616e88;
-	font-family: "Noto Sans";
+	font-family: "Roboto";
 	font-weight: normal;
-	font-size: 16px;
+	font-size: 15px;
 }
 
 h6{
 	color: #4c566a;
-	font-family: "Noto Sans";
+	font-family: "Roboto";
 	font-weight: normal;
-	font-size: 16px;
+	font-size: 15px;
 }
 
 code{
-	font-family: "Hack";
-	font-size: 14px;
+	font-family: "Roboto Mono";
+	font-size: 15px;
 	font-weight: normal;
 }
 
@@ -84,10 +85,10 @@ table{
 td, th{padding: 5px}
 tr:nth-child(even){background-color:#3b4252}
 tr:hover{background-color:#434c5e}
-td{font-size: 16px}
+td{font-size: 17px}
 th{
 	border-bottom: 3px solid #ebcb8b;
-	font-family: "Noto Sans";
+	font-family: "Roboto";
 	background-color: #2e3440;
 }
 
