@@ -1,52 +1,52 @@
-# vim: ft=sh
-#               __  __
-#  ____  ____ _/ /_/ /_  __  ___________ ___________
-# /_  / / __ `/ __/ __ \/ / / / ___/ __ `/ ___/ ___/
-#  / /_/ /_/ / /_/ / / / /_/ / /  / /_/ / /  / /__
-# /___/\__,_/\__/_/ /_/\__,_/_/   \__,_/_/   \___/
+#            __  __
+#  ___ ___ _/ /_/ /  __ _________ _________
+# /_ // _ `/ __/ _ \/ // / __/ _ `/ __/ __/
+# /__/\_,_/\__/_//_/\_,_/_/  \_,_/_/  \__/
+#
+# Repository: https://github.com/QUICKguils/dotfiles
 
-# ===== Configuration générale =====
+# General settings -------------------------------------------------------------
 
-# Police de zathura
-set font "Iosevka Term 10"
+# UI typeface.
+set font "Hack 10"
 
-# Disposition par défaut
+# Default layout.
 set window-height 1080
 set window-width  1000
 set adjust-open   "width"
 set page-padding  2
 
-# Mode double page
+# Double-page mode.
 set pages-per-row 1
 set first-page-column "1:1"
 
-# Éléments indicatifs
+# Informative gui elements.
 set guioptions ""
 set statusbar-v-padding 4
 set statusbar-home-tilde    "true"
 set window-title-home-tilde "true"
 set window-title-page       "true"
 
-# Zoom
+# Zoom.
 set zoom-max  2000
 set zoom-min  10
 set zoom-step 5
 set zoom-center     "true"
 set vertical-center "true"
 
-# Clipboard
+# Clipboard.
 set selection-clipboard "clipboard"
 
-# ===== Couleurs =====
+# Colors -----------------------------------------------------------------------
 
-# Transparence du surlignage des termes recherchés
+# Highlighting transparency of searched terms.
 set highlight-transparency 0.5
 
-# Options utiles de recoloration
+# Useful recoloration options.
 set recolor-keephue       "true"
 set recolor-reverse-video "false"
 
-# OneDark colorscheme  {{{1
+# OneDark colorscheme {{{1
 # -------------------
 
 # # Recoloration
@@ -88,7 +88,7 @@ set recolor-reverse-video "false"
 # set render-loading-bg       "#282c34"
 # set render-loading-fg       "#abb2bf"
 
-# Nord colorscheme  {{{1
+# Nord colorscheme {{{1
 # ----------------
 
 # Recoloration
@@ -129,3 +129,7 @@ set default-fg              "#d8dee9"
 set render-loading          "true"
 set render-loading-bg       "#2e3440"
 set render-loading-fg       "#d8dee9"
+
+# 1}}}
+
+# vim: ft=sh

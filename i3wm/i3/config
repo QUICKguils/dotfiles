@@ -1,11 +1,11 @@
-#     _ _____
-#    (_)__  /      ______ ___
-#   / / /_ < | /| / / __ `__ \
-#  / /___/ / |/ |/ / / / / / /
-# /_//____/|__/|__/_/ /_/ /_/
+#    _ ____
+#   (_)_  /    ____ _
+#  / //_ < |/|/ /  ' \
+# /_/____/__,__/_/_/_/
+#
+# Repository: https://github.com/QUICKguils/dotfiles
 
 # Set variables {{{1
-# -------------
 
 # Modifier = Mod4 = Super_L
 set $mod Mod4
@@ -33,8 +33,8 @@ set $filemgr   nautilus
 set $guiplayer mpv --player-operation-mode=pseudo-gui
 
 # Default fonts
-set $monofont Hack
-set $nerdfont Hack
+set $monofont Iosevka Term Extended
+set $nerdfont Iosevka Term Extended
 set $sansfont Noto Sans
 
 # Workspace names
@@ -50,14 +50,13 @@ set $ws9  "9  "
 set $ws10 "10  "
 
 # Applications launched during i3 startup {{{1
-# ---------------------------------------
 
 # It may be preferable to launch some of these programs from .xsession or
 # .xprofile and not from the config file of a specific window manager. But if
 # you don't plan to switch to another WM it's a fine approach.
 
-# Configure monitors (disable laptop screen when using desktop monitor)
-#exec --no-startup-id /home/guil/.config/i3/manage-display.sh
+# # Configure monitors (disable laptop screen when using desktop monitor)
+# exec --no-startup-id /home/guil/.config/i3/manage-display.sh
 
 # # Wallpaper, compositor, night light, key rate, numpad lock and remaps
 # exec --no-startup-id nitrogen --restore
@@ -66,25 +65,24 @@ set $ws10 "10  "
 # exec --no-startup-id xset r rate 230 35
 # exec --no-startup-id numlockx
 
-# Create scratchpad
-exec_always --no-startup-id $term \
-	-t notepad \
-	-o window.dimensions.lines=45 \
-	   window.dimensions.columns=90 \
-	   window.padding.x=4 \
-	   window.padding.y=4 \
-	   background_opacity=0.85
-for_window [class="Alacritty" title="notepad"] floating enable, sticky enable, move scratchpad
+# # Create scratchpad
+# exec_always --no-startup-id $term \
+# 	-t notepad \
+# 	-o window.dimensions.lines=45 \
+# 	   window.dimensions.columns=90 \
+# 	   window.padding.x=4 \
+# 	   window.padding.y=4 \
+# 	   background_opacity=0.85
+# for_window [class="Alacritty" title="notepad"] floating enable, sticky enable, move scratchpad
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# # screen before suspend. Use loginctl lock-session to lock your screen.
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# Applet from NetworkManager, appearing in the tray icon.
-exec --no-startup-id nm-applet
+# # Applet from NetworkManager, appearing in the tray icon.
+# exec --no-startup-id nm-applet
 
 # Reload, restart, quit and lock {{{1
-# ------------------------------
 
 bindsym $mod+Shift+c       reload
 bindsym $mod+Shift+r       restart
@@ -93,7 +91,6 @@ bindsym $mod+Shift+e       exec i3-msg exit
 bindsym $mod++Shift+Escape exec i3lock --color "$od_black"
 
 # Window manipulations {{{1
-# --------------------
 
 # change focus
 bindsym $mod+h focus left
@@ -111,7 +108,6 @@ bindsym $mod+Shift+l move right
 bindsym $mod+q kill
 
 # Layouts behaviour {{{1
-# -----------------
 
 # split container
 bindsym $mod+semicolon split h
@@ -135,7 +131,6 @@ bindsym $mod+o focus parent
 bindsym $mod+y focus child
 
 # Workspace manipulation {{{1
-# ----------------------
 
 # switch to workspace
 bindsym $mod+ampersand  workspace number $ws1
@@ -169,7 +164,6 @@ bindsym $mod+Shift+m move container to workspace next
 bindsym $mod+BackSpace scratchpad show
 
 # Modes {{{1
-# -----
 
 # Resize mode
 bindsym $mod+colon mode "Resize"
@@ -204,7 +198,6 @@ mode "Launcher" {
 }
 
 # Window appearance {{{1
-# -----------------
 
 # Window title
 font pango: $sansfont 10
@@ -223,7 +216,6 @@ client.urgent           $od_red    $od_red    $od_black $od_magenta
 client.background       $od_cursor
 
 # Status bar configuration {{{1
-# ------------------------
 
 bar {
 	# External status manager: i3blocks (~/.config/i3blocks/config)
@@ -257,7 +249,6 @@ bindsym --release XF86AudioMute        exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release XF86AudioMicMute     exec pkill -SIGRTMIN+11 i3blocks
 
 # Application-specific instructions {{{1
-# ---------------------------------
 
 # -- Audio and media control --
 # Use pactl to adjust volume in PulseAudio.

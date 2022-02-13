@@ -1,12 +1,9 @@
-#     __               __
-#    / /_  ____ ______/ /_  __________
-#   / __ \/ __ `/ ___/ __ \/ ___/ ___/
-#  / /_/ / /_/ (__  ) / / / /  / /__
-# /_.___/\__,_/____/_/ /_/_/   \___/
+#    __            __
+#   / /  ___ ____ / /  ________
+#  / _ \/ _ `(_-</ _ \/ __/ __/
+# /_.__/\_,_/___/_//_/_/  \__/
 #
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# Repository: https://github.com/QUICKguils/dotfiles
 
 # If not running interactively, don't do anything
 case $- in
@@ -120,10 +117,11 @@ if ! shopt -oq posix; then
 fi
 
 # ==============================================================================
-# A partir d'ici, trucs que j'ai rajouté moi-même
+# A this point, these are stuff that I've added myself.
 # ==============================================================================
 
-# ========== Keybindings/aliases ==========
+# Keybindings/aliases ----------------------------------------------------------
+
 # Choisir neovim comme éditeur par défaut
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -149,7 +147,7 @@ ing="$HOME/Documents/Ecole/Bloc_3"
 # Changement de dossier automatique ("cd" implicite)
 shopt -s autocd
 
-# ========== reading tools ==========
+# Reading tools ----------------------------------------------------------------
 # Choix du pager par défaut et du pager pour les pages de manuel
 export PAGER="cat"
 export MANPAGER="nvim +Man!"
@@ -159,7 +157,7 @@ export MANPAGER="nvim +Man!"
 export BAT_THEME="OneHalfDark"
 export BAT_STYLE="auto"
 
-# ========== searching tools ==========
+# Searching tools --------------------------------------------------------------
 # Chargement de fzf. Repo situé à ~/.dotfiles/neovim/plugin/fzf
 # Setup fzf
 if [[ ! "$PATH" == */home/guil/.dotfiles/neovim/plugin/fzf/bin* ]]; then
@@ -196,7 +194,7 @@ export FZF_CTRL_R_OPTS="--reverse"
 #export FZF_COMPLETION_TRIGGER="**"
 #export FZF_COMPLETION_OPTS=""
 
-# ========== Ajouts au PATH ==========
+# Ajouts au PATH ---------------------------------------------------------------
 # Enregistrement de julia dans le PATH
 export PATH="$PATH:/usr/local/julia/bin"
 # Enrefistrement de matlab dans ls PATH

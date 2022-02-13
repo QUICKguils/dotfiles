@@ -1,11 +1,11 @@
-"     _       _ __        _
-"    (_)___  (_) /__   __(_)___ ___
-"   / / __ \/ / __/ | / / / __ `__ \
-"  / / / / / / /__| |/ / / / / / / /
-" /_/_/ /_/_/\__(_)___/_/_/ /_/ /_/
+"    _      _ __
+"   (_)__  (_) /_
+"  / / _ \/ / __/
+" /_/_//_/_/\__/.vim
+"
+" Repository: https://github.com/QUICKguils/dotfiles
 
 " General settings {{{1
-" ----------------
 
 cd /home/guil
 se mouse=a mousem=popup
@@ -18,7 +18,7 @@ se nowrap nojoinspaces foldmethod=marker
 se textwidth=80 colorcolumn=+1 formatoptions=cqj
 se scrolloff=5
 se nohlsearch ignorecase smartcase wildignorecase
-se list listchars=tab:│\ ,lead:·,trail:•,precedes:◀,extends:▶
+se list listchars=tab:│\ ,trail:•,precedes:◀,extends:▶ ",lead:·
 se spelllang=en_us,fr
 se spellfile=/home/guil/.local/share/nvim/site/spell/LexiquePerso.utf-8.add
 
@@ -32,7 +32,6 @@ let mapleader="\<Space>"
 let maplocalleader="\\"
 
 " Configuration by file type {{{1
-" --------------------------
 
 " Conventions :
 "   c  -> clean, remove auxilliary files.
@@ -52,6 +51,7 @@ au FileType c nmap <buffer><localleader><CR> :sp<Bar>te %:r<CR>
 " Go - vim-go
 au FileType go nmap <buffer><localleader>l :w<Bar>GoRun %<CR>
 au FileType go nmap <buffer><localleader><CR> <Plug>(go-run-split)
+au FileType go hi link goBuiltins Function
 let g:go_highlight_operators=1
 
 " Git - vim-fugitive
@@ -77,10 +77,12 @@ au FileType markdown setl makeprg=pandoc\ -o\ %:r.html\ %\ --mathjax
 au FileType markdown nmap <buffer><localleader>m :w<Bar>:make<CR>
 au FileType markdown nmap <buffer><localleader>v :!xdg-open %:r.html<CR>
 
-" Python3 - python-mode
-au FileType python nmap <buffer>l :w<Bar>py3file %<CR>
+" Python3 - LSP:pyright
+au FileType python setl textwidth=79
 let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
 let g:loaded_python_provider = 0
+au FileType python nmap <buffer><localleader>f :w<Bar>!~/miniconda3/bin/autopep8  -iaa %:p<CR>:e<CR>
+au FileType python nmap <buffer><localleader>l :w<Bar>py3file %<CR>
 
 " Rust - rust.vim
 let g:rust_fold=1
@@ -100,7 +102,6 @@ au FileType vhdl setl commentstring=--%s
 au FileType vim nmap <buffer><localleader>l :w<Bar>source %<CR>
 
 " Mappings {{{1
-" --------
 
 " Mappings : navigation between windows
 nnoremap <leader>h <C-w>h
@@ -149,7 +150,7 @@ nnoremap <silent> <leader>ts :setl nospell!<CR>
 nnoremap <silent> <leader>tc :setl cursorline!<CR>
 nnoremap <silent> <leader>tl :setl list!<CR>
 nnoremap          <leader>tv :call VirtualEdit_toggle()<CR>
-nnoremap <silent> <leader>tq :call QuickFix_toggle()<CR>
+nnoremap <silent>       <F2> :call QuickFix_toggle()<CR>
 
 function! VirtualEdit_toggle()
 	if &ve == ""
@@ -189,7 +190,6 @@ nnoremap <leader>m :lc %:h<CR>
 tnoremap <M-q> <C-\><C-N>
 
 " Colorscheme and gui-capabilities settings {{{1
-" -----------------------------------------
 
 " Exact colors (16bits)
 if (has("termguicolors"))
@@ -199,10 +199,10 @@ endif
 " Nord <https://www.nordtheme.com/ports/vim>
 packadd! nord-vim
 let g:nord_italic=1
+let g:nord_uniform_diff_background=1
 colo nord
 
 " Statusline config (lightline.vim) {{{1
-" ---------------------------------
 
 let g:lightline = {
 \	'colorscheme':'Nord',
@@ -247,26 +247,17 @@ function! LightlineModified()
 endfunction
 
 " Neovim lsp config (nvim 0.5.0) {{{1
-" ------------------------------
 
-"" Settings for completion-nvim plugin
-""se completeopt=menuone,noinsert,noselect
-"let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-"se omnifunc=v:lua.vim.lsp.omnifunc
+" Settings for nvim-lspconfig plugin.
+se completeopt=menuone ",noinsert
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+se omnifunc=v:lua.vim.lsp.omnifunc
 
-"lua << EOF
-"-- Set a bunch of language server
-"require('lspconfig').pyright.setup { on_attach=require'completion'.on_attach }
-"require('lspconfig').vimls.setup   { on_attach=require'completion'.on_attach }
-"-- require('lspconfig').gopls.setup   { on_attach=require'completion'.on_attach }
-"-- require('lspconfig').julials.setup { on_attach=require'completion'.on_attach }
-
-"local custom_lsp_attach = function(client)
-"	-- See `:help nvim_buf_set_keymap()` for more information
-"	vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
-"	vim.api.nvim_buf_set_keymap(0, 'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
-"	-- Use LSP as the handler for omnifunc.
-"	-- See `:help omnifunc` and `:help ins-completion` for more information.
-"	vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-"end
-"EOF
+lua << EOF
+-- Set a bunch of language server.
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.vimls.setup{}
+-- require('lspconfig').gopls.setup   { on_attach=require'completion'.on_attach }
+-- require('lspconfig').julials.setup { on_attach=require'completion'.on_attach }
+EOF

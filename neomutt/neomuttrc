@@ -1,8 +1,9 @@
-#                                      __  __
-#    ____  ___  ____  ____ ___  __  __/ /_/ /___________
-#   / __ \/ _ \/ __ \/ __ `__ \/ / / / __/ __/ ___/ ___/
-#  / / / /  __/ /_/ / / / / / / /_/ / /_/ /_/ /  / /__
-# /_/ /_/\___/\____/_/ /_/ /_/\__,_/\__/\__/_/   \___/
+#                             __  __
+#   ___  ___ ___  __ _  __ __/ /_/ /_________
+#  / _ \/ -_) _ \/  ' \/ // / __/ __/ __/ __/
+# /_//_/\__/\___/_/_/_/\_,_/\__/\__/_/  \__/
+#
+# Repository: https://github.com/QUICKguils/dotfiles
 
 # IMAP settings
 set realname  = "Guilain Ernotte"
@@ -23,7 +24,8 @@ set editor = nvim
 set sidebar_visible = yes
 set sidebar_width = 20
 
-# If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more
+# If hcache is a folder, Mutt will create sub cache folders for each account
+# which may speeds things up even more.
 set header_cache = ~/.cache/mutt
 
 # Store messages locally to speed things up, like searching message bodies.

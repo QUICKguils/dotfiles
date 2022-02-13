@@ -1,10 +1,37 @@
-" Adapted from:
-" Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
-" Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+"   _____         __               _  __            __
+"  / ___/_ _____ / /____  __ _    / |/ /__  _______/ /
+" / /__/ // (_-</ __/ _ \/  ' \  /    / _ \/ __/ _  /
+" \___/\_,_/___/\__/\___/_/_/_/ /_/|_/\___/_/  \_,_/
 "
+" Project:    Custom Nord
+" Repository: https://github.com/QUICKguils/dotfiles
+
+" License and credits {{{
+" This colorscheme is a refactor of the following project:
 " Project:    Nord Vim
 " Repository: https://github.com/arcticicestudio/nord-vim
 " License:    MIT
+" Copyright © 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+" Copyright © 2016-present Sven Greb <development@svengreb.de>
+"
+" Permission is hereby granted, free of charge, to any person obtaining a copy
+" of this software and associated documentation files (the “Software”), to deal
+" in the Software without restriction, including without limitation the rights
+" to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+" copies of the Software, and to permit persons to whom the Software is
+" furnished to do so, subject to the following conditions:
+"
+" The above copyright notice and this permission notice shall be included in all
+" copies or substantial portions of the Software.
+"
+" THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+" IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+" FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+" AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+" LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+" OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+" SOFTWARE.
+" }}}
 
 if version > 580
 	hi clear
@@ -39,13 +66,13 @@ let s:nord15_gui = "#B48EAD"
 let s:nord3_gui_bright = "#616E88"
 
 " Terminal palette.
-let s:nord1_term = "0"
-let s:nord3_term = "8"
-let s:nord5_term = "7"
-let s:nord6_term = "15"
-let s:nord7_term = "14"
-let s:nord8_term = "6"
-let s:nord9_term = "4"
+let s:nord1_term  = "0"
+let s:nord3_term  = "8"
+let s:nord5_term  = "7"
+let s:nord6_term  = "15"
+let s:nord7_term  = "14"
+let s:nord8_term  = "6"
+let s:nord9_term  = "4"
 let s:nord10_term = "12"
 let s:nord11_term = "1"
 let s:nord12_term = "11"
@@ -173,6 +200,16 @@ if has('nvim')
 	let g:terminal_color_15 = s:nord6_gui
 endif
 
+"+- Neovim Diagnostics API -+
+call s:hi("DiagnosticWarn",           s:nord13_gui, "", s:nord13_term, "", "",          "")
+call s:hi("DiagnosticError",          s:nord11_gui, "", s:nord11_term, "", "",          "")
+call s:hi("DiagnosticInfo",           s:nord8_gui,  "", s:nord8_term,  "", "",          "")
+call s:hi("DiagnosticHint",           s:nord10_gui, "", s:nord10_term, "", "",          "")
+call s:hi("DiagnosticUnderlineWarn",  s:nord13_gui, "", s:nord13_term, "", "undercurl", "")
+call s:hi("DiagnosticUnderlineError", s:nord11_gui, "", s:nord11_term, "", "undercurl", "")
+call s:hi("DiagnosticUnderlineInfo",  s:nord8_gui,  "", s:nord8_term,  "", "undercurl", "")
+call s:hi("DiagnosticUnderlineHint",  s:nord10_gui, "", s:nord10_term, "", "undercurl", "")
+
 "+--- Gutter ---+
 call s:hi("CursorColumn", "", s:nord1_gui, "NONE", s:nord1_term, "", "")
 if g:nord_cursor_line_number_background == 0
@@ -180,9 +217,9 @@ if g:nord_cursor_line_number_background == 0
 else
 	call s:hi("CursorLineNr", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "NONE", "")
 endif
-call s:hi("Folded",     s:nord3_gui,  "NONE", s:nord3_term,  "NONE", s:bold, "")
-call s:hi("FoldColumn", s:nord10_gui, "NONE", s:nord10_term, "NONE", s:bold, "")
-call s:hi("SignColumn", s:nord1_gui,  "NONE", s:nord1_term,  "NONE", "",     "")
+call s:hi("Folded",     s:nord3_gui,  "NONE", s:nord3_term,  "NONE", s:italic, "")
+call s:hi("FoldColumn", s:nord10_gui, "NONE", s:nord10_term, "NONE", s:bold,   "")
+call s:hi("SignColumn", s:nord1_gui,  "NONE", s:nord1_term,  "NONE", "",       "")
 
 "+--- Navigation ---+
 call s:hi("Directory", s:nord8_gui, "", s:nord8_term, "NONE", "", "")
@@ -501,8 +538,8 @@ hi! link yamlDocumentStart Keyword
 
 " Plugin Support. {{{1
 
-" NOTE: J'ai supprimé pleins de support pour des plugins que je n'utilise pas.
-" Pas hésiter à aller checker la version de Nord-vim sur github.
+" NOTE: I have removed support for lots of plugins I don't use. Don't hesitate
+" to check the current version on the original project repository.
 "
 " Neovim LSP
 " > neovim/nvim-lspconfig

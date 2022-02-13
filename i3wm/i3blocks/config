@@ -1,10 +1,10 @@
-#     _ _____ __    __           __
-#    (_)__  // /_  / /___  _____/ /_______
-#   / / /_ </ __ \/ / __ \/ ___/ //_/ ___/
-#  / /___/ / /_/ / / /_/ / /__/ ,< (__  )
-# /_//____/_.___/_/\____/\___/_/|_/____/
-
-# Documentation: https://vivien.github.io/i3blocks/
+#    _ ____ __   __         __
+#   (_)_  // /  / /__  ____/ /__ ___
+#  / //_ </ _ \/ / _ \/ __/  '_/(_-<
+# /_/____/_.__/_/\___/\__/_/\_\/___/
+#
+# Reference:  https://vivien.github.io/i3blocks/
+# Repository: https://github.com/QUICKguils/dotfiles
 
 # Propriétés générales (peuvent être overwritten pour chaque bloc)
 command=$HOME/.config/i3blocks/scripts/$BLOCK_NAME

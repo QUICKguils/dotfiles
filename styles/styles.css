@@ -1,58 +1,67 @@
+/*        __       __
+ *   ___ / /___ __/ /__ ___
+ *  (_-</ __/ // / / -_|_-<
+ * /___/\__/\_, /_/\__/___/.css
+ *         /___/
+ *
+ * Repository: https://github.com/QUICKguils/dotfiles
+ */
+
 body{
 	margin: auto;
 	max-width: 40em;
-	font-family: "STIX Two Text";
+	font-family: "Open Sans";
 	font-style: normal;
-	font-size: 17px;
-	line-height: 1.65;
+	font-size: 16px;
+	line-height: 1.5;
 	background-color: #2e3440;
 	color: #d8dee9;
 }
 
 h1{
 	color: #eceff4;
-	font-family: "Roboto";
+	font-family: "Linux Libertine O";
 	text-align: center;
-	font-size:34px;
+	font-size:32px;
 }
 
 h2{
 	color: #8fbcbb;
-	font-family: "Roboto";
+	font-family: "Linux Biolinum O";
 	font-size: 26px;
 }
 
 h3{
 	color: #81a1c1;
-	font-family: "Roboto";
+	font-family: "Linux Biolinum O";
 	font-weight: bold;
 	font-size: 20px;
 }
 
 h4{
 	color: #5e81ac;
-	font-family: "Roboto";
+	font-family: "Linux Biolinum O";
 	font-weight: normal;
-	font-size: 17px;
+	font-size: 18px;
 }
 
 h5{
 	color: #616e88;
-	font-family: "Roboto";
+	font-family: "Linux Biolinum O";
 	font-weight: normal;
-	font-size: 15px;
+	font-size: 16px;
 }
 
 h6{
 	color: #4c566a;
-	font-family: "Roboto";
+	font-family: "Linux Biolinum O";
 	font-weight: normal;
-	font-size: 15px;
+	font-size: 16px;
 }
 
 code{
-	font-family: "Roboto Mono";
-	font-size: 15px;
+	font-family: "Source Code Pro Medium";
+	font-size: 14px;
 	font-weight: normal;
 }
 
@@ -85,10 +94,10 @@ table{
 td, th{padding: 5px}
 tr:nth-child(even){background-color:#3b4252}
 tr:hover{background-color:#434c5e}
-td{font-size: 17px}
+td{font-size: 16px}
 th{
 	border-bottom: 3px solid #ebcb8b;
-	font-family: "Roboto";
+	font-family: "Linux Biolinum O";
 	background-color: #2e3440;
 }
 

@@ -1,13 +1,12 @@
-#                __
-#    ____  _____/ /_  __________
-#   /_  / / ___/ __ \/ ___/ ___/
-#  _ / /_(__  ) / / / /  / /__
-# (_)___/____/_/ /_/_/   \___/
+#             __
+#    ___ ___ / /  ________
+#  _/_ /(_-</ _ \/ __/ __/
+# (_)__/___/_//_/_/  \__/
 #
-# Reference: http://zsh.sourceforge.net/Doc/Release/zsh_toc.html
+# Reference:  http://zsh.sourceforge.net/Doc/Release/zsh_toc.html
+# Repository: https://github.com/QUICKguils/dotfiles
 
 # History setup  {{{1
-# -------------
 
 setopt histignorealldups sharehistory
 # Save the 10_000 last commands in .zsh_history
@@ -16,7 +15,6 @@ SAVEHIST=10000
 HISTFILE=$ZDOTDIR/.zsh_history
 
 # Colorization  {{{1
-# ------------
 
 # Tools like ls, grep, tree and fd use the LS_COLORS environment variable to
 # colorize their outputs. The ~/.dir_colors file defines LS_COLORS. The
@@ -33,7 +31,6 @@ alias egrep='egrep --color=auto'
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Autocompletion  {{{1
-# --------------
 
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' menu select=2
@@ -50,7 +47,6 @@ autoload -Uz compinit && compinit
 setopt autocd
 
 # Command prompt customization  {{{1
-# ----------------------------
 
 # Git information
 autoload -Uz vcs_info
@@ -66,7 +62,6 @@ PROMPT='%(!.%F{magenta}#. )%(?.%F{green}.%F{red})$symbol%f '
 RPROMPT='%F{8}$vcs_info_msg_0_ [%~]'
 
 # Keybindings/aliases  {{{1
-# -------------------
 
 # Vim-like keybindings
 bindkey -v
@@ -83,18 +78,18 @@ alias t='tmux'
 alias o='xdg-open'
 alias b='bat --style=rule,changes,numbers,snip'
 alias fl='figlet -t -f slant'
-alias jl='julia'
+alias jl='julia --sysimage=/home/guil/.julia/OMR-sysimage.so'
 alias mlj='matlab -nodesktop -nosplash'
 alias ml='matlab -nojvm'
 alias py='/home/guil/miniconda3/bin/python'
 alias ipy='/home/guil/miniconda3/bin/ipython'
 
 # Path shortcuts
-ing="$HOME/Documents/Ecole/Bloc_3/"
+scb="$HOME/Documents/Ecole/Bloc_3/"
+scm="$HOME/Documents/Ecole/Master_1/"
 hdd="/run/media/guil/Data/"
 
 # reading tools  {{{1
-# -------------
 
 # Use neovim as default editor
 export EDITOR='nvim'
@@ -114,7 +109,6 @@ export BAT_THEME="Nord"
 export BAT_STYLE="auto"
 
 # searching tools  {{{1
-# ---------------
 
 # Fzf loading. Repo located at ~/.dotfiles/neovim/plugin/fzf
 if [[ ! "$PATH" == */home/guil/.dotfiles/neovim/plugin/fzf/bin* ]]; then
@@ -144,6 +138,19 @@ marker:#d08770,\
 prompt:#88c0d0,\
 spinner:#ebcb8b,\
 info:#ebcb8b"
+# --color=\
+# bg:#151515,\
+# bg+:#404040,\
+# fg:#888888,\
+# fg+:#e8e8d3:bold,\
+# hl:#99ad6a,\
+# hl+:#99ad6a:bold,\
+# border:#f0a0c0,\
+# pointer:#cf6a4c:bold,\
+# marker:#902020:bold,\
+# prompt:#8197bf,\
+# spinner:#ffb964,\
+# info:#fad07a"
 # --color=\
 # bg:#282c34,\
 # bg+:#2c323c,\
@@ -178,8 +185,9 @@ export FZF_CTRL_R_OPTS="--reverse"
 #export FZF_COMPLETION_OPTS=""
 
 # Ajouts au PATH  {{{1
-# --------------
 
+# Local binaries
+export PATH="$PATH:/home/guil/.local/bin"
 # Java (from Oracle, not OpenJDK)
 export PATH="$PATH:/usr/local/java/jdk-17.0.1/bin"
 # Julia
@@ -211,7 +219,6 @@ fi
 unset __conda_setup
 
 # Plugins  {{{1
-# -------
 
 # Syntax highlighting for the shell commands
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
