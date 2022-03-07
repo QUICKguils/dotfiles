@@ -5,15 +5,15 @@
 "
 " Repository: https://github.com/QUICKguils/dotfiles
 
-" General settings {{{1
+" General Settings: {{{1
 
 cd /home/guil
 se mouse=a mousem=popup
 se clipboard=unnamedplus
 se tabstop=4 softtabstop=4 shiftwidth=4
-se smartindent
+se smartindent nosmarttab
 se noshowmode
-se number relativenumber
+se number relativenumber cursorlineopt=line
 se nowrap nojoinspaces foldmethod=marker
 se textwidth=80 colorcolumn=+1 formatoptions=cqj
 se scrolloff=5
@@ -31,7 +31,7 @@ let g:netrw_bufsettings="noma nomod nobl nowrap ro rnu"
 let mapleader="\<Space>"
 let maplocalleader="\\"
 
-" Configuration by file type {{{1
+" Configuration By File Type: {{{1
 
 " Conventions :
 "   c  -> clean, remove auxilliary files.
@@ -51,7 +51,6 @@ au FileType c nmap <buffer><localleader><CR> :sp<Bar>te %:r<CR>
 " Go - vim-go
 au FileType go nmap <buffer><localleader>l :w<Bar>GoRun %<CR>
 au FileType go nmap <buffer><localleader><CR> <Plug>(go-run-split)
-au FileType go hi link goBuiltins Function
 let g:go_highlight_operators=1
 
 " Git - vim-fugitive
@@ -101,7 +100,7 @@ au FileType vhdl setl commentstring=--%s
 " Vim
 au FileType vim nmap <buffer><localleader>l :w<Bar>source %<CR>
 
-" Mappings {{{1
+" Mappings: {{{1
 
 " Mappings : navigation between windows
 nnoremap <leader>h <C-w>h
@@ -183,13 +182,20 @@ nmap ga <Plug>(EasyAlign)
 vmap ga <Plug>(EasyAlign)
 nmap gA <Plug>(LiveEasyAlign)
 vmap gA <Plug>(LiveEasyAlign)
+let g:easy_align_delimiters = {
+\	'%': {
+\		'pattern':       '%',
+\		'left_margin':   2,
+\		'ignore_groups': ['!Comment']
+\	}
+\ }
 
 " Mappings : miscellaneous
 nnoremap <leader>i :se fenc? ff?<CR>
 nnoremap <leader>m :lc %:h<CR>
 tnoremap <M-q> <C-\><C-N>
 
-" Colorscheme and gui-capabilities settings {{{1
+" Color Scheme And GUI Capabilities: {{{1
 
 " Exact colors (16bits)
 if (has("termguicolors"))
@@ -202,26 +208,42 @@ let g:nord_italic=1
 let g:nord_uniform_diff_background=1
 colo nord
 
-" Statusline config (lightline.vim) {{{1
+" " Gruvbox <https://github.com/morhetz/gruvbox.git>
+" packadd! gruvbox
+" let g:gruvbox_italic=1
+" let g:gruvbox_undercurl=1
+" let g:gruvbox_italicize_comments=0
+" let g:gruvbox_invert_selection=0
+" colo gruvbox
+
+
+" Statusline Config: {{{1
 
 let g:lightline = {
 \	'colorscheme':'Nord',
 \	'active': {
 \		'left': [
 \			['mode', 'paste'],
-\			['fugitive', 'filename', 'mymodified', 'permission']
+\			['fugitive', 'path'],
+\			['mymodified', 'permission']
 \		],
 \		'right': [['lineinfo'], ['filetype']]
 \	},
 \	'inactive': {
-\		'left': [['filename', 'mymodified', 'permission']],
+\		'left': [
+\			['filename'],
+\			['mymodified', 'permission']
+\		],
 \		'right': [['lineinfo']]
 \	},
-\	'component': {'lineinfo': "%P \u2022 %L"},
+\	'component': {
+\		'lineinfo': "%P \u2022 %L",
+\	},
 \	'component_function': {
 \		'permission': 'LightlinePermission',
 \		'fugitive':   'LightlineFugitive',
-\		'mymodified': 'LightlineModified'
+\		'mymodified': 'LightlineModified',
+\		'path':       'LightlinePath'
 \	},
 \	'separator': {'left': "", 'right': ""},
 \	'subseparator': {'left': "│", 'right': "│"}
@@ -246,10 +268,15 @@ function! LightlineModified()
 	return &modifiable && &modified ? "+": ""
 endfunction
 
-" Neovim lsp config (nvim 0.5.0) {{{1
+" Print the shortened path of the current file.
+function! LightlinePath()
+	return pathshorten(expand('%:~'))
+endfunction
+
+" Neovim LSP Config: {{{1
 
 " Settings for nvim-lspconfig plugin.
-se completeopt=menuone ",noinsert
+se completeopt=menuone
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 se omnifunc=v:lua.vim.lsp.omnifunc
 

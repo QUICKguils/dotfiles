@@ -208,12 +208,12 @@ default_border pixel 1
 hide_edge_borders smart
 
 # window colors
-# Object                border     background text      indicator   child border
-client.focused          $od_blue   $od_blue   $od_black $od_cyan    $od_blue
-client.unfocused        $od_split  $od_visual $od_fg    $od_visual  $od_visual
-client.focused_inactive $od_split  $od_visual $od_blue  $od_visual  $od_visual
-client.urgent           $od_red    $od_red    $od_black $od_magenta
-client.background       $od_cursor
+# Object                  border      background   text        indicator    child border
+client.focused            $od_blue    $od_blue     $od_black   $od_cyan     $od_blue
+client.unfocused          $od_split   $od_visual   $od_fg      $od_visual   $od_visual
+client.focused_inactive   $od_split   $od_visual   $od_blue    $od_visual   $od_visual
+client.urgent             $od_red     $od_red      $od_black   $od_magenta
+client.background         $od_cursor
 
 # Status bar configuration {{{1
 
@@ -234,11 +234,11 @@ bar {
 		background $od_cursor
 		statusline $od_fg
 		separator  $od_fg
-		# Object           border     background text
-		focused_workspace  $od_blue   $od_blue   $od_black
-		inactive_workspace $od_visual $od_visual $od_fg
-		urgent_workspace   $od_cyan   $od_cyan   $od_black
-		binding_mode       $od_green  $od_green  $od_black
+		# Object             border       background   text
+		focused_workspace    $od_blue     $od_blue     $od_black
+		inactive_workspace   $od_visual   $od_visual   $od_fg
+		urgent_workspace     $od_cyan     $od_cyan     $od_black
+		binding_mode         $od_green    $od_green    $od_black
 	}
 }
 

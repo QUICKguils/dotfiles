@@ -68,3 +68,6 @@
 [submodule "neovim/plugin/completion-nvim"]
 	path = neovim/plugin/completion-nvim
 	url = https://github.com/nvim-lua/completion-nvim.git
+[submodule "neovim/colorscheme/gruvbox"]
+	path = neovim/colorscheme/gruvbox
+	url = https://github.com/morhetz/gruvbox.git

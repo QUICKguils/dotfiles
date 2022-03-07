@@ -29,15 +29,10 @@
 " SOFTWARE.
 " }}}
 
-
 let s:nord_vim_version="0.18.0"
 let s:p = {
-	\'normal':   {},
-	\'inactive': {},
-	\'insert':   {},
-	\'replace':  {},
-	\'visual':   {},
-	\'tabline':  {}
+	\'normal':  {}, 'inactive': {}, 'insert':  {},
+	\'replace': {}, 'visual':   {}, 'tabline': {}
 \}
 
 let s:nord0  = ["#2E3440", "NONE"]
@@ -57,32 +52,32 @@ let s:nord13 = ["#EBCB8B", 3     ]
 let s:nord14 = ["#A3BE8C", 2     ]
 let s:nord15 = ["#B48EAD", 5     ]
 
-let s:p.inactive.left   = [ [ s:nord5, s:nord2 ],  [ s:nord5, s:nord1 ] ]
-let s:p.inactive.right  = [ [ s:nord5, s:nord2 ],  [ s:nord5, s:nord1 ] ]
-let s:p.inactive.middle = [ [ s:nord5, s:nord1 ]]
+let s:p.inactive.left   = [ [s:nord5, s:nord2],  [s:nord5, s:nord1] ]
+let s:p.inactive.right  = [ [s:nord5, s:nord2],  [s:nord5, s:nord1] ]
+let s:p.inactive.middle = [ [s:nord5, s:nord1]]
 
-let s:p.normal.left     = [ [ s:nord1, s:nord8 ],  [ s:nord5, s:nord2 ] ]
-let s:p.normal.right    = [ [ s:nord1, s:nord8 ],  [ s:nord5, s:nord2 ] ]
-let s:p.normal.middle   = [ [ s:nord5, s:nord1 ] ]
+let s:p.normal.left     = [ [s:nord1, s:nord8],  [s:nord5, s:nord2] ]
+let s:p.normal.right    = [ [s:nord1, s:nord8],  [s:nord5, s:nord2] ]
+let s:p.normal.middle   = [ [s:nord5, s:nord1] ]
 
-let s:p.insert.left     = [ [ s:nord1, s:nord6 ],  [ s:nord5, s:nord2 ] ]
-let s:p.insert.right    = [ [ s:nord1, s:nord6 ],  [ s:nord5, s:nord2 ] ]
-let s:p.insert.middle   = [ [ s:nord5, s:nord1 ] ]
+let s:p.insert.left     = [ [s:nord1, s:nord6],  [s:nord5, s:nord2] ]
+let s:p.insert.right    = [ [s:nord1, s:nord6],  [s:nord5, s:nord2] ]
+let s:p.insert.middle   = [ [s:nord5, s:nord1] ]
 
-let s:p.replace.left    = [ [ s:nord1, s:nord13 ], [ s:nord5, s:nord2 ] ]
-let s:p.replace.right   = [ [ s:nord1, s:nord13 ], [ s:nord5, s:nord2 ] ]
-let s:p.replace.middle  = [ [ s:nord5, s:nord1 ] ]
+let s:p.replace.left    = [ [s:nord1, s:nord13], [s:nord5, s:nord2] ]
+let s:p.replace.right   = [ [s:nord1, s:nord13], [s:nord5, s:nord2] ]
+let s:p.replace.middle  = [ [s:nord5, s:nord1] ]
 
-let s:p.visual.left     = [ [ s:nord1, s:nord15 ], [ s:nord5, s:nord2 ] ]
-let s:p.visual.right    = [ [ s:nord1, s:nord15 ], [ s:nord5, s:nord2 ] ]
-let s:p.visual.middle   = [ [ s:nord5, s:nord1 ] ]
+let s:p.visual.left     = [ [s:nord1, s:nord15], [s:nord5, s:nord2] ]
+let s:p.visual.right    = [ [s:nord1, s:nord15], [s:nord5, s:nord2] ]
+let s:p.visual.middle   = [ [s:nord5, s:nord1] ]
 
-let s:p.tabline.left    = [ [ s:nord5, s:nord2 ] ]
-let s:p.tabline.right   = [ [ s:nord1, s:nord8 ] ]
-let s:p.tabline.middle  = [ [ s:nord5, s:nord1 ] ]
-let s:p.tabline.tabsel  = [ [ s:nord1, s:nord8 ] ]
+let s:p.tabline.left    = [ [s:nord5, s:nord2] ]
+let s:p.tabline.right   = [ [s:nord1, s:nord8] ]
+let s:p.tabline.middle  = [ [s:nord5, s:nord1] ]
+let s:p.tabline.tabsel  = [ [s:nord1, s:nord8] ]
 
-let s:p.normal.warning  = [ [ s:nord1, s:nord13 ] ]
-let s:p.normal.error    = [ [ s:nord1, s:nord11 ] ]
+let s:p.normal.warning  = [ [s:nord1, s:nord13] ]
+let s:p.normal.error    = [ [s:nord1, s:nord11] ]
 
 let g:lightline#colorscheme#Nord#palette = lightline#colorscheme#flatten(s:p)

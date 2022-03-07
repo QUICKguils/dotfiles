@@ -6,11 +6,11 @@
 " Project:    Custom Nord
 " Repository: https://github.com/QUICKguils/dotfiles
 
-" License and credits {{{
-" This colorscheme is a refactor of the following project:
-" Project:    Nord Vim
-" Repository: https://github.com/arcticicestudio/nord-vim
-" License:    MIT
+" License And Credits: {{{1
+" This color scheme is a reworking of the following project:
+" project:    Nord Vim
+" repository: https://github.com/arcticicestudio/nord-vim
+" license:    MIT
 " Copyright © 2016-present Arctic Ice Studio <development@arcticicestudio.com>
 " Copyright © 2016-present Sven Greb <development@svengreb.de>
 "
@@ -31,7 +31,8 @@
 " LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 " OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 " SOFTWARE.
-" }}}
+
+" Initialisation: {{{1
 
 if version > 580
 	hi clear
@@ -44,7 +45,7 @@ let g:colors_name = "nord"
 let s:nord_vim_version="0.18.0"
 set background=dark
 
-" Color palette {{{1
+" Color Palette: {{{1
 
 " Original color palette.
 let s:nord0_gui  = "#2E3440"
@@ -80,7 +81,7 @@ let s:nord13_term = "3"
 let s:nord14_term = "2"
 let s:nord15_term = "5"
 
-" Toggle options {{{1
+" Toggle Options: {{{1
 
 " Bold text.
 if !exists("g:nord_bold")
@@ -124,7 +125,7 @@ if !exists("g:nord_cursor_line_number_background")
 	let g:nord_cursor_line_number_background = 0
 endif
 
-" Highlighting function {{{1
+" Highlighting Function: {{{1
 
 function! s:hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
 	if a:guifg != ""
@@ -147,7 +148,7 @@ function! s:hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
 	endif
 endfunction
 
-" UI Components {{{1
+" UI Components: {{{1
 
 "+--- Attributes ---+
 call s:hi("Bold",   "", "", "", "", s:bold,   "")
@@ -158,7 +159,9 @@ call s:hi("ColorColumn", "",           s:nord1_gui, "NONE",        s:nord1_term,
 call s:hi("Cursor",      s:nord1_gui,  s:nord4_gui, "",            "NONE",       "",          "")
 call s:hi("CursorLine",  "",           s:nord1_gui, "NONE",        s:nord1_term, "NONE",      "")
 call s:hi("lCursor",     s:nord1_gui,  s:nord4_gui, "",            "NONE",       "",          "")
-call s:hi("LineNr",      s:nord3_gui,  "NONE",      s:nord3_term,  "NONE",       "",          "")
+call s:hi("LineNr",      s:nord3_gui,  "NONE",      s:nord3_term,  "NONE",       "Bold",      "")
+call s:hi("LineNrAbove", s:nord3_gui,  "NONE",      s:nord3_term,  "NONE",       "",          "")
+call s:hi("LineNrBelow", s:nord3_gui,  "NONE",      s:nord3_term,  "NONE",       "",          "")
 call s:hi("MatchParen",  s:nord8_gui,  s:nord3_gui, s:nord8_term,  s:nord3_term, "",          "")
 call s:hi("NonText",     s:nord3_gui,  "",          s:nord3_term,  "",           "",          "")
 call s:hi("Normal",      s:nord4_gui,  s:nord0_gui, "NONE",        "NONE",       "",          "")
@@ -210,6 +213,11 @@ call s:hi("DiagnosticUnderlineError", s:nord11_gui, "", s:nord11_term, "", "unde
 call s:hi("DiagnosticUnderlineInfo",  s:nord8_gui,  "", s:nord8_term,  "", "undercurl", "")
 call s:hi("DiagnosticUnderlineHint",  s:nord10_gui, "", s:nord10_term, "", "undercurl", "")
 
+"+- Neovim DocumentHighlight -+
+call s:hi("LspReferenceText",  "", s:nord3_gui, "", s:nord3_term, "", "")
+call s:hi("LspReferenceRead",  "", s:nord3_gui, "", s:nord3_term, "", "")
+call s:hi("LspReferenceWrite", "", s:nord3_gui, "", s:nord3_term, "", "")
+
 "+--- Gutter ---+
 call s:hi("CursorColumn", "", s:nord1_gui, "NONE", s:nord1_term, "", "")
 if g:nord_cursor_line_number_background == 0
@@ -249,7 +257,7 @@ call s:hi("Title", s:nord4_gui, "", "NONE", "", "NONE", "")
 
 call s:hi("VertSplit", s:nord2_gui, s:nord0_gui, s:nord3_term, "NONE", "NONE", "")
 
-" Language Base Groups {{{1
+" Language Base Groups: {{{1
 
 call s:hi("Comment",        s:nord3_gui_bright, "", s:nord3_term,  "", "",     "")
 
@@ -295,7 +303,7 @@ call s:hi("Conceal",    "",           "NONE",       "",            "NONE",      
 call s:hi("Error",      s:nord5_gui,  s:nord11_gui, "",            s:nord11_term, "",          "")
 call s:hi("Todo",       s:nord10_gui, "NONE",       s:nord10_term, "NONE",        s:bold,      "")
 
-" Languages {{{1
+" Languages: {{{1
 
 call s:hi("asciidocAttributeEntry",        s:nord10_gui, "", s:nord10_term, "", "", "")
 call s:hi("asciidocAttributeList",         s:nord10_gui, "", s:nord10_term, "", "", "")
@@ -387,6 +395,10 @@ hi! link diffChanged DiffChange
 hi! link diffRemoved DiffDelete
 
 call s:hi("gitconfigVariable", s:nord7_gui, "", s:nord7_term, "", "", "")
+
+hi! link goBuiltins      Function
+hi! link goSpecialString SpecialChar
+hi! link goFunctionCall  Function
 
 call s:hi("helpBar",           s:nord3_gui, "", s:nord3_term, "", "", "")
 call s:hi("helpHyperTextJump", s:nord9_gui, "", s:nord9_term, "", "", "")
@@ -536,22 +548,24 @@ call s:hi("yamlBlockMappingKey", s:nord7_gui, "", s:nord7_term, "", "", "")
 hi! link yamlBool          Keyword
 hi! link yamlDocumentStart Keyword
 
-" Plugin Support. {{{1
+" Plugin Support: {{{1
 
 " NOTE: I have removed support for lots of plugins I don't use. Don't hesitate
 " to check the current version on the original project repository.
 "
 " Neovim LSP
 " > neovim/nvim-lspconfig
-call s:hi("LspCodeLens",                        s:nord3_gui_bright, "", s:nord3_term,  "", "",          "")
-call s:hi("LspDiagnosticsDefaultWarning",       s:nord13_gui,       "", s:nord13_term, "", "",          "")
-call s:hi("LspDiagnosticsDefaultError",         s:nord11_gui,       "", s:nord11_term, "", "",          "")
-call s:hi("LspDiagnosticsDefaultInformation",   s:nord8_gui,        "", s:nord8_term,  "", "",          "")
-call s:hi("LspDiagnosticsDefaultHint",          s:nord10_gui,       "", s:nord10_term, "", "",          "")
-call s:hi("LspDiagnosticsUnderlineWarning",     s:nord13_gui,       "", s:nord13_term, "", "undercurl", "")
-call s:hi("LspDiagnosticsUnderlineError",       s:nord11_gui,       "", s:nord11_term, "", "undercurl", "")
-call s:hi("LspDiagnosticsUnderlineInformation", s:nord8_gui,        "", s:nord8_term,  "", "undercurl", "")
-call s:hi("LspDiagnosticsUnderlineHint",        s:nord10_gui,       "", s:nord10_term, "", "undercurl", "")
+call s:hi("LspCodeLens", s:nord3_gui_bright, "", s:nord3_term, "", "", "")
+if has("nvim-0.5")
+	call s:hi("LspDiagnosticsDefaultWarning",       s:nord13_gui, "", s:nord13_term, "", "",          "")
+	call s:hi("LspDiagnosticsDefaultError",         s:nord11_gui, "", s:nord11_term, "", "",          "")
+	call s:hi("LspDiagnosticsDefaultInformation",   s:nord8_gui,  "", s:nord8_term,  "", "",          "")
+	call s:hi("LspDiagnosticsDefaultHint",          s:nord10_gui, "", s:nord10_term, "", "",          "")
+	call s:hi("LspDiagnosticsUnderlineWarning",     s:nord13_gui, "", s:nord13_term, "", "undercurl", "")
+	call s:hi("LspDiagnosticsUnderlineError",       s:nord11_gui, "", s:nord11_term, "", "undercurl", "")
+	call s:hi("LspDiagnosticsUnderlineInformation", s:nord8_gui,  "", s:nord8_term,  "", "undercurl", "")
+	call s:hi("LspDiagnosticsUnderlineHint",        s:nord10_gui, "", s:nord10_term, "", "undercurl", "")
+endif
 
 " fugitive.vim
 " > tpope/vim-fugitive
@@ -565,7 +579,7 @@ call s:hi("haskellPreProc", s:nord10_gui, "", s:nord10_term, "", "", "")
 call s:hi("haskellType",    s:nord7_gui,  "", s:nord7_term,  "", "", "")
 hi! link haskellPragma haskellPreProc
 
-" Public API {{{1
+" Public API: {{{1
 
 function! NordPalette() abort
 	let ret = {}

@@ -12,22 +12,22 @@
 window:
   dimensions:
     columns: 115
-    lines: 57
+    lines: 49
   padding:
-    x: 0
-    y: 0
+    x: 1
+    y: 2
   dynamic_padding: true
 
 font:
   normal:
-    family: Hack
+    family: Source Code Pro
   offset:
     x: 0
-    y: 1
+    y: 2
   glyph_offset:
     x: 0
-    y: 0
-  size: 10
+    y: 1
+  size: 11
 
 shell:
   program: /usr/bin/zsh
@@ -39,10 +39,9 @@ key_bindings:
   - { key: F11,                 action: ToggleFullscreen }
   - { key: Key0, mods: Control, action: ResetFontSize    }
 
-draw_bold_text_with_bright_colors: false
-
 # Nord colorscheme {{{1
 
+draw_bold_text_with_bright_colors: false
 colors:
   primary:
     background: '#2e3440'
@@ -96,6 +95,7 @@ colors:
 
 # Onedark colorscheme {{{1
 
+# draw_bold_text_with_bright_colors: false
 # colors:
 #   primary:
 #     background: '#282c34'
@@ -137,3 +137,91 @@ colors:
 #     magenta: '#c678dd'
 #     cyan:    '#56b6c2'
 #     white:   '#5c6370'
+
+# Gruvbox colorscheme {{{1
+
+# draw_bold_text_with_bright_colors: true
+# colors:
+#   primary:
+#     background:        '#282828'
+#     foreground:        '#ebdbb2'
+#     bright_foreground: '#fbf1c7'
+#     dim_foreground:    '#a89984'
+#   cursor:
+#     text:   '#504945'
+#     cursor: '#ebdbb2'
+#   vi_mode_cursor:
+#     text:   '#504945'
+#     cursor: '#ebdbb2'
+#   search:
+#     matches:
+#       foreground: '#282828'
+#       background: '#fe8019'
+#     focused_match:
+#       foreground: '#282828'
+#       background: '#fabd2f'
+#     bar:
+#       background: '#504945'
+#       foreground: '#ebdbb2'
+#   line_indicator:
+#     foreground: '#282828'
+#     background: '#fe8019'
+#   selection:
+#     text:       CellForeground
+#     background: '#665c54'
+#   bright:
+#     black:   '#928374'
+#     red:     '#fb4934'
+#     green:   '#b8bb26'
+#     yellow:  '#fabd2f'
+#     blue:    '#83a598'
+#     magenta: '#d3869b'
+#     cyan:    '#8ec07c'
+#     white:   '#ebdbb2'
+#   normal:
+#     black:   '#282828'
+#     red:     '#cc241d'
+#     green:   '#98971a'
+#     yellow:  '#d79921'
+#     blue:    '#458588'
+#     magenta: '#b16286'
+#     cyan:    '#689d6a'
+#     white:   '#a89984'
+#   dim:
+#     black:   '#32302f'
+#     red:     '#9d0006'
+#     green:   '#79740e'
+#     yellow:  '#b57614'
+#     blue:    '#076678'
+#     magenta: '#8f3f71'
+#     cyan:    '#427b58'
+#     white:   '#928374'
+
+# PaperColors colorscheme {{{1
+
+# draw_bold_text_with_bright_colors: true
+# colors:
+#   primary:
+#     background: "#eeeeee"
+#     foreground: "#444444"
+#   cursor:
+#     text: "#eeeeee"
+#     cursor: "#444444"
+#   normal:
+#     black: "#eeeeee"
+#     red: "#af0000"
+#     green: "#008700"
+#     yellow: "#5f8700"
+#     blue: "#0087af"
+#     magenta: "#8700af"
+#     cyan: "#005f87"
+#     white: "#878787"
+#   bright:
+#     black: "#bcbcbc"
+#     red: "#af0000"
+#     green: "#008700"
+#     yellow: "#5f8700"
+#     blue: "#0087af"
+#     magenta: "#8700af"
+#     cyan: "#005f87"
+#     white: "#eeeeee"
