@@ -71,3 +71,6 @@
 [submodule "neovim/colorscheme/gruvbox"]
 	path = neovim/colorscheme/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
+[submodule "neovim/plugin/nvim-treesitter"]
+	path = neovim/plugin/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git

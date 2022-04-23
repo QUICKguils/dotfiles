@@ -8,7 +8,7 @@
 # General settings -------------------------------------------------------------
 
 # UI typeface.
-set font "Inconsolata 12"
+set font "Open Sans Regular 11"
 
 # Default layout.
 set window-height 1080
@@ -49,86 +49,86 @@ set recolor-reverse-video "false"
 # OneDark colorscheme {{{1
 # -------------------
 
-# # Recoloration
-# set recolor-lightcolor "#282c34"
-# set recolor-darkcolor  "#abb2bf"
-# set recolor            "true"
+# Recoloration
+set recolor-lightcolor "#282c34"
+set recolor-darkcolor  "#abb2bf"
+set recolor            "true"
 
-# set notification-error-bg   "#3e4452"
-# set notification-error-fg   "#e06c75"
-# set notification-warning-bg "#3e4452"
-# set notification-warning-fg "#e5c07b"
-# set notification-bg         "#3e4452"
-# set notification-fg         "#98c379"
+set notification-error-bg   "#3e4452"
+set notification-error-fg   "#e06c75"
+set notification-warning-bg "#3e4452"
+set notification-warning-fg "#e5c07b"
+set notification-bg         "#3e4452"
+set notification-fg         "#98c379"
 
-# set completion-bg           "#2c323c"
-# set completion-fg           "#abb2bf"
-# set completion-group-bg     "#3e4452"
-# set completion-group-fg     "#abb2bf"
-# set completion-highlight-bg "#61afef"
-# set completion-highlight-fg "#2c323c"
+set completion-bg           "#2c323c"
+set completion-fg           "#abb2bf"
+set completion-group-bg     "#3e4452"
+set completion-group-fg     "#abb2bf"
+set completion-highlight-bg "#61afef"
+set completion-highlight-fg "#2c323c"
 
-# set index-bg                "#2c323c"
-# set index-fg                "#abb2bf"
-# set index-active-bg         "#61afef"
-# set index-active-fg         "#2c323c"
+set index-bg                "#2c323c"
+set index-fg                "#abb2bf"
+set index-active-bg         "#61afef"
+set index-active-fg         "#2c323c"
 
-# set inputbar-bg             "#3e4452"
-# set inputbar-fg             "#abb2bf"
+set inputbar-bg             "#3e4452"
+set inputbar-fg             "#abb2bf"
 
-# set statusbar-bg            "#3e4452"
-# set statusbar-fg            "#abb2bf"
+set statusbar-bg            "#3e4452"
+set statusbar-fg            "#abb2bf"
 
-# set highlight-color         "#61afef"
-# set highlight-active-color  "#56b6c2"
+set highlight-color         "#61afef"
+set highlight-active-color  "#56b6c2"
 
-# set default-bg              "#2c323c"
-# set default-fg              "#abb2bf"
-# set render-loading          "true"
-# set render-loading-bg       "#282c34"
-# set render-loading-fg       "#abb2bf"
+set default-bg              "#2c323c"
+set default-fg              "#abb2bf"
+set render-loading          "true"
+set render-loading-bg       "#282c34"
+set render-loading-fg       "#abb2bf"
 
 # Nord colorscheme {{{1
 # ----------------
 
-# Recoloration
-set recolor-lightcolor "#2e3440"
-set recolor-darkcolor  "#d8dee9"
-set recolor            "true"
+# # Recoloration
+# set recolor-lightcolor "#2e3440"
+# set recolor-darkcolor  "#d8dee9"
+# set recolor            "true"
 
-set notification-error-bg   "#3b4252"
-set notification-error-fg   "#bf616a"
-set notification-warning-bg "#3b4252"
-set notification-warning-fg "#ebcb8b"
-set notification-bg         "#3b4252"
-set notification-fg         "#a3be8c"
+# set notification-error-bg   "#3b4252"
+# set notification-error-fg   "#bf616a"
+# set notification-warning-bg "#3b4252"
+# set notification-warning-fg "#ebcb8b"
+# set notification-bg         "#3b4252"
+# set notification-fg         "#a3be8c"
 
-set completion-bg           "#2e3440"
-set completion-fg           "#d8dee9"
-set completion-group-bg     "#3b4252"
-set completion-group-fg     "#eceff4"
-set completion-highlight-bg "#88c0d0"
-set completion-highlight-fg "#2e3440"
+# set completion-bg           "#2e3440"
+# set completion-fg           "#d8dee9"
+# set completion-group-bg     "#3b4252"
+# set completion-group-fg     "#eceff4"
+# set completion-highlight-bg "#88c0d0"
+# set completion-highlight-fg "#2e3440"
 
-set index-bg                "#2e3440"
-set index-fg                "#d8dee9"
-set index-active-bg         "#88c0d0"
-set index-active-fg         "#3b4252"
+# set index-bg                "#2e3440"
+# set index-fg                "#d8dee9"
+# set index-active-bg         "#88c0d0"
+# set index-active-fg         "#3b4252"
 
-set inputbar-bg             "#3b4252"
-set inputbar-fg             "#d8dee9"
+# set inputbar-bg             "#3b4252"
+# set inputbar-fg             "#d8dee9"
 
-set statusbar-bg            "#3b4252"
-set statusbar-fg            "#d8dee9"
+# set statusbar-bg            "#3b4252"
+# set statusbar-fg            "#d8dee9"
 
-set highlight-color         "#88c0d0"
-set highlight-active-color  "#5e81ac"
+# set highlight-color         "#88c0d0"
+# set highlight-active-color  "#5e81ac"
 
-set default-bg              "#292e39"
-set default-fg              "#d8dee9"
-set render-loading          "true"
-set render-loading-bg       "#2e3440"
-set render-loading-fg       "#d8dee9"
+# set default-bg              "#292e39"
+# set default-fg              "#d8dee9"
+# set render-loading          "true"
+# set render-loading-bg       "#2e3440"
+# set render-loading-fg       "#d8dee9"
 
 # Gruvbox colorscheme {{{1
 # ----------------

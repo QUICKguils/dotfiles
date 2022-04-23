@@ -30,9 +30,8 @@
     ~/.config/neofetch/config.conf: neofetch/config.conf
     ~/.config/neomutt/neomuttrc: neomutt/neomuttrc
     ~/.config/nvim/init.vim: neovim/init.vim
-    ~/.local/share/nvim/site/pack/plugin/start: neovim/plugin
-    ~/.local/share/nvim/site/pack/ftplugin/start: neovim/ftplugin
-    ~/.local/share/nvim/site/pack/colorscheme/opt: neovim/colorscheme
+    ~/.config/nvim/init.lua: neovim/init.lua
+    ~/.config/nvim/lua: neovim/lua
     ~/.local/share/nvim/site/spell: neovim/spell
     ~/.config/styles.css: styles/styles.css
     ~/.tmux.conf: tmux/tmux.conf

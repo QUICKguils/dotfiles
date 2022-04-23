@@ -12,7 +12,7 @@ body{
 	max-width: 40em;
 	font-family: "Open Sans";
 	font-style: normal;
-	font-size: 16px;
+	font-size: 17px;
 	line-height: 1.5;
 	background-color: #2e3440;
 	color: #d8dee9;
@@ -20,47 +20,47 @@ body{
 
 h1{
 	color: #eceff4;
-	font-family: "Linux Libertine O";
+	font-family: "STIX Two Text";
 	text-align: center;
-	font-size:32px;
+	font-size:34px;
 }
 
 h2{
 	color: #8fbcbb;
-	font-family: "Linux Biolinum O";
+	font-family: "Open Sans";
 	font-size: 26px;
 }
 
 h3{
 	color: #81a1c1;
-	font-family: "Linux Biolinum O";
+	font-family: "Open Sans";
 	font-weight: bold;
 	font-size: 20px;
 }
 
 h4{
 	color: #5e81ac;
-	font-family: "Linux Biolinum O";
+	font-family: "Open Sans";
 	font-weight: normal;
 	font-size: 18px;
 }
 
 h5{
 	color: #616e88;
-	font-family: "Linux Biolinum O";
+	font-family: "Open Sans";
 	font-weight: normal;
 	font-size: 16px;
 }
 
 h6{
 	color: #4c566a;
-	font-family: "Linux Biolinum O";
+	font-family: "Open Sans";
 	font-weight: normal;
 	font-size: 16px;
 }
 
 code{
-	font-family: "Source Code Pro";
+	font-family: "Source Code Pro Medium";
 	font-size: 15px;
 	font-weight: normal;
 }
@@ -97,7 +97,7 @@ tr:hover{background-color:#434c5e}
 td{font-size: 16px}
 th{
 	border-bottom: 3px solid #ebcb8b;
-	font-family: "Linux Biolinum O";
+	font-family: "Open Sans";
 	background-color: #2e3440;
 }
 

@@ -53,13 +53,19 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-zstyle ':vcs_info:git:*' formats '%b'
+zstyle ':vcs_info:git:*' formats '%F{8}%b%f '
 zstyle ':vcs_info:*' enable git
 
+# # Command promt appearance
+# symbol="●"
+# PROMPT='%(!.%F{magenta}#. )%(?.%F{green}.%F{red})$symbol%f '
+# RPROMPT='%F{8}$vcs_info_msg_0_ [%~]'
+
 # Command promt appearance
-symbol="▶"
-PROMPT='%(!.%F{magenta}#. )%(?.%F{green}.%F{red})$symbol%f '
-RPROMPT='%F{8}$vcs_info_msg_0_ [%~]'
+myid="%F{blue}%n%F{14}@%F{blue}%m"
+mycol="%(?.%(!.F{magenta}.%F{green}).%F{red})"
+PROMPT='$mycol┌──($myid$mycol)─[%f%~$mycol] $vcs_info_msg_0_
+$mycol└─%F{blue}%(!.#.$)%f '
 
 # Keybindings/aliases  {{{1
 
@@ -81,8 +87,8 @@ alias fl='figlet -t -f slant'
 alias jl='julia --sysimage=/home/guil/.julia/OMR-sysimage.so'
 alias mlj='matlab -nodesktop -nosplash'
 alias ml='matlab -nojvm'
-alias py='/home/guil/miniconda3/bin/python'
-alias ipy='/home/guil/miniconda3/bin/ipython'
+alias py='/home/guil/.miniconda3/bin/python'
+alias ipy='/home/guil/.miniconda3/bin/ipython'
 
 # Path shortcuts
 scb="$HOME/Documents/Ecole/Bloc_3/"
@@ -111,15 +117,6 @@ export BAT_STYLE="auto"
 
 # searching tools  {{{1
 
-# Fzf loading. Repo located at ~/.dotfiles/neovim/plugin/fzf
-if [[ ! "$PATH" == */home/guil/.dotfiles/neovim/plugin/fzf/bin* ]]; then
-	export PATH="${PATH:+${PATH}:}/home/guil/.dotfiles/neovim/plugin/fzf/bin"
-fi
-# Auto-completion
-[[ $- == *i* ]] && source "/home/guil/.dotfiles/neovim/plugin/fzf/shell/completion.zsh" 2> /dev/null
-# Key bindings
-source "/home/guil/.dotfiles/neovim/plugin/fzf/shell/key-bindings.zsh"
-
 # Non-piped fzf: use fd to feed fzf instead of find.
 # Cf. https://github.com/sharkdp/fd
 export FZF_DEFAULT_COMMAND="fd -H"
@@ -140,19 +137,6 @@ prompt:#88c0d0,\
 spinner:#ebcb8b,\
 info:#ebcb8b"
 # --color=\
-# bg:#282828,\
-# bg+:#3c3836,\
-# fg:#928374,\
-# fg+:#ebdbb2:bold,\
-# hl:#98971a,\
-# hl+:#b8bb26:bold,\
-# border:#d3869b,\
-# pointer:#fb4934:bold,\
-# marker:#cc241d:bold,\
-# prompt:#83a598,\
-# spinner:#fabd2f,\
-# info:#fabd2f"
-# --color=\
 # bg:#282c34,\
 # bg+:#2c323c,\
 # fg:#5c6370,\
@@ -165,6 +149,19 @@ info:#ebcb8b"
 # prompt:#61afef,\
 # spinner:#e5c07b,\
 # info:#e5c07b"
+# --color=\
+# bg:#282828,\
+# bg+:#3c3836,\
+# fg:#928374,\
+# fg+:#ebdbb2:bold,\
+# hl:#98971a,\
+# hl+:#b8bb26:bold,\
+# border:#d3869b,\
+# pointer:#fb4934:bold,\
+# marker:#cc241d:bold,\
+# prompt:#83a598,\
+# spinner:#fabd2f,\
+# info:#fabd2f"
 
 # fzf file search, with preview using bat.
 export FZF_CTRL_T_COMMAND="fd -Ht f"
@@ -182,8 +179,8 @@ export FZF_ALT_C_OPTS="\
 export FZF_CTRL_R_OPTS="--reverse"
 
 # fzf trigger sequence (default:**)
-#export FZF_COMPLETION_TRIGGER="**"
-#export FZF_COMPLETION_OPTS=""
+# export FZF_COMPLETION_TRIGGER="**"
+# export FZF_COMPLETION_OPTS=""
 
 # Ajouts au PATH  {{{1
 
@@ -194,7 +191,7 @@ export PATH="$PATH:/usr/local/java/jdk-17.0.1/bin"
 # Julia
 export PATH="$PATH:/usr/local/julia/bin"
 # Matlab
-export PATH="$PATH:/usr/local/MATLAB/R2021b/bin"
+export PATH="$PATH:/usr/local/MATLAB/R2022a/bin"
 # Latex distribution (TexLive 2021)
 export PATH="/run/media/guil/Data/texlive/2021/bin/x86_64-linux:$PATH"
 export MANPATH="$MANPATH:/run/media/guil/Data/texlive/2021/texmf-dist/doc/man"
@@ -207,14 +204,14 @@ export PATH="$PATH:$GOPATH/bin"
 # Cargo (rust)
 . "$HOME/.cargo/env"
 # Miniconda
-__conda_setup="$('/home/guil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/guil/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
 	eval "$__conda_setup"
 else
-	if [ -f "/home/guil/miniconda3/etc/profile.d/conda.sh" ]; then
-		. "/home/guil/miniconda3/etc/profile.d/conda.sh"
+	if [ -f "/home/guil/.miniconda3/etc/profile.d/conda.sh" ]; then
+		. "/home/guil/.miniconda3/etc/profile.d/conda.sh"
 	else
-		export PATH="/home/guil/miniconda3/bin:$PATH"
+		export PATH="/home/guil/.miniconda3/bin:$PATH"
 	fi
 fi
 unset __conda_setup

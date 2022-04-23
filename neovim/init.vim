@@ -13,7 +13,7 @@ se clipboard=unnamedplus
 se tabstop=4 softtabstop=4 shiftwidth=4
 se smartindent nosmarttab
 se noshowmode
-se number relativenumber cursorlineopt=line
+se number relativenumber
 se nowrap nojoinspaces foldmethod=marker
 se textwidth=80 colorcolumn=+1 formatoptions=cqj
 se scrolloff=5
@@ -45,13 +45,19 @@ let maplocalleader="\\"
 
 " C - ft-c-syntax
 au FileType c setl makeprg=gcc\ -Wall\ -o\ %:r\ %
-au FileType c nmap <buffer><localleader>m :w<Bar>:make<CR>
+au FileType c nmap <buffer><localleader>m    :w<Bar>:make<CR>
 au FileType c nmap <buffer><localleader><CR> :sp<Bar>te %:r<CR>
+au FileType c nmap <buffer><localleader>l    :w<Bar>:make<Bar>! %:r<CR>
 
 " Go - vim-go
-au FileType go nmap <buffer><localleader>l :w<Bar>GoRun %<CR>
-au FileType go nmap <buffer><localleader><CR> <Plug>(go-run-split)
+au FileType go nmap <buffer><localleader>l    :w<Bar>GoRun %<CR>
+au FileType go nmap <buffer><localleader><CR> :w<Bar>GoRun<CR>
 let g:go_highlight_operators=1
+let g:go_highlight_types=1
+let g:go_highlight_extra_types=1
+let g:go_highlight_functions=1
+let g:go_highlight_function_calls=1
+let g:go_term_enabled=1
 
 " Git - vim-fugitive
 au FileType gitcommit setl textwidth=72
@@ -78,9 +84,9 @@ au FileType markdown nmap <buffer><localleader>v :!xdg-open %:r.html<CR>
 
 " Python3 - LSP:pyright
 au FileType python setl textwidth=79
-let g:python3_host_prog = '/home/guil/miniconda3/bin/python'
+let g:python3_host_prog = '/home/guil/.miniconda3/bin/python'
 let g:loaded_python_provider = 0
-au FileType python nmap <buffer><localleader>f :w<Bar>!~/miniconda3/bin/autopep8  -iaa %:p<CR>:e<CR>
+au FileType python nmap <buffer><localleader>f :w<Bar>!~/.miniconda3/bin/autopep8  -iaa %:p<CR>:e<CR>
 au FileType python nmap <buffer><localleader>l :w<Bar>py3file %<CR>
 
 " Rust - rust.vim
@@ -117,6 +123,8 @@ nnoremap <leader>n <C-w>n
 " Mappings : navigation inside a window
 nnoremap <M-j> 3<C-e>
 nnoremap <M-k> 3<C-y>
+inoremap <M-j> <C-X><C-e>
+inoremap <M-k> <C-X><C-y>
 nnoremap <M-e> <C-e>
 nnoremap <M-y> <C-y>
 nnoremap <M-d> <C-d>
@@ -194,6 +202,7 @@ let g:easy_align_delimiters = {
 nnoremap <leader>i :se fenc? ff?<CR>
 nnoremap <leader>m :lc %:h<CR>
 tnoremap <M-q> <C-\><C-N>
+noremap ' `
 
 " Color Scheme And GUI Capabilities: {{{1
 
@@ -206,7 +215,13 @@ endif
 packadd! nord-vim
 let g:nord_italic=1
 let g:nord_uniform_diff_background=1
+let g:nord_cursor_line_number_background=1
 colo nord
+
+" " OneDark <https://github.com/joshdick/onedark.vim.git>
+" packadd! onedark.vim
+" let g:onedark_terminal_italics=1
+" colo onedark
 
 " " Gruvbox <https://github.com/morhetz/gruvbox.git>
 " packadd! gruvbox
@@ -216,61 +231,37 @@ colo nord
 " let g:gruvbox_invert_selection=0
 " colo gruvbox
 
-
 " Statusline Config: {{{1
 
 let g:lightline = {
-\	'colorscheme':'Nord',
+\	'colorscheme': 'Nord',
 \	'active': {
-\		'left': [
-\			['mode', 'paste'],
-\			['fugitive', 'path'],
-\			['mymodified', 'permission']
-\		],
+\		'left':  [['mode', 'paste'], ['fugitive', 'path'], ['modified']],
 \		'right': [['lineinfo'], ['filetype']]
 \	},
 \	'inactive': {
-\		'left': [
-\			['filename'],
-\			['mymodified', 'permission']
-\		],
+\		'left':  [['path'], ['modified']],
 \		'right': [['lineinfo']]
 \	},
 \	'component': {
 \		'lineinfo': "%P \u2022 %L",
+\		'modified': "%R%M",
+\		'path':     "%{pathshorten(expand('%:~'))}"
 \	},
 \	'component_function': {
-\		'permission': 'LightlinePermission',
-\		'fugitive':   'LightlineFugitive',
-\		'mymodified': 'LightlineModified',
-\		'path':       'LightlinePath'
+\		'fugitive': 'LightlineFugitive'
 \	},
 \	'separator': {'left': "", 'right': ""},
 \	'subseparator': {'left': "│", 'right': "│"}
 \}
 
-" Print the lock '' for RO or NOMA file
-function! LightlinePermission()
-	return &readonly || &modifiable == 0 ? "\ue0a2" : ""
-endfunction
-
-" Print the branch '' if the file is under git control
+" Print the branch name if the file is under git control
 function! LightlineFugitive()
 	if exists('*FugitiveHead')
 		let branch = FugitiveHead()
-		return branch !=# '' ? "\ue0a0 ".branch : ""
+		return branch !=# '' ? "".branch : ""
 	endif
 	return ''
-endfunction
-
-" Print the '+' sign only when the buffer is modified
-function! LightlineModified()
-	return &modifiable && &modified ? "+": ""
-endfunction
-
-" Print the shortened path of the current file.
-function! LightlinePath()
-	return pathshorten(expand('%:~'))
 endfunction
 
 " Neovim LSP Config: {{{1
@@ -278,13 +269,14 @@ endfunction
 " Settings for nvim-lspconfig plugin.
 se completeopt=menuone
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_enable_auto_popup=0
 se omnifunc=v:lua.vim.lsp.omnifunc
 
 lua << EOF
 -- Set a bunch of language server.
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.rust_analyzer.setup{}
-require'lspconfig'.vimls.setup{}
--- require('lspconfig').gopls.setup   { on_attach=require'completion'.on_attach }
+require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.rust_analyzer.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.vimls.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
 -- require('lspconfig').julials.setup { on_attach=require'completion'.on_attach }
 EOF

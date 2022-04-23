@@ -6,7 +6,7 @@
 #
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 #
-# Reference:  https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+# Reference:  /usr/share/alacritty/alacritty.yml
 # Repository: https://github.com/QUICKguils/dotfiles
 
 window:
@@ -20,7 +20,7 @@ window:
 
 font:
   normal:
-    family: Source Code Pro
+    family: Source Code Pro Medium
   offset:
     x: 0
     y: 2
@@ -41,102 +41,102 @@ key_bindings:
 
 # Nord colorscheme {{{1
 
-draw_bold_text_with_bright_colors: false
-colors:
-  primary:
-    background: '#2e3440'
-    foreground: '#d8dee9'
-  cursor:
-    text:   '#4c566a'
-    cursor: '#d8dee9'
-  selection:
-    text:       CellForeground
-    background: '#434c5e'
-  search:
-    matches:
-      foreground: '#3b4252'
-      background: '#88c0d0'
-    focused_match:
-      foreground: '#eceff4'
-      background: '#5e81ac'
-    bar:
-      background: '#3b4252'
-      foreground: '#d8dee9'
-  line_indicator:
-    foreground: '#3b4252'
-    background: '#d08770'
-  normal:
-    black:   '#3b4252'
-    red:     '#bf616a'
-    green:   '#a3be8c'
-    yellow:  '#ebcb8b'
-    blue:    '#5e81ac'
-    magenta: '#b48ead'
-    cyan:    '#88c0d0'
-    white:   '#e5e9f0'
-  bright:
-    black:   '#4c566a'
-    red:     '#bf616a'
-    green:   '#a3be8c'
-    yellow:  '#ebcb8b'
-    blue:    '#5e81ac'
-    magenta: '#b48ead'
-    cyan:    '#8fbcbb'
-    white:   '#eceff4'
-  dim:
-    black:   '#373e4d'
-    red:     '#94545d'
-    green:   '#809575'
-    yellow:  '#b29e75'
-    blue:    '#68809a'
-    magenta: '#8c738c'
-    cyan:    '#6d96a5'
-    white:   '#aeb3bb'
-
-# Onedark colorscheme {{{1
-
 # draw_bold_text_with_bright_colors: false
 # colors:
 #   primary:
-#     background: '#282c34'
-#     foreground: '#abb2bf'
+#     background: '#2e3440'
+#     foreground: '#d8dee9'
 #   cursor:
-#     text:   '#2c323c'
-#     cursor: '#abb2bf'
+#     text:   '#4c566a'
+#     cursor: '#d8dee9'
+#   selection:
+#     text:       CellForeground
+#     background: '#434c5e'
 #   search:
 #     matches:
-#       foreground: '#282c34'
-#       background: '#e5c07b'
+#       foreground: '#3b4252'
+#       background: '#88c0d0'
 #     focused_match:
-#       foreground: '#e5c07b'
-#       background: '#3e4452'
+#       foreground: '#eceff4'
+#       background: '#5e81ac'
 #     bar:
-#       background: '#d19a66'
-#       foreground: '#282c34'
+#       background: '#3b4252'
+#       foreground: '#d8dee9'
 #   line_indicator:
-#     foreground: '#282c34'
-#     background: '#d19a66'
-#   selection:
-#     text: CellForeground
-#     background: '#3e4452'
+#     foreground: '#3b4252'
+#     background: '#d08770'
 #   normal:
-#     black:   '#2c323c'
-#     red:     '#e06c75'
-#     green:   '#98c379'
-#     yellow:  '#e5c07b'
-#     blue:    '#61afef'
-#     magenta: '#c678dd'
-#     cyan:    '#56b6c2'
-#     white:   '#abb2bf'
+#     black:   '#3b4252'
+#     red:     '#bf616a'
+#     green:   '#a3be8c'
+#     yellow:  '#ebcb8b'
+#     blue:    '#5e81ac'
+#     magenta: '#b48ead'
+#     cyan:    '#88c0d0'
+#     white:   '#e5e9f0'
 #   bright:
-#     black:   '#4b5263'
-#     red:     '#be5046'
-#     green:   '#98c379'
-#     yellow:  '#d19a66'
-#     blue:    '#61afef'
-#     magenta: '#c678dd'
-#     cyan:    '#56b6c2'
-#     white:   '#5c6370'
+#     black:   '#4c566a'
+#     red:     '#bf616a'
+#     green:   '#a3be8c'
+#     yellow:  '#ebcb8b'
+#     blue:    '#5e81ac'
+#     magenta: '#b48ead'
+#     cyan:    '#8fbcbb'
+#     white:   '#eceff4'
+#   dim:
+#     black:   '#373e4d'
+#     red:     '#94545d'
+#     green:   '#809575'
+#     yellow:  '#b29e75'
+#     blue:    '#68809a'
+#     magenta: '#8c738c'
+#     cyan:    '#6d96a5'
+#     white:   '#aeb3bb'
+
+# Onedark colorscheme {{{1
+
+draw_bold_text_with_bright_colors: false
+colors:
+  primary:
+    background: '#282c34'
+    foreground: '#abb2bf'
+  cursor:
+    text:   '#2c323c'
+    cursor: '#528BFF'
+  search:
+    matches:
+      foreground: '#282c34'
+      background: '#e5c07b'
+    focused_match:
+      foreground: '#e5c07b'
+      background: '#3e4452'
+    bar:
+      background: '#d19a66'
+      foreground: '#282c34'
+  line_indicator:
+    foreground: '#282c34'
+    background: '#d19a66'
+  selection:
+    text: CellForeground
+    background: '#3e4452'
+  normal:
+    black:   '#2c323c'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#e5c07b'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#abb2bf'
+  bright:
+    black:   '#4b5263'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#e5c07b'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#bfc5ce'
 
 # Gruvbox colorscheme {{{1
 
@@ -196,32 +196,3 @@ colors:
 #     magenta: '#8f3f71'
 #     cyan:    '#427b58'
 #     white:   '#928374'
-
-# PaperColors colorscheme {{{1
-
-# draw_bold_text_with_bright_colors: true
-# colors:
-#   primary:
-#     background: "#eeeeee"
-#     foreground: "#444444"
-#   cursor:
-#     text: "#eeeeee"
-#     cursor: "#444444"
-#   normal:
-#     black: "#eeeeee"
-#     red: "#af0000"
-#     green: "#008700"
-#     yellow: "#5f8700"
-#     blue: "#0087af"
-#     magenta: "#8700af"
-#     cyan: "#005f87"
-#     white: "#878787"
-#   bright:
-#     black: "#bcbcbc"
-#     red: "#af0000"
-#     green: "#008700"
-#     yellow: "#5f8700"
-#     blue: "#0087af"
-#     magenta: "#8700af"
-#     cyan: "#005f87"
-#     white: "#eeeeee"
