@@ -12,15 +12,15 @@
 window:
   dimensions:
     columns: 115
-    lines: 49
+    lines: 52
   padding:
     x: 1
-    y: 2
+    y: 0
   dynamic_padding: true
 
 font:
   normal:
-    family: Source Code Pro Medium
+    family: Hack
   offset:
     x: 0
     y: 2
@@ -101,7 +101,7 @@ colors:
     background: '#282c34'
     foreground: '#abb2bf'
   cursor:
-    text:   '#2c323c'
+    text:   '#2c313c'
     cursor: '#528BFF'
   search:
     matches:
@@ -118,81 +118,57 @@ colors:
     background: '#d19a66'
   selection:
     text: CellForeground
-    background: '#3e4452'
+    background: '#3f4451'
   normal:
-    black:   '#2c323c'
-    red:     '#e06c75'
-    green:   '#98c379'
-    yellow:  '#e5c07b'
-    blue:    '#61afef'
-    magenta: '#c678dd'
-    cyan:    '#56b6c2'
-    white:   '#abb2bf'
+    black:   '#3f4451'
+    red:     '#e05561'
+    green:   '#8cc265'
+    yellow:  '#d18f52'
+    blue:    '#4aa5f0'
+    magenta: '#c162de'
+    cyan:    '#42b3c2'
+    white:   '#e6e6e6'
   bright:
-    black:   '#4b5263'
-    red:     '#e06c75'
-    green:   '#98c379'
-    yellow:  '#e5c07b'
-    blue:    '#61afef'
-    magenta: '#c678dd'
-    cyan:    '#56b6c2'
-    white:   '#bfc5ce'
+    black:   '#4f5666'
+    red:     '#ff616e'
+    green:   '#a5e075'
+    yellow:  '#f0a45d'
+    blue:    '#4dc4ff'
+    magenta: '#de73ff'
+    cyan:    '#4cd1e0'
+    white:   '#d7dae0'
 
-# Gruvbox colorscheme {{{1
+# Tokyonight colorscheme {{{1
 
-# draw_bold_text_with_bright_colors: true
+# draw_bold_text_with_bright_colors: false
 # colors:
 #   primary:
-#     background:        '#282828'
-#     foreground:        '#ebdbb2'
-#     bright_foreground: '#fbf1c7'
-#     dim_foreground:    '#a89984'
+#     background: '#24283b'
+#     foreground: '#c0caf5'
 #   cursor:
-#     text:   '#504945'
-#     cursor: '#ebdbb2'
-#   vi_mode_cursor:
-#     text:   '#504945'
-#     cursor: '#ebdbb2'
-#   search:
-#     matches:
-#       foreground: '#282828'
-#       background: '#fe8019'
-#     focused_match:
-#       foreground: '#282828'
-#       background: '#fabd2f'
-#     bar:
-#       background: '#504945'
-#       foreground: '#ebdbb2'
-#   line_indicator:
-#     foreground: '#282828'
-#     background: '#fe8019'
+#     text:   '#24283b'
+#     cursor: '#c0caf5'
 #   selection:
-#     text:       CellForeground
-#     background: '#665c54'
-#   bright:
-#     black:   '#928374'
-#     red:     '#fb4934'
-#     green:   '#b8bb26'
-#     yellow:  '#fabd2f'
-#     blue:    '#83a598'
-#     magenta: '#d3869b'
-#     cyan:    '#8ec07c'
-#     white:   '#ebdbb2'
+#     text: CellForeground
+#     background: '#364a82'
 #   normal:
-#     black:   '#282828'
-#     red:     '#cc241d'
-#     green:   '#98971a'
-#     yellow:  '#d79921'
-#     blue:    '#458588'
-#     magenta: '#b16286'
-#     cyan:    '#689d6a'
-#     white:   '#a89984'
-#   dim:
-#     black:   '#32302f'
-#     red:     '#9d0006'
-#     green:   '#79740e'
-#     yellow:  '#b57614'
-#     blue:    '#076678'
-#     magenta: '#8f3f71'
-#     cyan:    '#427b58'
-#     white:   '#928374'
+#     black:   '#1D202F'
+#     red:     '#f7768e'
+#     green:   '#9ece6a'
+#     yellow:  '#e0af68'
+#     blue:    '#7aa2f7'
+#     magenta: '#bb9af7'
+#     cyan:    '#7dcfff'
+#     white:   '#c0caf5'
+#   bright:
+#     black:   '#414868'
+#     red:     '#f7768e'
+#     green:   '#9ece6a'
+#     yellow:  '#e0af68'
+#     blue:    '#7aa2f7'
+#     magenta: '#bb9af7'
+#     cyan:    '#7dcfff'
+#     white:   '#a9b1d6'
+#   indexed_colors:
+#     - { index: 16, color: '#ff9e64' }
+#     - { index: 17, color: '#db4b4b' }

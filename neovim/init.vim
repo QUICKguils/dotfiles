@@ -160,12 +160,8 @@ nnoremap          <leader>tv :call VirtualEdit_toggle()<CR>
 nnoremap <silent>       <F2> :call QuickFix_toggle()<CR>
 
 function! VirtualEdit_toggle()
-	if &ve == ""
-		set ve=all
-	else
-		set ve=""
-	endif
-	set ve?
+	&ve == "" ? se ve=all : se ve=""
+	se ve?
 endfunction
 
 function! QuickFix_toggle()

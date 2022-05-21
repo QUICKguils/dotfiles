@@ -29,7 +29,7 @@
     ~/.config/i3blocks/scripts: i3wm/i3blocks/scripts
     ~/.config/neofetch/config.conf: neofetch/config.conf
     ~/.config/neomutt/neomuttrc: neomutt/neomuttrc
-    ~/.config/nvim/init.vim: neovim/init.vim
+    ~/.config/nvim/init.vim~: neovim/init.vim
     ~/.config/nvim/init.lua: neovim/init.lua
     ~/.config/nvim/lua: neovim/lua
     ~/.local/share/nvim/site/spell: neovim/spell

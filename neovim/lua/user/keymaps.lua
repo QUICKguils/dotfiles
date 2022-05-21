@@ -1,3 +1,5 @@
+-- TODO: include filetype specific keymaps with `nvim_buf_set_keymap()`.
+
 local opts = {noremap = true, silent = true}
 local keymap = vim.api.nvim_set_keymap
 
@@ -54,6 +56,15 @@ keymap("n", "<leader>tn", ":setl rnu!<CR>",        opts)
 keymap("n", "<leader>ts", ":setl nospell!<CR>",    opts)
 keymap("n", "<leader>tc", ":setl cursorline!<CR>", opts)
 keymap("n", "<leader>tl", ":setl list!<CR>",       opts)
+-- Will work on neovim 0.7
+-- local VirtualEdit_toggle = function()
+-- 	if vim.o.virtualedit == "" then
+-- 		vim.o.virtualedit = "all"
+-- 	else
+-- 		vim.o.virtualedit = ""
+-- 	end
+-- end
+-- keymap("n", "<leader>tv", VirtualEdit_toggle,    opts)
 
 -- Quick write, quit and close.
 keymap("n", "<leader>q", ":q<CR>",   opts)
@@ -66,7 +77,13 @@ keymap("n", "ga", "<Plug>(EasyAlign)",     {})
 keymap("v", "ga", "<Plug>(EasyAlign)",     {})
 keymap("n", "gA", "<Plug>(LiveEasyAlign)", {})
 keymap("v", "gA", "<Plug>(LiveEasyAlign)", {})
-vim.cmd [[ let g:easy_align_delimiters = {'%': {'pattern': '%', 'left_margin': 2, 'ignore_groups': ['!Comment']}} ]]
+vim.g.easy_align_delimiters = {
+	['%'] = {
+		pattern = '%',
+		left_margin = 2,
+		ignore_groups = {'!Comment'}
+	}
+}
 
 -- Miscellaneous.
 keymap("n", "<leader>m", ":lc %:h<CR>", opts)

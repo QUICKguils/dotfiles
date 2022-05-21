@@ -53,7 +53,7 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-zstyle ':vcs_info:git:*' formats '%F{8}%b%f '
+zstyle ':vcs_info:git:*' formats '%F{8} %b%f '
 zstyle ':vcs_info:*' enable git
 
 # # Command promt appearance
@@ -63,7 +63,7 @@ zstyle ':vcs_info:*' enable git
 
 # Command promt appearance
 myid="%F{blue}%n%F{14}@%F{blue}%m"
-mycol="%(?.%(!.F{magenta}.%F{green}).%F{red})"
+mycol="%(?.%(!.%F{magenta}.%F{green}).%F{red})"
 PROMPT='$mycol┌──($myid$mycol)─[%f%~$mycol] $vcs_info_msg_0_
 $mycol└─%F{blue}%(!.#.$)%f '
 
@@ -78,12 +78,17 @@ alias v='nvim'
 alias ll='ls -lh'
 alias la='ls -A'
 alias lla='ls -Alh'
+alias e='exa'
+alias el='exa -l'
+alias ea='exa -a'
+alias ela='exa -la'
 alias z='zathura'
 alias x='exit'
+alias xm='xmodmap ~/.Xmodmap'
 alias t='tmux'
 alias o='xdg-open'
 alias b='bat --style=rule,changes,numbers,snip'
-alias fl='figlet -t -f slant'
+alias fl='figlet -t -f smslant'
 alias jl='julia --sysimage=/home/guil/.julia/OMR-sysimage.so'
 alias mlj='matlab -nodesktop -nosplash'
 alias ml='matlab -nojvm'
@@ -110,12 +115,23 @@ export MANPAGER="nvim +Man!"
 
 # Bat configuration (a cat clone with wings)
 # Cf. https://github.com/sharkdp/bat
-export BAT_THEME="Nord"
-# export BAT_THEME="OneHalfDark"
+# export BAT_THEME="Nord"
+export BAT_THEME="OneHalfDark"
 # export BAT_THEME="gruvbox-dark"
 export BAT_STYLE="auto"
 
 # searching tools  {{{1
+
+# Setup fzf
+if [[ ! "$PATH" == */home/guil/.local/fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}/home/guil/.local/fzf/bin"
+fi
+
+# Auto-completion
+[[ $- == *i* ]] && source "/home/guil/.local/fzf/shell/completion.zsh" 2> /dev/null
+
+# Key bindings
+source "/home/guil/.local/fzf/shell/key-bindings.zsh"
 
 # Non-piped fzf: use fd to feed fzf instead of find.
 # Cf. https://github.com/sharkdp/fd
@@ -124,44 +140,31 @@ export FZF_DEFAULT_COMMAND="fd -H"
 export FZF_DEFAULT_OPTS="\
 -m --height=60% --reverse --bind=ctrl-p:toggle-preview \
 --color=\
-bg:#2e3440,\
-bg+:#3b4252,\
-fg:#616e88,\
-fg+:#d8dee9:bold,\
-hl:#a3be8c,\
-hl+:#a3be8c:bold,\
-border:#b48ead,\
-pointer:#bf616a:bold,\
-marker:#d08770,\
-prompt:#88c0d0,\
-spinner:#ebcb8b,\
-info:#ebcb8b"
+bg:#282c34,\
+bg+:#2c323c,\
+fg:#5c6370,\
+fg+:#abb2bf:bold,\
+hl:#98c379,\
+hl+:#98c379:bold,\
+border:#c678dd,\
+pointer:#e06c75:bold,\
+marker:#be5046,\
+prompt:#61afef,\
+spinner:#e5c07b,\
+info:#e5c07b"
 # --color=\
-# bg:#282c34,\
-# bg+:#2c323c,\
-# fg:#5c6370,\
-# fg+:#abb2bf:bold,\
-# hl:#98c379,\
-# hl+:#98c379:bold,\
-# border:#c678dd,\
-# pointer:#e06c75:bold,\
-# marker:#be5046,\
-# prompt:#61afef,\
-# spinner:#e5c07b,\
-# info:#e5c07b"
-# --color=\
-# bg:#282828,\
-# bg+:#3c3836,\
-# fg:#928374,\
-# fg+:#ebdbb2:bold,\
-# hl:#98971a,\
-# hl+:#b8bb26:bold,\
-# border:#d3869b,\
-# pointer:#fb4934:bold,\
-# marker:#cc241d:bold,\
-# prompt:#83a598,\
-# spinner:#fabd2f,\
-# info:#fabd2f"
+# bg:#2e3440,\
+# bg+:#3b4252,\
+# fg:#616e88,\
+# fg+:#d8dee9:bold,\
+# hl:#a3be8c,\
+# hl+:#a3be8c:bold,\
+# border:#b48ead,\
+# pointer:#bf616a:bold,\
+# marker:#d08770,\
+# prompt:#88c0d0,\
+# spinner:#ebcb8b,\
+# info:#ebcb8b"
 
 # fzf file search, with preview using bat.
 export FZF_CTRL_T_COMMAND="fd -Ht f"
@@ -179,8 +182,8 @@ export FZF_ALT_C_OPTS="\
 export FZF_CTRL_R_OPTS="--reverse"
 
 # fzf trigger sequence (default:**)
-# export FZF_COMPLETION_TRIGGER="**"
-# export FZF_COMPLETION_OPTS=""
+export FZF_COMPLETION_TRIGGER="**"
+export FZF_COMPLETION_OPTS=""
 
 # Ajouts au PATH  {{{1
 
@@ -193,16 +196,16 @@ export PATH="$PATH:/usr/local/julia/bin"
 # Matlab
 export PATH="$PATH:/usr/local/MATLAB/R2022a/bin"
 # Latex distribution (TexLive 2021)
-export PATH="/run/media/guil/Data/texlive/2021/bin/x86_64-linux:$PATH"
-export MANPATH="$MANPATH:/run/media/guil/Data/texlive/2021/texmf-dist/doc/man"
-export INFOPATH="$INFOPATH:/run/media/guil/Data/texlive/2021/texmf-dist/doc/info"
+export PATH="/usr/local/texlive/2022/bin/x86_64-linux:$PATH"
+export MANPATH="$MANPATH:/usr/local/texlive/2022/texmf-dist/doc/man"
+export INFOPATH="$INFOPATH:/usr/local/texlive/2022/texmf-dist/doc/info"
 # Go environment setup
 export GOROOT="/usr/local/go"
 export PATH="$PATH:$GOROOT/bin"
 export GOPATH="$HOME/.golib"
 export PATH="$PATH:$GOPATH/bin"
 # Cargo (rust)
-. "$HOME/.cargo/env"
+. "/home/guil/.cargo/env"
 # Miniconda
 __conda_setup="$('/home/guil/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -215,6 +218,10 @@ else
 	fi
 fi
 unset __conda_setup
+# SU2
+export SU2_RUN=/usr/local/bin
+export PATH=$PATH:$SU2_RUN
+export PYTHONPATH=$PYTHONPATH:$SU2_RUN
 
 # Plugins  {{{1
 
@@ -222,7 +229,7 @@ unset __conda_setup
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Backward search by substrings in the command history
 source $ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey "^K" history-substring-search-up
+bindkey "^P" history-substring-search-up
 bindkey "^[[A" history-substring-search-up
-bindkey "^J" history-substring-search-down
+bindkey "^N" history-substring-search-down
 bindkey "^[[B" history-substring-search-down

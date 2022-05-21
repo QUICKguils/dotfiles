@@ -1,5 +1,3 @@
--- TODO: find a way to integrate the remaining `vim.cmd` commands.
-
 local options = {
 	mouse          = "a",
 	mousem         = "popup",
@@ -12,10 +10,12 @@ local options = {
 	showmode       = false,
 	number         = true,
 	relativenumber = true,
+	signcolumn     = "number",
 	wrap           = false,
 	joinspaces     = false,
 	foldmethod     = "marker",
 	textwidth      = 80,
+	colorcolumn    = "+1",
 	formatoptions  = "cqj",
 	scrolloff      = 5,
 	hlsearch       = false,
@@ -28,10 +28,16 @@ local options = {
 	spellfile      = "/home/guil/.local/share/nvim/site/spell/LexiquePerso.utf-8.add",
 }
 
-vim.cmd [[ let g:netrw_liststyle = 1 ]]
-vim.cmd [[ let g:netrw_bufsettings = "noma nomod nobl nowrap ro rnu" ]]
-vim.cmd [[ set colorcolumn=+1 ]]
+local variables = {
+	netrw_bufsettings =  {"noma", "nomod", "nobl", "nowrap", "ro", "rnu"},
+	netrw_liststyle   = 1,
+	man_hardwrap      = 0,
+}
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
+end
+
+for k, v in pairs(variables) do
+	vim.g[k] = v
 end

@@ -75,21 +75,20 @@ xterm*|rxvt*)
 	;;
 esac
 
-# enable color support of ls and also add handy aliases
-# j'ai commenté le if pour avoir les couleurs définies localement, dans
-# ~/.dir_colors
-# if [ -x /usr/bin/dircolors ]; then
-	# test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
-	alias ls='ls --color=auto'
-	alias dir='dir --color=auto'
-	alias vdir='vdir --color=auto'
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto'
-# fi
+# Colorization
 
-# colored GCC warnings and errors
+# Tools like ls, grep, tree and fd use the LS_COLORS environment variable to
+# colorize their outputs. The ~/.dir_colors file defines LS_COLORS. The
+# following command does nothing but loading LS_COLORS under the directives
+# contained in ~/.dir_colors.
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+# Colors for GCC
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -116,10 +115,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# ==============================================================================
-# A this point, these are stuff that I've added myself.
-# ==============================================================================
-
 # Keybindings/aliases ----------------------------------------------------------
 
 # Choisir neovim comme éditeur par défaut
@@ -131,7 +126,6 @@ alias v='nvim'
 alias la='ls -A'
 alias lah='ls -lAh'
 alias z='zathura'
-alias g='git'
 alias x='exit'
 alias t='tmux'
 alias o='xdg-open'
@@ -142,12 +136,14 @@ alias ml='matlab -nojvm'
 alias py='python'
 
 # Raccourcis de chemins
-ing="$HOME/Documents/Ecole/Bloc_3"
+scb="/home/guil/Documents/Ecole/Bloc_3"
+scb="/home/guil/Documents/Ecole/Master_1"
 
 # Changement de dossier automatique ("cd" implicite)
 shopt -s autocd
 
 # Reading tools ----------------------------------------------------------------
+
 # Choix du pager par défaut et du pager pour les pages de manuel
 export PAGER="cat"
 export MANPAGER="nvim +Man!"
@@ -158,15 +154,17 @@ export BAT_THEME="OneHalfDark"
 export BAT_STYLE="auto"
 
 # Searching tools --------------------------------------------------------------
-# Chargement de fzf. Repo situé à ~/.dotfiles/neovim/plugin/fzf
+
 # Setup fzf
-if [[ ! "$PATH" == */home/guil/.dotfiles/neovim/plugin/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/home/guil/.dotfiles/neovim/plugin/fzf/bin"
+if [[ ! "$PATH" == */home/guil/.local/fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}/home/guil/.local/fzf/bin"
 fi
+
 # Auto-completion
-[[ $- == *i* ]] && source "/home/guil/.dotfiles/neovim/plugin/fzf/shell/completion.bash" 2> /dev/null
+[[ $- == *i* ]] && source "/home/guil/.local/fzf/shell/completion.bash" 2> /dev/null
+
 # Key bindings
-source "/home/guil/.dotfiles/neovim/plugin/fzf/shell/key-bindings.bash"
+source "/home/guil/.local/fzf/shell/key-bindings.bash"
 
 # non-piped fzf: use fd to feed fzf instead of find.
 # Cf. https://github.com/sharkdp/fd
@@ -179,25 +177,24 @@ spinner:#e5c07b,info:#e5c07b"
 
 # fzf file search, with preview using bat.
 export FZF_CTRL_T_COMMAND="fd -Ht f"
-export FZF_CTRL_T_OPTS="--preview='bat --color=always --style=''changes'' -r :30 {}'\
-						--preview-window=border-sharp"
+export FZF_CTRL_T_OPTS="--preview='bat --color=always --style=''changes'' -r :30 {}' --preview-window=border-sharp"
 
 # fzf directory search, with preview using tree.
 export FZF_ALT_C_COMMAND="fd -Ht d"
-export FZF_ALT_C_OPTS="--preview='tree -C {} | head -n 30'\
-					   --preview-window=border-sharp"
+export FZF_ALT_C_OPTS="--preview='tree -C {} | head -n 30' --preview-window=border-sharp"
 
 # Explore command history with fzf
 export FZF_CTRL_R_OPTS="--reverse"
 
 # fzf trigger sequence (default:**)
-#export FZF_COMPLETION_TRIGGER="**"
-#export FZF_COMPLETION_OPTS=""
+export FZF_COMPLETION_TRIGGER="**"
+export FZF_COMPLETION_OPTS=""
 
 # Ajouts au PATH ---------------------------------------------------------------
+
 # Enregistrement de julia dans le PATH
 export PATH="$PATH:/usr/local/julia/bin"
 # Enrefistrement de matlab dans ls PATH
-export PATH="$PATH:/usr/local/MATLAB/R2018b/bin"
+export PATH="$PATH:/usr/local/MATLAB/R2022a/bin"
 # Cargo (rust)
 . "$HOME/.cargo/env"

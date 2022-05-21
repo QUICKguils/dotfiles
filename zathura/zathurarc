@@ -8,7 +8,7 @@
 # General settings -------------------------------------------------------------
 
 # UI typeface.
-set font "Open Sans Regular 11"
+set font "IBM Plex Sans Regular 11"
 
 # Default layout.
 set window-height 1080
@@ -130,47 +130,47 @@ set render-loading-fg       "#abb2bf"
 # set render-loading-bg       "#2e3440"
 # set render-loading-fg       "#d8dee9"
 
-# Gruvbox colorscheme {{{1
-# ----------------
+# Tokyonight colorscheme {{{1
+# ----------------------
 
 # # Recoloration
-# set recolor-lightcolor "#282828"
-# set recolor-darkcolor  "#ebdbb2"
+# set recolor-lightcolor "#24283b"
+# set recolor-darkcolor  "#c0caf5"
 # set recolor            "true"
-
-# set notification-error-bg   "#3c3836"
-# set notification-error-fg   "#cc241d"
-# set notification-warning-bg "#3c3836"
-# set notification-warning-fg "#d79921"
-# set notification-bg         "#3c3836"
-# set notification-fg         "#98971a"
-
-# set completion-bg           "#282828"
-# set completion-fg           "#d5c4a1"
-# set completion-group-bg     "#3c3836"
-# set completion-group-fg     "#fbf1c7"
-# set completion-highlight-bg "#83a598"
-# set completion-highlight-fg "#282828"
-
-# set index-bg                "#282828"
-# set index-fg                "#ebdbb2"
-# set index-active-bg         "#83a598"
-# set index-active-fg         "#3c3836"
-
-# set inputbar-bg             "#3c3836"
-# set inputbar-fg             "#ebdbb2"
-
-# set statusbar-bg            "#3c3836"
-# set statusbar-fg            "#ebdbb2"
-
-# set highlight-color         "#83a598"
-# set highlight-active-color  "#458588"
-
-# set default-bg              "#1d2021"
-# set default-fg              "#ebdbb2"
+#
+# set notification-error-bg   "#3b4261"
+# set notification-error-fg   "#f7768e"
+# set notification-warning-bg "#3b4261"
+# set notification-warning-fg "#e0af68"
+# set notification-bg         "#3b4261"
+# set notification-fg         "#9ece6a"
+#
+# set completion-bg           "#292e42"
+# set completion-fg           "#c0caf5"
+# set completion-group-bg     "#3b4261"
+# set completion-group-fg     "#c0caf5"
+# set completion-highlight-bg "#364a82"
+# set completion-highlight-fg "#c0caf5"
+#
+# set index-bg                "#292e42"
+# set index-fg                "#c0caf5"
+# set index-active-bg         "#364a82"
+# set index-active-fg         "#c0caf5"
+#
+# set inputbar-bg             "#3b4261"
+# set inputbar-fg             "#c0caf5"
+#
+# set statusbar-bg            "#3b4261"
+# set statusbar-fg            "#c0caf5"
+#
+# set highlight-color         "#3d59a1"
+# set highlight-active-color  "#ff9e64"
+#
+# set default-bg              "#292e42"
+# set default-fg              "#c0caf5"
 # set render-loading          "true"
-# set render-loading-bg       "#282828"
-# set render-loading-fg       "#ebdbb2"
+# set render-loading-bg       "#24283b"
+# set render-loading-fg       "#c0caf5"
 
 # 1}}}
 
