@@ -259,20 +259,3 @@ function! LightlineFugitive()
 	endif
 	return ''
 endfunction
-
-" Neovim LSP Config: {{{1
-
-" Settings for nvim-lspconfig plugin.
-se completeopt=menuone
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-let g:completion_enable_auto_popup=0
-se omnifunc=v:lua.vim.lsp.omnifunc
-
-lua << EOF
--- Set a bunch of language server.
-require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
-require'lspconfig'.rust_analyzer.setup{on_attach=require'completion'.on_attach}
-require'lspconfig'.vimls.setup{on_attach=require'completion'.on_attach}
-require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
--- require('lspconfig').julials.setup { on_attach=require'completion'.on_attach }
-EOF

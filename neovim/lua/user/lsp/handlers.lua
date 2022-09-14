@@ -25,7 +25,6 @@ M.setup = function()
 		float = {
 			focusable = false,
 			style = "minimal",
-			border = "rounded",
 			source = "always",
 			header = "",
 			prefix = "",
@@ -35,11 +34,11 @@ M.setup = function()
 	vim.diagnostic.config(config)
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
+		-- border = "rounded",
 	})
 
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
+		-- border = "rounded",
 	})
 end
 
@@ -70,17 +69,14 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-	vim.api.nvim_buf_set_keymap( bufnr, "n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+	vim.api.nvim_buf_set_keymap( bufnr, "n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<F2>", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 	vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
 M.on_attach = function(client, bufnr)
-	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
-	end
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 end

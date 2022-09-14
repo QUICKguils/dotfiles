@@ -29,9 +29,12 @@ local options = {
 }
 
 local variables = {
-	netrw_bufsettings =  {"noma", "nomod", "nobl", "nowrap", "ro", "rnu"},
-	netrw_liststyle   = 1,
-	man_hardwrap      = 0,
+	loaded_perl_provider = 0,
+	loaded_ruby_provider = 0,
+	loaded_netrwPlugin   = 1,  -- disable netrw: I use dirvish instead
+	-- netrw_bufsettings = {"noma", "nobl", "nowrap", "ro", "rnu"},
+	-- netrw_liststyle   = 1,
+	man_hardwrap         = 0,
 }
 
 for k, v in pairs(options) do

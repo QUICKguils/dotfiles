@@ -10,7 +10,7 @@
 body{
 	margin: auto;
 	max-width: 40em;
-	font-family: "Open Sans";
+	font-family: "Noto Sans";
 	font-style: normal;
 	font-size: 17px;
 	line-height: 1.5;
@@ -19,55 +19,55 @@ body{
 }
 
 h1{
-	color: ##98C379;
-	font-family: "STIX Two Text";
+	color: #98C379;
+	font-family: "Noto Sans";
 	text-align: center;
 	font-size:34px;
 }
 
 h2{
 	color: #C162DE;
-	font-family: "Open Sans";
+	font-family: "Noto Sans";
 	font-size: 26px;
 }
 
 h3{
 	color: #4AA5F0;
-	font-family: "Open Sans";
+	font-family: "Noto Sans";
 	font-weight: bold;
 	font-size: 20px;
 }
 
 h4{
 	color: #4AA5F0;
-	font-family: "Open Sans";
+	font-family: "Noto Sans";
 	font-weight: normal;
 	font-size: 18px;
 }
 
 h5{
 	color: #616e88;
-	font-family: "Open Sans";
+	font-family: "Noto Sans";
 	font-weight: normal;
 	font-size: 16px;
 }
 
 h6{
 	color: #4c566a;
-	font-family: "Open Sans";
+	font-family: "Noto Sans";
 	font-weight: normal;
 	font-size: 16px;
 }
 
 code{
-	font-family: "Source Code Pro Medium";
+	font-family: "Hack";
 	font-size: 15px;
 	font-weight: normal;
 }
 
 a:link,a:visited{
 	text-decoration: none;
-	color: #88c0d0;
+	color: #42B3C2;
 }
 
 img{
@@ -76,7 +76,7 @@ img{
 
 blockquote{
 	max-width: 40em;
-	border-left: 3px solid #b48ead;
+	border-left: 3px solid #E05561;
 	background-color: #3b4252;
 	padding-left: 1em;
 	padding-right: 1em;
@@ -93,11 +93,11 @@ table{
 }
 td, th{padding: 5px}
 tr:nth-child(even){background-color:#3b4252}
-tr:hover{background-color:#434c5e}
+tr:hover{background-color:#3F4451}
 td{font-size: 16px}
 th{
-	border-bottom: 3px solid #ebcb8b;
-	font-family: "Open Sans";
+	border-bottom: 3px solid #D18F52;
+	font-family: "Noto Sans";
 	background-color: #2e3440;
 }
 

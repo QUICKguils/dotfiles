@@ -29,7 +29,7 @@ end
 packer.init {
 	display = {
 		open_fn = function()
-			return require("packer.util").float {border = "rounded"}
+			return require("packer.util").float {border = ""}
 		end,
 	},
 }
@@ -44,15 +44,16 @@ return require('packer').startup(function(use)
 	use "nvim-lua/plenary.nvim"
 
 	-- Miscellaneous plugins.
-	use "tpope/vim-vinegar"
 	use "tpope/vim-surround"
 	use "tpope/vim-repeat"
 	use "tpope/vim-fugitive"
+	-- use "tpope/vim-vinegar"  -- I use dirvish now.
+	use "justinmk/vim-dirvish"
+	use "kyazdani42/nvim-web-devicons"
+	use "nvim-lualine/lualine.nvim"
 	use 'numToStr/Comment.nvim'
 	use "junegunn/vim-easy-align"
 	use "norcalli/nvim-colorizer.lua"
-	use "nvim-lualine/lualine.nvim"
-	use "kyazdani42/nvim-web-devicons"
 	use "lewis6991/impatient.nvim"
 	use "akinsho/toggleterm.nvim"
 
@@ -60,12 +61,14 @@ return require('packer').startup(function(use)
 	use "lervag/vimtex"
 	use "rust-lang/rust.vim"
 	use "fatih/vim-go"
+	use "JuliaEditorSupport/julia-vim"
 
 	-- Colorschemes
 	use "olimorris/onedarkpro.nvim"
-	use "folke/tokyonight.nvim"
+	use "morhetz/gruvbox"
 
 	-- Completion
+	use "onsails/lspkind.nvim"
 	use "hrsh7th/nvim-cmp"
 	use "hrsh7th/cmp-buffer"
 	use "hrsh7th/cmp-path"
@@ -79,13 +82,15 @@ return require('packer').startup(function(use)
 
 	-- LSP
 	use "neovim/nvim-lspconfig"
-	use "williamboman/nvim-lsp-installer"
+	use "williamboman/mason.nvim"
+	use "williamboman/mason-lspconfig.nvim"
 
 	-- Telescope
 	use "nvim-telescope/telescope.nvim"
 
 	-- Treesitter
 	use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+	use "nvim-treesitter/playground"
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

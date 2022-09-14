@@ -1,11 +1,11 @@
 local function my_progress()
-	return '%P 🞄 %L'
+	return '%P • %L'
 end
 
 require('lualine').setup {
 	options = {
 		icons_enabled        = true,
-		theme                = 'onedarkpro',
+		theme                = 'nord',
 		component_separators = { left = '│', right = ''},
 		section_separators   = { left = '', right = ''},
 		disabled_filetypes   = {},
@@ -15,7 +15,7 @@ require('lualine').setup {
 	sections = {
 		lualine_a = {'mode'},
 		lualine_b = {
-			{'branch', icon = ''},
+			{'branch', icon = ''},
 			'diff',
 			{'diagnostics', symbols = {
 				error = " ",

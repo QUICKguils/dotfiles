@@ -9,7 +9,8 @@
 # History setup  {{{1
 
 setopt histignorealldups sharehistory
-# Save the 10_000 last commands in .zsh_history
+
+# Save the 10_000 last commands in .zsh_history.
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=$ZDOTDIR/.zsh_history
@@ -27,7 +28,7 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-# Colors for GCC
+# Colors for GCC.
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Autocompletion  {{{1
@@ -37,42 +38,49 @@ zstyle ':completion:*' menu select=2
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 
-# Additional completions
+# Additional completions.
 fpath+=$ZDOTDIR/plugins/zsh-completions/src
 fpath+=$ZDOTDIR/completions
 
 autoload -Uz compinit && compinit
 
-# Automatic file change (implicit "cd")
+# Automatic file change (implicit "cd").
 setopt autocd
 
 # Command prompt customization  {{{1
 
-# Git information
+# Reevaluate the prompt string each time the prompt is displayed.
+setopt prompt_subst
+
+# Git branch information.
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-zstyle ':vcs_info:git:*' formats '%F{8} %b%f '
+zstyle ':vcs_info:git:*' formats ' %F{8} %b%f'
 zstyle ':vcs_info:*' enable git
 
-# # Command promt appearance
-# symbol="●"
-# PROMPT='%(!.%F{magenta}#. )%(?.%F{green}.%F{red})$symbol%f '
-# RPROMPT='%F{8}$vcs_info_msg_0_ [%~]'
+# Miniconda environment information.
+conda_env() {
+	if [[ -n $CONDA_DEFAULT_ENV ]]
+	then
+		echo " %F{8} $CONDA_DEFAULT_ENV%f"
+	else
+		echo ""
+	fi
+}
 
-# Command promt appearance
-myid="%F{blue}%n%F{14}@%F{blue}%m"
+# Command promt appearance.
+myid="%F{blue}%n%F{cyan}@%F{blue}%m"
 mycol="%(?.%(!.%F{magenta}.%F{green}).%F{red})"
-PROMPT='$mycol┌──($myid$mycol)─[%f%~$mycol] $vcs_info_msg_0_
+PROMPT='$mycol┌──($myid$mycol)─[%f%~$mycol]$vcs_info_msg_0_$(conda_env)
 $mycol└─%F{blue}%(!.#.$)%f '
 
 # Keybindings/aliases  {{{1
 
-# Vim-like keybindings
+# Vim-like keybindings.
 bindkey -v
 
-# Aliases
+# Aliases.
 alias md='mkdir -p'
 alias v='nvim'
 alias ll='ls -lh'
@@ -81,10 +89,12 @@ alias lla='ls -Alh'
 alias e='exa'
 alias el='exa -l'
 alias ea='exa -a'
+alias et='exa --tree'
+alias eta='exa -a --tree'
 alias ela='exa -la'
 alias z='zathura'
 alias x='exit'
-alias xm='xmodmap ~/.Xmodmap'
+alias myset='xmodmap ~/.Xmodmap; sudo dnf upgrade'
 alias t='tmux'
 alias o='xdg-open'
 alias b='bat --style=rule,changes,numbers,snip'
@@ -92,142 +102,142 @@ alias fl='figlet -t -f smslant'
 alias jl='julia --sysimage=/home/guil/.julia/OMR-sysimage.so'
 alias mlj='matlab -nodesktop -nosplash'
 alias ml='matlab -nojvm'
-alias py='/home/guil/.miniconda3/bin/python'
-alias ipy='/home/guil/.miniconda3/bin/ipython'
+alias py='python'
+alias ipy='ipython'
 
-# Path shortcuts
+# Path shortcuts.
 scb="$HOME/Documents/Ecole/Bloc_3/"
 scm="$HOME/Documents/Ecole/Master_1/"
 hdd="/run/media/guil/Data/"
 
 # reading tools  {{{1
 
-# Use neovim as default editor
+# Use neovim as default editor.
 export EDITOR='nvim'
 export VISUAL='nvim'
 
-# Document reader (pdf, ps, eps, ...)
+# Document reader (pdf, ps, eps, ...).
 export READER='zathura'
 
-# Default pager and manual pager
+# Default pager and manual pager.
 export PAGER="cat"
 export MANPAGER="nvim +Man!"
 
-# Bat configuration (a cat clone with wings)
+# Bat configuration (a cat clone with wings).
 # Cf. https://github.com/sharkdp/bat
-# export BAT_THEME="Nord"
-export BAT_THEME="OneHalfDark"
-# export BAT_THEME="gruvbox-dark"
+# export BAT_THEME="OneHalfDark"
+export BAT_THEME="Nord"
 export BAT_STYLE="auto"
 
 # searching tools  {{{1
 
-# Setup fzf
+# Setup fzf.
 if [[ ! "$PATH" == */home/guil/.local/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/home/guil/.local/fzf/bin"
+	export PATH="${PATH:+${PATH}:}/home/guil/.local/fzf/bin"
 fi
 
-# Auto-completion
+# Auto-completion.
 [[ $- == *i* ]] && source "/home/guil/.local/fzf/shell/completion.zsh" 2> /dev/null
 
-# Key bindings
+# Key bindings.
 source "/home/guil/.local/fzf/shell/key-bindings.zsh"
 
 # Non-piped fzf: use fd to feed fzf instead of find.
 # Cf. https://github.com/sharkdp/fd
 export FZF_DEFAULT_COMMAND="fd -H"
-# fzf customization (see man page)
+# fzf customization (see man page).
 export FZF_DEFAULT_OPTS="\
 -m --height=60% --reverse --bind=ctrl-p:toggle-preview \
 --color=\
-bg:#282c34,\
-bg+:#2c323c,\
-fg:#5c6370,\
-fg+:#abb2bf:bold,\
-hl:#98c379,\
-hl+:#98c379:bold,\
-border:#c678dd,\
-pointer:#e06c75:bold,\
-marker:#be5046,\
-prompt:#61afef,\
-spinner:#e5c07b,\
-info:#e5c07b"
-# --color=\
-# bg:#2e3440,\
-# bg+:#3b4252,\
-# fg:#616e88,\
-# fg+:#d8dee9:bold,\
-# hl:#a3be8c,\
-# hl+:#a3be8c:bold,\
-# border:#b48ead,\
-# pointer:#bf616a:bold,\
-# marker:#d08770,\
-# prompt:#88c0d0,\
-# spinner:#ebcb8b,\
-# info:#ebcb8b"
+fg:#d8dee9,\
+bg:#2e3440,\
+hl:#d08770,\
+fg+:#88c0d0,\
+bg+:#434c5e,\
+hl+:#d08770,\
+border:#5e81ac,\
+pointer:#5e81ac,\
+marker:#a3be8c,\
+prompt:#5e81ac,\
+spinner:#616e88,\
+info:#616e88"
+# bg:#282c34,\
+# bg+:#2e323a,\
+# fg:#abb2bf,\
+# fg+:#abb2bf,\
+# hl:#c678dd,\
+# hl+:#c678dd,\
+# border:#22252c,\
+# pointer:#abb2bf,\
+# marker:#e06c75,\
+# prompt:#c678dd,\
+# spinner:#e5c07b,\
+# info:#e5c07b"
 
 # fzf file search, with preview using bat.
 export FZF_CTRL_T_COMMAND="fd -Ht f"
 export FZF_CTRL_T_OPTS="\
---preview='bat --color=always --style=''changes'' -r :$LINES {}' \
---preview-window=border-sharp"
+	--preview='bat --color=always --style=''changes'' -r :$LINES {}' \
+	--preview-window=border-sharp"
 
 # fzf directory search, with preview using tree.
 export FZF_ALT_C_COMMAND="fd -Ht d"
 export FZF_ALT_C_OPTS="\
---preview='tree -C {} | head -n $LINES' \
---preview-window=border-sharp"
+	--preview='tree -C {} | head -n $LINES' \
+	--preview-window=border-sharp"
 
-# Explore command history with fzf
+# Explore command history with fzf.
 export FZF_CTRL_R_OPTS="--reverse"
 
-# fzf trigger sequence (default:**)
+# fzf trigger sequence (default:**).
 export FZF_COMPLETION_TRIGGER="**"
 export FZF_COMPLETION_OPTS=""
 
 # Ajouts au PATH  {{{1
 
-# Local binaries
+# Local binaries.
 export PATH="$PATH:/home/guil/.local/bin"
-# Java (from Oracle, not OpenJDK)
+# Java (from Oracle, not OpenJDK).
 export PATH="$PATH:/usr/local/java/jdk-17.0.1/bin"
-# Julia
+# Julia.
 export PATH="$PATH:/usr/local/julia/bin"
-# Matlab
+# Matlab.
 export PATH="$PATH:/usr/local/MATLAB/R2022a/bin"
-# Latex distribution (TexLive 2021)
+# Latex distribution (TexLive 2022).
 export PATH="/usr/local/texlive/2022/bin/x86_64-linux:$PATH"
 export MANPATH="$MANPATH:/usr/local/texlive/2022/texmf-dist/doc/man"
 export INFOPATH="$INFOPATH:/usr/local/texlive/2022/texmf-dist/doc/info"
-# Go environment setup
+# Go environment setup.
 export GOROOT="/usr/local/go"
 export PATH="$PATH:$GOROOT/bin"
 export GOPATH="$HOME/.golib"
 export PATH="$PATH:$GOPATH/bin"
-# Cargo (rust)
+# Cargo (rust).
 . "/home/guil/.cargo/env"
-# Miniconda
-__conda_setup="$('/home/guil/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# Miniconda (change `auto_activate_base` option in ~/.condarc to take effect).
+__conda_setup="$('/home/guil/.local/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
 	eval "$__conda_setup"
 else
-	if [ -f "/home/guil/.miniconda3/etc/profile.d/conda.sh" ]; then
-		. "/home/guil/.miniconda3/etc/profile.d/conda.sh"
+	if [ -f "/home/guil/.local/miniconda3/etc/profile.d/conda.sh" ]; then
+		. "/home/guil/.local/miniconda3/etc/profile.d/conda.sh"
 	else
-		export PATH="/home/guil/.miniconda3/bin:$PATH"
+		export PATH="/home/guil/.local/miniconda3/bin:$PATH"
 	fi
 fi
 unset __conda_setup
-# SU2
+# SU2.
 export SU2_RUN=/usr/local/bin
 export PATH=$PATH:$SU2_RUN
 export PYTHONPATH=$PYTHONPATH:$SU2_RUN
+# Ghcup (haskell).
+[ -f "/home/guil/.ghcup/env" ] && source "/home/guil/.ghcup/env"
 
 # Plugins  {{{1
 
-# Syntax highlighting for the shell commands
+# Syntax highlighting for the shell commands.
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# Backward search by substrings in the command history
+# Backward search by substrings in the command history.
 source $ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey "^P" history-substring-search-up
 bindkey "^[[A" history-substring-search-up

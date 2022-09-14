@@ -29,9 +29,9 @@ au FileType gitcommit setl textwidth=72
 au FileType haskell setl expandtab
 
 au FileType julia nmap <buffer><localleader>l :w<Bar>!julia %<CR>
+au FileType julia setl textwidth=92
 
-au FileType tex setl formatoptions=tcqj textwidth=100
-au FileType tex setl spf=~/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
+au FileType lua nmap <buffer><localleader>l :w<Bar>source %<CR>
 
 au FileType markdown setl formatoptions=tcqjn commentstring=<!--%s-->
 au FileType markdown setl makeprg=pandoc\ -o\ %:r.html\ %\ --mathjax
@@ -39,7 +39,7 @@ au FileType markdown nmap <buffer><localleader>m :w<Bar>:make<CR>
 au FileType markdown nmap <buffer><localleader>v :!xdg-open %:r.html<CR>
 
 au FileType python setl textwidth=79
-au FileType python nmap <buffer><localleader>f :w<Bar>!~/.miniconda3/bin/autopep8  -iaa %:p<CR>:e<CR>
+au FileType python nmap <buffer><localleader>f :w<Bar>!~/.local/miniconda3/envs/nvim/bin/autopep8  -iaa %:p<CR>:e<CR>
 au FileType python nmap <buffer><localleader>l :w<Bar>py3file %<CR>
 
 au FileType rust nmap <buffer><localleader>f :RustFmt<CR>
@@ -50,9 +50,12 @@ au FileType rust nmap <buffer><localleader>k :Ccheck<CR>
 au FileType rust nmap <buffer><localleader>t :Ctest<CR>
 au FileType rust nmap <buffer><localleader><CR> :Crun<CR>
 
-au FileType vim nmap <buffer><localleader>l :w<Bar>source %<CR>
+au FileType tex setl formatoptions=tcqj textwidth=100
+au FileType tex setl spf=~/.local/share/nvim/site/spell/LexiqueSerieux.utf-8.add
 
 au FileType vhdl setl commentstring=--%s
+
+au FileType vim nmap <buffer><localleader>l :w<Bar>source %<CR>
 ]])
 
 
@@ -63,13 +66,12 @@ local variables = {
 	go_highlight_extra_types    = 1,
 	go_highlight_functions      = 1,
 	go_highlight_function_calls = 1,
-	go_term_enabled             = 1,
 	-- Latex - vimtex
 	vimtex_compiler_latexmk = {["continuous"] = 0},
 	vimtex_view_method      = "zathura",
 	vimtex_quickfix_mode    = 0,
 	-- Python - builtin
-	python3_host_prog = "/home/guil/.miniconda3/bin/python",
+	python3_host_prog = "/home/guil/.local/miniconda3/envs/nvim/bin/python",
 	-- Rust - rust.vim
 	rust_fold        = 1,
 	rustfmt_autosave = 1,

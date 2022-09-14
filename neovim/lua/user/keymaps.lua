@@ -1,9 +1,8 @@
--- TODO: include filetype specific keymaps with `nvim_buf_set_keymap()`.
-
 local opts = {noremap = true, silent = true}
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 -- Set leader and local leader keys
+keymap({'n', 'v'}, '<Space>', '<Nop>', opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -33,11 +32,11 @@ keymap("n", "<M-b>", "<C-b>",      opts)
 keymap("n", "<M-h>", "8zh",        opts)
 keymap("n", "<M-l>", "8zl",        opts)
 
--- Netrw file explorer.
-keymap("n", "<leader>eh", ":Vex<CR>",  opts)
-keymap("n", "<leader>el", ":Vex!<CR>", opts)
-keymap("n", "<leader>ej", ":Hex<CR>",  opts)
-keymap("n", "<leader>ek", ":Hex!<CR>", opts)
+-- Dirvish file explorer.
+keymap("n", "<leader>eh", ":    vsplit +Dirvish\\ %:p<CR>", opts)
+keymap("n", "<leader>ej", ":bel  split +Dirvish\\ %:p<CR>", opts)
+keymap("n", "<leader>ek", ":     split +Dirvish\\ %:p<CR>", opts)
+keymap("n", "<leader>el", ":bel vsplit +Dirvish\\ %:p<CR>", opts)
 
 -- Telescope.
 keymap("n", "<leader>fn", "<cmd>Telescope <CR>",                          opts)
@@ -51,20 +50,31 @@ keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>",                 opts)
 keymap("n", "<leader>fm", "<cmd>Telescope marks<CR>",                     opts)
 
 -- Quick setting toggles.
-keymap("n", "<leader>th", ":se hls!<CR>",          opts)
-keymap("n", "<leader>tn", ":setl rnu!<CR>",        opts)
-keymap("n", "<leader>ts", ":setl nospell!<CR>",    opts)
-keymap("n", "<leader>tc", ":setl cursorline!<CR>", opts)
-keymap("n", "<leader>tl", ":setl list!<CR>",       opts)
--- Will work on neovim 0.7
--- local VirtualEdit_toggle = function()
--- 	if vim.o.virtualedit == "" then
--- 		vim.o.virtualedit = "all"
--- 	else
--- 		vim.o.virtualedit = ""
--- 	end
--- end
--- keymap("n", "<leader>tv", VirtualEdit_toggle,    opts)
+keymap("n", "<leader>sh", ":se hls!<CR>",          opts)
+keymap("n", "<leader>sn", ":setl rnu!<CR>",        opts)
+keymap("n", "<leader>ss", ":setl nospell!<CR>",    opts)
+keymap("n", "<leader>sc", ":setl cursorline!<CR>", opts)
+keymap("n", "<leader>sl", ":setl list!<CR>",       opts)
+local VirtualEdit_toggle = function()
+	if vim.o.virtualedit == "" then
+		vim.o.virtualedit = "all"
+		print("virtualedit ON")
+	else
+		vim.o.virtualedit = ""
+		print("virtualedit OFF")
+	end
+end
+keymap("n", "<leader>sv", VirtualEdit_toggle, opts)
+local Conceallevel_toggle = function()
+	if vim.o.conceallevel == 0 then
+		vim.o.conceallevel = 2
+		print("conceallevel=2")
+	else
+		vim.o.conceallevel = 0
+		print("conceallevel=0")
+	end
+end
+keymap("n", "<leader>so", Conceallevel_toggle, opts)
 
 -- Quick write, quit and close.
 keymap("n", "<leader>q", ":q<CR>",   opts)
@@ -86,6 +96,7 @@ vim.g.easy_align_delimiters = {
 }
 
 -- Miscellaneous.
-keymap("n", "<leader>m", ":lc %:h<CR>", opts)
-keymap("t", "<M-q>",     "<C-\\><C-N>", opts)
-keymap("n", "'",         "`",           opts)
+keymap("n", "<leader>m",      ":cd %:h<CR>", opts)
+keymap("n", "<localleader>m", ":lc %:h<CR>", opts)
+keymap("t", "<M-q>",          "<C-\\><C-N>", opts)
+keymap("n", "'",              "`",           opts)

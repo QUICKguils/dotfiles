@@ -41,6 +41,7 @@
     ~/.zshenv: zsh/zshenv
     ~/.config/zsh/plugins: zsh/plugins
     ~/.config/zsh/.zshrc: zsh/zshrc
+    ~/.julia/config/startup.jl: julia/startup.jl
 
 - shell:
     -

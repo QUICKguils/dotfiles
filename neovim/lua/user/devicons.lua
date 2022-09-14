@@ -4,6 +4,9 @@ if not status_ok then
 end
 
 devicons.set_icon {
-	tex = {icon = ""},
-	txt = {icon = ""},
+	tex         = {icon = ""},
+	txt         = {icon = ""},
+	dirvish     = {icon = "ﱮ"},
+	foam        = {icon = "∇"},
+	checkhealth = {icon = "ﯭ"},
 }
