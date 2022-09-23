@@ -33,6 +33,7 @@
     ~/.config/nvim/init.lua: neovim/init.lua
     ~/.config/nvim/lua: neovim/lua
     ~/.local/share/nvim/site/spell: neovim/spell
+    ~/.local/share/nvim/site/pack/colorscheme: neovim/colorscheme
     ~/.config/styles.css: styles/styles.css
     ~/.tmux.conf: tmux/tmux.conf
     ~/.Xresources: Xorg/Xresources

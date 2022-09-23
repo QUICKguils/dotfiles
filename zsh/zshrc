@@ -106,8 +106,7 @@ alias py='python'
 alias ipy='ipython'
 
 # Path shortcuts.
-scb="$HOME/Documents/Ecole/Bloc_3/"
-scm="$HOME/Documents/Ecole/Master_1/"
+sch="$HOME/Documents/School/Master_1/"
 hdd="/run/media/guil/Data/"
 
 # reading tools  {{{1
@@ -202,7 +201,7 @@ export PATH="$PATH:/usr/local/java/jdk-17.0.1/bin"
 # Julia.
 export PATH="$PATH:/usr/local/julia/bin"
 # Matlab.
-export PATH="$PATH:/usr/local/MATLAB/R2022a/bin"
+export PATH="$PATH:/home/guil/.local/MATLAB/R2022a/bin"
 # Latex distribution (TexLive 2022).
 export PATH="/usr/local/texlive/2022/bin/x86_64-linux:$PATH"
 export MANPATH="$MANPATH:/usr/local/texlive/2022/texmf-dist/doc/man"
